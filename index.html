@@ -7,10 +7,10 @@
   <meta name="description" content="Community surplus food donation network connecting weddings, hotels, and households with night shelters, orphanages, and delivery riders.">
   <meta name="author" content="AaharSetu Community">
 
-  <!-- Crisp Vector Favicon for URL & Browser Tab -->
+  <!-- Vector Favicon for URL and Browser Tab -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C35 15 44 19 44 27C44 35 38 39 32 39C26 39 20 35 20 27C20 19 29 15 32 6Z' fill='%23f59e0b'/%3E%3Cpath d='M12 36C18 31 27 33 32 36C37 39 46 39 52 34C53 33 55 35 54 37C50 44 40 48 31 46C24 44 18 46 14 48C12 49 10 47 10 45C10 41 11 38 12 36Z' fill='%2310b981'/%3E%3Cpath d='M14 44C20 40 29 41 35 44C41 47 48 44 53 40C54 41 54 43 52 45C46 51 37 52 28 50C22 48 17 50 14 52C13 52 12 51 12 50C13 47 13 45 14 44Z' fill='%23059669'/%3E%3C/svg%3E">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -34,7 +34,7 @@
 
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -74,20 +74,20 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Announcement Notification Banner -->
+  <!-- Top Announcement Bar -->
   <div class="bg-slate-900 text-white text-xs py-2 px-3 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
       <div class="flex items-center gap-2">
         <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 uppercase tracking-wider">
-          <i class="fa-solid fa-leaf mr-1"></i> New Initiative
+          <i class="fa-solid fa-leaf mr-1"></i> Live Initiative
         </span>
         <span class="text-slate-300 text-[11px] sm:text-xs">
           Shaadi, hotel ya ghar ka bacha khana zaya mat hone dein — seedha zarooratmand tak pahunchayein!
         </span>
       </div>
-      <div class="flex items-center gap-2 text-[11px]">
+      <div class="flex items-center gap-3 text-[11px]">
         <button onclick="toggleAiAssistant()" class="text-purple-300 hover:text-purple-200 font-bold flex items-center gap-1 transition">
-          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Setu AI Assistant
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Setu AI Guide
         </button>
       </div>
     </div>
@@ -95,9 +95,9 @@
 
   <!-- Primary Sticky Header -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
       
-      <!-- Brand Logo -->
+      <!-- Logo -->
       <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/30 group-hover:scale-105 transition p-1.5">
           <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-1 text-xs font-bold text-slate-600">
+      <nav class="hidden xl:flex items-center gap-1 text-xs font-bold text-slate-600">
         <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-xl text-emerald-700 bg-emerald-50 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-house"></i> Home
         </button>
@@ -124,43 +124,43 @@
           <i class="fa-solid fa-plus-circle text-emerald-600"></i> Donate Food
         </button>
         <button onclick="navigateTo('explore')" id="nav-explore" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-bowl-rice text-amber-500"></i> Available Meals (<span id="navMealCount">0</span>)
+          <i class="fa-solid fa-bowl-rice text-amber-500"></i> Meals (<span id="navMealCount">0</span>)
         </button>
         <button onclick="navigateTo('rider')" id="nav-rider" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-motorcycle text-indigo-600"></i> Rider & Volunteer Hub
+          <i class="fa-solid fa-motorcycle text-indigo-600"></i> Rider Hub
         </button>
         <button onclick="navigateTo('shelters')" id="nav-shelters" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-bed text-blue-500"></i> Shelters Needs
+          <i class="fa-solid fa-bed text-blue-500"></i> Shelters
         </button>
         <button onclick="navigateTo('radar')" id="nav-radar" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-map-location-dot text-rose-500"></i> City Radar
         </button>
         <button onclick="navigateTo('orders')" id="nav-orders" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-receipt text-teal-600"></i> Order Status (<span id="navOrdersCount">0</span>)
+          <i class="fa-solid fa-receipt text-teal-600"></i> Orders (<span id="navOrdersCount">0</span>)
         </button>
       </nav>
 
       <!-- Action Buttons: User Login + Rider Login + Post CTA -->
       <div class="flex items-center gap-1.5 sm:gap-2">
-        <!-- 1. General User / Donor Login Button -->
+        <!-- User Login Slot -->
         <div id="userHeaderAuthSlot">
           <button onclick="openUserAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
             <i class="fa-solid fa-circle-user text-emerald-600"></i>
-            <span id="userBtnLabel">User Login</span>
+            <span>User Login</span>
           </button>
         </div>
 
-        <!-- 2. Rider / Volunteer Login Button -->
+        <!-- Rider / Volunteer Login Slot -->
         <div id="riderHeaderAuthSlot">
           <button onclick="openRiderAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center gap-1.5 border border-indigo-200 transition">
             <i class="fa-solid fa-motorcycle"></i>
-            <span id="riderBtnLabel" class="hidden sm:inline">Rider / Volunteer</span>
+            <span class="hidden sm:inline">Rider / Volunteer</span>
             <span class="sm:hidden">Rider</span>
           </button>
         </div>
 
-        <!-- 3. Primary Post Food CTA -->
-        <button onclick="navigateTo('donate')" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition active:scale-95 flex items-center gap-1.5">
+        <!-- Post Food CTA -->
+        <button onclick="navigateTo('donate')" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition active:scale-95 flex items-center gap-1.5">
           <i class="fa-solid fa-plus"></i>
           <span class="hidden sm:inline">Post Food</span>
           <span class="sm:hidden">Donate</span>
@@ -169,13 +169,13 @@
 
     </div>
 
-    <!-- STICKY MOBILE TOP NAVIGATION BAR (Always visible at top of phone screen) -->
-    <div class="lg:hidden bg-slate-100/95 border-t border-slate-200 px-2 py-1.5 overflow-x-auto hide-scrollbar flex items-center gap-1.5 whitespace-nowrap shadow-inner">
+    <!-- Sticky Mobile Navigation Bar -->
+    <div class="xl:hidden bg-slate-100/95 border-t border-slate-200 px-2 py-1.5 overflow-x-auto hide-scrollbar flex items-center gap-1.5 whitespace-nowrap shadow-inner">
       <button onclick="navigateTo('home')" id="mob-home" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-sm flex items-center gap-1 shrink-0 transition">
         <i class="fa-solid fa-house"></i> Home
       </button>
       <button onclick="navigateTo('donate')" id="mob-donate" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
-        <i class="fa-solid fa-plus-circle text-emerald-600"></i> Donate Food
+        <i class="fa-solid fa-plus-circle text-emerald-600"></i> Donate
       </button>
       <button onclick="navigateTo('explore')" id="mob-explore" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
         <i class="fa-solid fa-bowl-rice text-amber-500"></i> Meals (<span id="mobMealCount">0</span>)
@@ -194,10 +194,11 @@
       </button>
     </div>
   </header>
-  <!-- MAIN MULTI-PAGE APPLICATION CONTAINER -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
 
-    <!-- ==================== PAGE 1: HOME DASHBOARD ==================== -->
+  <!-- Main Multi-Page App Body -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8">
+
+    <!-- ==================== 1. HOME DASHBOARD ==================== -->
     <div id="page-home" class="page-view active space-y-8">
       
       <!-- Hero Banner -->
@@ -205,29 +206,29 @@
         <div class="relative z-10 max-w-2xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            Surplus Food Rescue & Delivery Network
+            Surplus Food Rescue & Volunteer Delivery Network
           </div>
           <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-            Shadi, Hotels aur Ghar Ka Khana <span class="text-emerald-400">Zaya Mat Hone Dein.</span>
+            Shaadi, Hotels aur Ghar Ka Khana <span class="text-emerald-400">Zaya Mat Hone Dein.</span>
           </h1>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
             AaharSetu banquets, hotels, caterers aur aam parivaron ko aas-paas ke rain basera, anathashram aur needy logon se jodta hai. Khana post karein, riders aur volunteers turant pickup karke deliver karenge.
           </p>
           <div class="pt-2 flex flex-wrap items-center gap-3">
-            <button onclick="navigateTo('donate')" class="px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/30 transition flex items-center gap-2">
+            <button onclick="navigateTo('donate')" class="px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-emerald-500/30 transition flex items-center gap-2">
               <i class="fa-solid fa-plus-circle text-base"></i> Bacha Hua Khana Post Karein
             </button>
-            <button onclick="navigateTo('explore')" class="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm backdrop-blur border border-white/20 transition flex items-center gap-2">
+            <button onclick="navigateTo('explore')" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm backdrop-blur border border-white/20 transition flex items-center gap-2">
               <i class="fa-solid fa-bowl-rice text-amber-400"></i> Available Meals Dekhein
             </button>
-            <button onclick="openRiderAuthModal()" class="px-5 py-3 rounded-2xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-sm backdrop-blur border border-indigo-400/30 transition flex items-center gap-2">
+            <button onclick="openRiderAuthModal()" class="px-5 py-3 rounded-2xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-xs sm:text-sm backdrop-blur border border-indigo-400/30 transition flex items-center gap-2">
               <i class="fa-solid fa-motorcycle"></i> Rider / Volunteer Join Karein
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Quick 3-Step Flow Cards -->
+      <!-- Quick 3-Step Process Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-black mb-4">
@@ -245,7 +246,7 @@
           </div>
           <h3 class="font-black text-slate-900 text-base mb-1">Rider / Volunteer Accepts</h3>
           <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Hamare verified delivery riders aur volunteers venue par aakar khana pack aur pickup karte hain.
+            Verified delivery riders aur volunteers venue par aakar khana pack aur pickup karte hain.
           </p>
         </div>
 
@@ -255,7 +256,7 @@
           </div>
           <h3 class="font-black text-slate-900 text-base mb-1">Delivered to Needy</h3>
           <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Khana direct nearby rain basera, shelter homes ya slum clusters me izzat ke saath distribute hota hai.
+            Khana direct nearby rain basera, shelter homes ya needy clusters me izzat ke saath distribute hota hai.
           </p>
         </div>
       </div>
@@ -277,7 +278,8 @@
       </div>
 
     </div>
-    <!-- ==================== PAGE 2: DONATE FOOD ==================== -->
+
+    <!-- ==================== 2. DONATE FOOD ==================== -->
     <div id="page-donate" class="page-view space-y-6">
       
       <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
@@ -327,7 +329,7 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <label class="block font-bold text-slate-800 text-xs sm:text-sm">2. Khane Me Kya-Kya Hai? (Dishes) *</label>
-              <span class="text-[11px] text-slate-400">Niche diye buttons se click karke ya type karke likhein</span>
+              <span class="text-[11px] text-slate-400">Buttons se click karke ya type karke likhein</span>
             </div>
 
             <!-- Quick Dish Chips -->
@@ -362,7 +364,7 @@
           <div>
             <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-2">3. Kitne Logon Ka Khana Hai? (Plates / Servings) *</label>
             <div class="flex items-center gap-3">
-              <input type="number" id="donatePlatesInput" required min="1" max="5000" placeholder="Plates sankhya daalein" class="w-44 p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm font-black text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <input type="number" id="donatePlatesInput" required min="1" max="5000" placeholder="Plates sankhya" class="w-44 p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm font-black text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
               
               <div class="flex items-center gap-1.5 flex-wrap">
                 <button type="button" onclick="setQuickPlates(15)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">15</button>
@@ -409,11 +411,11 @@
 
             <div>
               <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Mobile / WhatsApp Number *</label>
-              <input type="tel" id="donatePhoneInput" required placeholder="e.g. 98765 43210" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <input type="tel" id="donatePhoneInput" required maxlength="10" oninput="filterPhoneDigits(this)" placeholder="e.g. 9876543210" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none font-bold">
             </div>
           </div>
 
-          <!-- Packaging & Food Safety Check -->
+          <!-- Hygiene Notice -->
           <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
             <i class="fa-solid fa-shield-heart text-amber-600 text-base mt-0.5"></i>
             <div>
@@ -424,7 +426,7 @@
             </div>
           </div>
 
-          <!-- Form Submit Action -->
+          <!-- Form Action Buttons -->
           <div class="flex items-center justify-end gap-3 pt-2">
             <button type="button" onclick="navigateTo('explore')" class="px-5 py-3 rounded-2xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
               Cancel
@@ -438,7 +440,8 @@
       </div>
 
     </div>
-    <!-- ==================== PAGE 3: AVAILABLE MEALS FEED ==================== -->
+
+    <!-- ==================== 3. AVAILABLE MEALS FEED ==================== -->
     <div id="page-explore" class="page-view space-y-6">
       
       <!-- Filter Bar -->
@@ -472,10 +475,11 @@
       </div>
 
     </div>
-    <!-- ==================== PAGE 4: RIDER & VOLUNTEER HUB ==================== -->
+
+    <!-- ==================== 4. RIDER & VOLUNTEER HUB ==================== -->
     <div id="page-rider" class="page-view space-y-6">
       
-      <!-- Top Rider Hub Status Header -->
+      <!-- Rider Hub Header -->
       <div class="bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-800/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 text-xs font-bold mb-2">
@@ -483,7 +487,7 @@
           </div>
           <h2 class="text-2xl sm:text-3xl font-black">Rider & Volunteer Hub</h2>
           <p class="text-xs sm:text-sm text-indigo-200 mt-1 max-w-xl">
-            Surplus food pickup tasks accept karein, venues par jakar food collect karein aur night shelters tak safe delivery ensure karein.
+            Real surplus food pickup tasks accept karein, venues par jakar food collect karein aur night shelters tak safe delivery ensure karein.
           </p>
         </div>
 
@@ -495,31 +499,69 @@
             <p class="text-xs text-indigo-200">Current Status</p>
             <p id="riderPortalName" class="font-extrabold text-sm text-white">Not Logged In</p>
             <button onclick="openRiderAuthModal()" class="text-xs font-bold text-amber-300 hover:text-amber-200 underline mt-0.5">
-              Click Here to Login / Register
+              Click to Login / Register
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Active Pickup Tasks for Riders -->
-      <div class="space-y-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 class="text-lg sm:text-xl font-black text-slate-900">Active Pickup & Delivery Tasks</h3>
-            <p class="text-xs text-slate-500">Pickups that need immediate volunteer action</p>
+      <!-- Main Layout: Active Tasks (Left) + Pickup Navigator Log (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        
+        <!-- Left: Real Active Pickup Tasks -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg sm:text-xl font-black text-slate-900">Active Pickup & Delivery Tasks</h3>
+              <p class="text-xs text-slate-500">Real-time rescue tasks awaiting pickup and distribution</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200" id="riderTaskCounter">
+              0 Tasks Active
+            </span>
           </div>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200" id="riderTaskCounter">
-            0 Tasks Active
-          </span>
+
+          <div id="riderTasksGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Dynamically populated only when real orders exist -->
+          </div>
         </div>
 
-        <div id="riderTasksGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Dynamically populated tasks -->
+        <!-- Right: Live Pickup Navigator & Activity Log -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <div class="flex items-center gap-1.5 text-xs font-black text-indigo-700 uppercase tracking-wider">
+                <i class="fa-solid fa-compass"></i> Pickup Navigator
+              </div>
+              <h4 class="text-sm font-black text-slate-900 mt-0.5">Live Rescue Log</h4>
+            </div>
+            <span id="pickupTotalPlatesBadge" class="px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 font-extrabold text-xs border border-emerald-200">
+              0 Plates
+            </span>
+          </div>
+
+          <!-- Quick Statistics -->
+          <div class="grid grid-cols-2 gap-2 text-center">
+            <div class="p-2.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-[10px] text-slate-500 block font-bold">Total Rescues</span>
+              <span id="navTotalRescuesCount" class="text-base font-black text-indigo-600">0</span>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-slate-50 border border-slate-100">
+              <span class="text-[10px] text-slate-500 block font-bold">Delivered Plates</span>
+              <span id="navTotalDeliveredPlates" class="text-base font-black text-emerald-600">0</span>
+            </div>
+          </div>
+
+          <!-- Activity Feed -->
+          <div class="space-y-2.5 max-h-[460px] overflow-y-auto custom-scrollbar pr-1" id="pickupNavigatorFeed">
+            <!-- Dynamically populated with pickup log entries -->
+          </div>
         </div>
+
       </div>
 
     </div>
-    <!-- ==================== PAGE 5: SHELTER DEMAND BOARD ==================== -->
+
+    <!-- ==================== 5. SHELTER DEMAND BOARD ==================== -->
     <div id="page-shelters" class="page-view space-y-6">
       
       <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -533,7 +575,7 @@
           </p>
         </div>
 
-        <button onclick="openShelterRequestModal()" class="px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-2 shrink-0">
+        <button onclick="openShelterModal()" class="px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-2 shrink-0">
           <i class="fa-solid fa-plus-circle"></i> Post Shelter Requirement
         </button>
       </div>
@@ -544,7 +586,7 @@
 
     </div>
 
-    <!-- ==================== PAGE 6: CITY RADAR ==================== -->
+    <!-- ==================== 6. CITY RADAR ==================== -->
     <div id="page-radar" class="page-view space-y-6">
       
       <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
@@ -588,7 +630,7 @@
 
     </div>
 
-    <!-- ==================== PAGE 7: ORDER STATUS & TRACKING ==================== -->
+    <!-- ==================== 7. ORDER STATUS & TRACKING ==================== -->
     <div id="page-orders" class="page-view space-y-6">
       <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -617,6 +659,7 @@
     </div>
 
   </main>
+
   <!-- ==================== 1. GENERAL USER / DONOR AUTH MODAL ==================== -->
   <div id="userAuthModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
@@ -636,7 +679,7 @@
         </div>
       </div>
 
-      <form id="userLoginForm" onsubmit="handleUserLoginSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+      <form id="userLoginForm" onsubmit="handleUserAuthSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
         <div>
           <label class="block font-bold text-slate-700 mb-1">Aapka Role Kya Hai? *</label>
           <select id="userRoleSelect" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white font-medium">
@@ -650,16 +693,37 @@
         <div>
           <label class="block font-bold text-slate-700 mb-1">Aapka Pura Naam *</label>
           <input type="text" id="userAuthName" required placeholder="e.g. Rahul Sharma" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          <p id="userAuthNameError" class="text-rose-600 font-bold text-[11px] mt-1 hidden"></p>
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
-          <input type="tel" id="userAuthPhone" required placeholder="e.g. 98112 34567" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Mobile Number (10 Digits) *</label>
+          <div class="flex gap-2">
+            <div class="relative flex-1">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">+91</span>
+              <input type="tel" id="userAuthPhone" required maxlength="10" oninput="filterPhoneDigits(this)" placeholder="9811234567" class="w-full pl-11 pr-3 py-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none font-bold">
+            </div>
+            <button type="button" id="userSendOtpBtn" onclick="requestUserOtp()" class="px-3.5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition whitespace-nowrap shadow-sm">
+              <span id="userOtpTimer">Get OTP</span>
+            </button>
+          </div>
+          <p id="userAuthPhoneError" class="text-rose-600 font-bold text-[11px] mt-1 hidden"></p>
+        </div>
+
+        <!-- Dynamic User OTP Box -->
+        <div id="userOtpSection" class="hidden space-y-2 bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200">
+          <div class="flex items-center justify-between">
+            <label class="block font-bold text-emerald-950 text-xs">Enter 4-Digit OTP *</label>
+            <span id="userOtpDemoTag" class="px-2 py-0.5 rounded-md bg-emerald-200 text-emerald-900 font-black text-[11px] tracking-wider"></span>
+          </div>
+          <input type="text" id="userOtpInput" maxlength="4" placeholder="••••" class="w-full p-2.5 rounded-xl border border-emerald-300 text-center font-black text-lg tracking-widest focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
+          <p id="userOtpError" class="text-rose-600 font-bold text-[11px] hidden"></p>
         </div>
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">Aapka Sheher / Area *</label>
           <input type="text" id="userAuthCity" required placeholder="e.g. Rohini, Delhi" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          <p id="userAuthCityError" class="text-rose-600 font-bold text-[11px] mt-1 hidden"></p>
         </div>
 
         <div class="flex items-center justify-end gap-2 pt-2">
@@ -667,7 +731,7 @@
             Cancel
           </button>
           <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-md">
-            Login Karein
+            Verify & Login
           </button>
         </div>
       </form>
@@ -694,7 +758,7 @@
         </div>
       </div>
 
-      <form id="riderLoginForm" onsubmit="handleRiderLoginSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+      <form id="riderLoginForm" onsubmit="handleRiderAuthSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
         
         <!-- Toggle: Delivery Rider vs Volunteer -->
         <div>
@@ -712,11 +776,31 @@
         <div>
           <label class="block font-bold text-slate-700 mb-1">Aapka Pura Naam *</label>
           <input type="text" id="riderAuthName" required placeholder="e.g. Vikram Singh" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <p id="riderAuthNameError" class="text-rose-600 font-bold text-[11px] mt-1 hidden"></p>
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
-          <input type="tel" id="riderAuthPhone" required placeholder="e.g. 98110 99887" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Mobile Number (10 Digits) *</label>
+          <div class="flex gap-2">
+            <div class="relative flex-1">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">+91</span>
+              <input type="tel" id="riderAuthPhone" required maxlength="10" oninput="filterPhoneDigits(this)" placeholder="9811099887" class="w-full pl-11 pr-3 py-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none font-bold">
+            </div>
+            <button type="button" id="riderSendOtpBtn" onclick="requestRiderOtp()" class="px-3.5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition whitespace-nowrap shadow-sm">
+              <span id="riderOtpTimer">Get OTP</span>
+            </button>
+          </div>
+          <p id="riderAuthPhoneError" class="text-rose-600 font-bold text-[11px] mt-1 hidden"></p>
+        </div>
+
+        <!-- Dynamic Rider OTP Box -->
+        <div id="riderOtpSection" class="hidden space-y-2 bg-indigo-50/70 p-3.5 rounded-2xl border border-indigo-200">
+          <div class="flex items-center justify-between">
+            <label class="block font-bold text-indigo-950 text-xs">Enter 4-Digit OTP *</label>
+            <span id="riderOtpDemoTag" class="px-2 py-0.5 rounded-md bg-indigo-200 text-indigo-900 font-black text-[11px] tracking-wider"></span>
+          </div>
+          <input type="text" id="riderOtpInput" maxlength="4" placeholder="••••" class="w-full p-2.5 rounded-xl border border-indigo-300 text-center font-black text-lg tracking-widest focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white">
+          <p id="riderOtpError" class="text-rose-600 font-bold text-[11px] hidden"></p>
         </div>
 
         <!-- Vehicle Details (Switches dynamically) -->
@@ -744,13 +828,14 @@
             Cancel
           </button>
           <button type="submit" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition shadow-md">
-            Login & Start Tasks
+            Verify & Start Tasks
           </button>
         </div>
       </form>
 
     </div>
   </div>
+
   <!-- ==================== 3. CLAIM / REQUEST MEAL MODAL ==================== -->
   <div id="claimMealModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
@@ -778,8 +863,8 @@
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Contact / WhatsApp Number *</label>
-          <input type="tel" id="claimReceiverPhone" required placeholder="e.g. 98112 23344" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Contact / WhatsApp Number (10 Digits) *</label>
+          <input type="tel" id="claimReceiverPhone" required maxlength="10" oninput="filterPhoneDigits(this)" placeholder="e.g. 9811223344" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none font-bold">
         </div>
 
         <div>
@@ -800,7 +885,66 @@
     </div>
   </div>
 
-  <!-- ==================== 4. SETU AI ASSISTANT DRAWER ==================== -->
+  <!-- ==================== 4. POST SHELTER REQUIREMENT MODAL ==================== -->
+  <div id="shelterRequestModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
+      
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white relative">
+        <button onclick="closeShelterModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl shadow">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-black">Shelter Requirement Post</h3>
+            <p class="text-xs text-blue-100">Rain Basera, Orphanage ya Shelter Demand</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="shelterDemandForm" onsubmit="handleShelterDemandSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Shelter / Sanstha Ka Naam *</label>
+          <input type="text" id="shelterNameInput" required placeholder="e.g. Apna Ghar Rain Basera #2" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Location / Pura Pata *</label>
+          <input type="text" id="shelterLocationInput" required placeholder="e.g. Near Anand Vihar Bus Terminal, Delhi" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Plates Needed *</label>
+            <input type="number" id="shelterPlatesInput" min="1" max="2000" required placeholder="50" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none font-bold">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Mobile (10 Digits) *</label>
+            <input type="tel" id="shelterPhoneInput" maxlength="10" oninput="filterPhoneDigits(this)" required placeholder="9810123456" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none font-bold">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Diet Preference *</label>
+          <input type="text" id="shelterPrefInput" placeholder="e.g. Dal, Roti & Sabzi (Pure Veg)" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeShelterModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs transition shadow-md">
+            Broadcast Demand
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== 5. SETU AI ASSISTANT DRAWER ==================== -->
   <div id="aiAssistantDrawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white shadow-2xl border-l border-slate-200 hidden flex-col transition-all">
     <div class="bg-gradient-to-r from-purple-700 to-indigo-800 p-4 text-white flex items-center justify-between">
       <div class="flex items-center gap-2.5">
@@ -847,14 +991,21 @@
       <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
+
+  <!-- ==================== JAVASCRIPT APPLICATION CORE ==================== -->
   <script>
-    // ==================== APPLICATION STATE ====================
+    // State Management
     let activePage = 'home';
-    let currentUser = null; // { name, phone, role, city }
-    let currentRider = null; // { name, phone, type: 'Rider'|'Volunteer', vehicle, pref }
+    let currentUser = JSON.parse(localStorage.getItem('aahar_user') || 'null');
+    let currentRider = JSON.parse(localStorage.getItem('aahar_rider') || 'null');
     let selectedRiderAuthType = 'Rider';
 
-    let myOrders = [
+    let generatedUserOtp = null;
+    let generatedRiderOtp = null;
+    let userOtpInterval = null;
+    let riderOtpInterval = null;
+
+    let myOrders = JSON.parse(localStorage.getItem('aahar_orders') || 'null') || [
       {
         orderId: 'ORD-7391',
         listingId: 'L-101',
@@ -863,18 +1014,33 @@
         dishes: 'Paneer Lababdar, Dal Makhani, Tawa Rotis, Jeera Rice',
         plates: 30,
         receiverName: 'Asha Rain Basera Volunteer Team',
-        receiverPhone: '98112 99001',
+        receiverPhone: '9811299001',
         destination: 'Rain Basera Near Metro Gate 2, Rohini',
-        status: 'Rider Assigned', // 'Rider Assigned', 'Out for Delivery', 'Delivered', 'Cancelled'
-        riderName: 'Vikram Singh (Hero Splendor)',
-        riderPhone: '98110 99887',
+        status: 'Rider Assigned',
+        riderName: 'Vikram Singh',
+        riderVehicle: 'Hero Splendor (Bike)',
+        riderPhone: '9811099887',
         otp: '4821',
         orderTime: '15 mins ago'
       }
     ];
 
-    // Realistic community starter listings (user can claim plates or add new ones)
-    let listings = [
+    let pickupLog = JSON.parse(localStorage.getItem('aahar_pickup_log') || 'null') || [
+      {
+        id: 'LOG-1',
+        orderId: 'ORD-7391',
+        riderName: 'Vikram Singh',
+        riderRole: 'Delivery Rider',
+        vehicle: 'Hero Splendor',
+        plates: 30,
+        venue: 'Grand Heritage Palace Banquet',
+        destination: 'Rain Basera Metro Gate 2, Rohini',
+        status: 'In Transit',
+        time: '15 mins ago'
+      }
+    ];
+
+    let listings = JSON.parse(localStorage.getItem('aahar_listings') || 'null') || [
       {
         id: 'L-101',
         venue: 'Grand Heritage Palace Banquet',
@@ -884,7 +1050,7 @@
         plates: 85,
         diet: 'Pure Veg',
         expiry: '3-4 Hours',
-        phone: '98112 45678',
+        phone: '9811245678',
         postedAt: 'Just now',
         status: 'Available',
         urgency: 'Urgent'
@@ -898,7 +1064,7 @@
         plates: 35,
         diet: 'Pure Veg',
         expiry: '4-5 Hours',
-        phone: '99104 22133',
+        phone: '9910422133',
         postedAt: '25 mins ago',
         status: 'Available',
         urgency: 'Safe'
@@ -912,7 +1078,7 @@
         plates: 120,
         diet: 'Pure Veg',
         expiry: '5-6 Hours',
-        phone: '98731 90812',
+        phone: '9873190812',
         postedAt: '40 mins ago',
         status: 'Available',
         urgency: 'Safe'
@@ -926,21 +1092,20 @@
         plates: 18,
         diet: 'Pure Veg',
         expiry: '2 Hours',
-        phone: '98109 87654',
+        phone: '9810987654',
         postedAt: '50 mins ago',
         status: 'Available',
         urgency: 'Urgent'
       }
     ];
 
-    // Starter Shelter Demands
-    let shelterDemands = [
+    let shelterDemands = JSON.parse(localStorage.getItem('aahar_shelters') || 'null') || [
       {
         id: 'S-201',
         name: 'Kashmere Gate Rain Basera #4',
         location: 'ISBT Bridge ke paas, Delhi',
         platesNeeded: 90,
-        contact: '98101 23456',
+        contact: '9810123456',
         dietPref: 'Veg Meal Preferred'
       },
       {
@@ -948,183 +1113,355 @@
         name: 'Bal Ashray Orphanage',
         location: 'Sector 62, Noida',
         platesNeeded: 45,
-        contact: '99203 44556',
+        contact: '9920344556',
         dietPref: 'Dal, Roti & Sweets'
       }
     ];
 
-    // ==================== PAGE ROUTING ====================
-    function navigateTo(pageId) {
-      activePage = pageId;
-
-      // Toggle views
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active');
-      });
-      const targetView = document.getElementById(`page-${pageId}`);
-      if (targetView) targetView.classList.add('active');
-
-      // Update Desktop Nav styles
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('text-emerald-700', 'bg-emerald-50');
-        btn.classList.add('hover:text-emerald-700', 'hover:bg-slate-100');
-      });
-      const activeNavBtn = document.getElementById(`nav-${pageId}`);
-      if (activeNavBtn) {
-        activeNavBtn.classList.remove('hover:text-emerald-700', 'hover:bg-slate-100');
-        activeNavBtn.classList.add('text-emerald-700', 'bg-emerald-50');
+    function saveState() {
+      try {
+        localStorage.setItem('aahar_user', JSON.stringify(currentUser));
+        localStorage.setItem('aahar_rider', JSON.stringify(currentRider));
+        localStorage.setItem('aahar_orders', JSON.stringify(myOrders));
+        localStorage.setItem('aahar_pickup_log', JSON.stringify(pickupLog));
+        localStorage.setItem('aahar_listings', JSON.stringify(listings));
+        localStorage.setItem('aahar_shelters', JSON.stringify(shelterDemands));
+      } catch (e) {
+        console.warn('Storage sync warn', e);
       }
-
-      // Update Sticky Mobile Nav styles
-      document.querySelectorAll('.mob-nav-btn').forEach(btn => {
-        btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-sm');
-        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
-      });
-      const activeMobBtn = document.getElementById(`mob-${pageId}`);
-      if (activeMobBtn) {
-        activeMobBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
-        activeMobBtn.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
-      }
-
-      // Re-render components
-      if (pageId === 'home') renderHomePreviews();
-      if (pageId === 'explore') renderAllListings();
-      if (pageId === 'rider') renderRiderTasks();
-      if (pageId === 'shelters') renderShelterDemands();
-      if (pageId === 'orders') renderMyOrders();
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // ==================== RENDERING LISTINGS ====================
-    function renderListingsMarkup(item) {
-      const isUrgent = item.urgency === 'Urgent';
-      return `
-        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
-                item.category.includes('Wedding') ? 'bg-amber-100 text-amber-800' :
-                item.category.includes('Hotel') ? 'bg-blue-100 text-blue-800' :
-                item.category.includes('Temple') ? 'bg-orange-100 text-orange-800' :
-                'bg-emerald-100 text-emerald-800'
-              }">
-                ${item.category}
-              </span>
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isUrgent ? 'bg-rose-100 text-rose-700 animate-pulse' : 'bg-slate-100 text-slate-600'}">
-                <i class="fa-solid fa-clock mr-1"></i>${item.expiry}
-              </span>
-            </div>
 
-            <h3 class="font-black text-slate-900 text-base leading-snug">${item.venue}</h3>
-            <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-              <i class="fa-solid fa-location-dot text-rose-500"></i> ${item.city}
-            </p>
+    // Phone Input Filtering
+    function filterPhoneDigits(inputEl) {
+      inputEl.value = inputEl.value.replace(/[^0-9]/g, '').slice(0, 10);
+    }
 
-            <div class="my-3 p-3 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-700">
-              <span class="font-bold text-slate-900 block mb-0.5">Dishes:</span>
-              <p class="line-clamp-2">${item.dishes}</p>
-            </div>
+    function isStrictIndianPhone(phone) {
+      return /^[6-9]\d{9}$/.test(phone);
+    }
 
-            <div class="flex items-center justify-between text-xs mb-4">
-              <div class="flex items-center gap-1 font-bold text-slate-700">
-                <span class="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-black">${item.plates} Plates</span>
-                <span class="text-slate-400">Available</span>
-              </div>
-              <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                ${item.diet}
-              </span>
-            </div>
-          </div>
+    // Safe Inline Error Helper
+    function showInlineError(elementId, message, fallbackInput = null) {
+      const errEl = document.getElementById(elementId);
+      if (errEl) {
+        errEl.innerText = message;
+        errEl.classList.remove('hidden');
+      } else {
+        showToast('Validation Error ⚠️', message, true);
+      }
+      if (fallbackInput) {
+        fallbackInput.classList.add('border-rose-500');
+        fallbackInput.focus();
+      }
+    }
 
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
-            <button onclick="openClaimModal('${item.id}')" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-hand-holding-heart"></i> Claim Food
+    // ==================== USER LOGIN & OTP ====================
+    function openUserAuthModal() {
+      document.getElementById('userAuthModal').classList.remove('hidden');
+      document.getElementById('userAuthModal').classList.add('flex');
+    }
+
+    function closeUserAuthModal() {
+      document.getElementById('userAuthModal').classList.add('hidden');
+      document.getElementById('userAuthModal').classList.remove('flex');
+    }
+
+    function requestUserOtp() {
+      const phoneInput = document.getElementById('userAuthPhone');
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+
+      if (!isStrictIndianPhone(phone)) {
+        showInlineError('userAuthPhoneError', 'Kripya 10 anko ka valid Indian number dalein (starts with 6,7,8,9).', phoneInput);
+        return;
+      }
+
+      const errEl = document.getElementById('userAuthPhoneError');
+      if (errEl) errEl.classList.add('hidden');
+      phoneInput.classList.remove('border-rose-500');
+
+      generatedUserOtp = Math.floor(1000 + Math.random() * 9000).toString();
+      
+      const otpSection = document.getElementById('userOtpSection');
+      const otpTag = document.getElementById('userOtpDemoTag');
+      if (otpSection) otpSection.classList.remove('hidden');
+      if (otpTag) otpTag.innerText = `Demo SMS OTP: ${generatedUserOtp}`;
+
+      showToast('OTP Bheja Gaya! 📱', `Demo OTP: ${generatedUserOtp} (Verification SMS)`);
+
+      let timeLeft = 60;
+      const timerEl = document.getElementById('userOtpTimer');
+      const sendBtn = document.getElementById('userSendOtpBtn');
+      if (sendBtn) {
+        sendBtn.disabled = true;
+        sendBtn.classList.add('opacity-50');
+      }
+
+      clearInterval(userOtpInterval);
+      userOtpInterval = setInterval(() => {
+        timeLeft--;
+        if (timerEl) timerEl.innerText = `${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(userOtpInterval);
+          if (sendBtn) {
+            sendBtn.disabled = false;
+            sendBtn.classList.remove('opacity-50');
+          }
+          if (timerEl) timerEl.innerText = 'Resend';
+        }
+      }, 1000);
+    }
+
+    function handleUserAuthSubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('userAuthName');
+      const phoneInput = document.getElementById('userAuthPhone');
+      const cityInput = document.getElementById('userAuthCity');
+      const otpInput = document.getElementById('userOtpInput');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const city = cityInput ? cityInput.value.trim() : '';
+      const role = document.getElementById('userRoleSelect')?.value || 'Ghar / Family Donor';
+
+      // Clear previous error messages
+      document.querySelectorAll('#userLoginForm p[id$="Error"]').forEach(p => p.classList.add('hidden'));
+
+      if (name.length < 3) {
+        showInlineError('userAuthNameError', 'Kripya apna pura naam likhein (kam se kam 3 akshar).', nameInput);
+        return;
+      }
+
+      if (!isStrictIndianPhone(phone)) {
+        showInlineError('userAuthPhoneError', 'Valid 10 anko ka mobile number likhein.', phoneInput);
+        return;
+      }
+
+      if (!generatedUserOtp) {
+        showToast('OTP Required ⚠️', 'Pehle "Get OTP" button par click karein.');
+        requestUserOtp();
+        return;
+      }
+
+      if (!otpInput || otpInput.value.trim() !== generatedUserOtp) {
+        showInlineError('userOtpError', 'Galat OTP! Kripya sahi 4-digit OTP dalein jo upar dikha hai.', otpInput);
+        return;
+      }
+
+      if (city.length < 2) {
+        showInlineError('userAuthCityError', 'Kripya sheher ya area ka naam dalein.', cityInput);
+        return;
+      }
+
+      currentUser = { name, phone, role, city };
+      saveState();
+      renderUserAuthHeader();
+      closeUserAuthModal();
+
+      // Pre-fill donation form phone if blank
+      const donatePhone = document.getElementById('donatePhoneInput');
+      if (donatePhone && !donatePhone.value) donatePhone.value = phone;
+
+      showToast('Login Successful! 👋', `Namaste, ${name}! Aapka account successfully verify ho gaya.`);
+    }
+
+    function renderUserAuthHeader() {
+      const slot = document.getElementById('userHeaderAuthSlot');
+      if (!slot) return;
+      if (currentUser) {
+        const shortName = currentUser.name.split(' ')[0];
+        slot.innerHTML = `
+          <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-2.5 py-1.5 rounded-xl">
+            <span class="text-xs font-black text-emerald-800 flex items-center gap-1">
+              <i class="fa-solid fa-circle-user text-emerald-600"></i> ${shortName}
+            </span>
+            <button onclick="handleUserLogout()" title="Logout" class="text-slate-400 hover:text-rose-600 text-xs px-1 transition">
+              <i class="fa-solid fa-right-from-bracket"></i>
             </button>
-            <a href="https://wa.me/?text=${encodeURIComponent('AaharSetu Surplus Food Alert: ' + item.plates + ' plates available at ' + item.venue + ', ' + item.city + '. Dishes: ' + item.dishes)}" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 font-bold text-xs transition flex items-center justify-center gap-1.5 border border-slate-200">
-              <i class="fa-brands fa-whatsapp text-emerald-600"></i> Share
-            </a>
           </div>
-        </div>
-      `;
+        `;
+      } else {
+        slot.innerHTML = `
+          <button onclick="openUserAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-circle-user text-emerald-600"></i>
+            <span>User Login</span>
+          </button>
+        `;
+      }
     }
 
-    function renderHomePreviews() {
-      const container = document.getElementById('homeMealsPreviewGrid');
-      if (!container) return;
-      const previewList = listings.slice(0, 3);
-      container.innerHTML = previewList.map(renderListingsMarkup).join('');
-      updateCounters();
+    function handleUserLogout() {
+      currentUser = null;
+      saveState();
+      renderUserAuthHeader();
+      showToast('Logged Out', 'Aapka user session logout ho gaya.');
     }
 
-    function renderAllListings() {
-      const container = document.getElementById('allMealsFeedGrid');
-      if (!container) return;
-      filterMealListings();
+    // ==================== RIDER & VOLUNTEER AUTH & OTP ====================
+    function openRiderAuthModal() {
+      document.getElementById('riderAuthModal').classList.remove('hidden');
+      document.getElementById('riderAuthModal').classList.add('flex');
     }
 
-    function filterMealListings() {
-      const search = (document.getElementById('feedSearchInput')?.value || '').toLowerCase();
-      const typeFilter = document.getElementById('feedTypeFilter')?.value || 'ALL';
-      const dietFilter = document.getElementById('feedDietFilter')?.value || 'ALL';
+    function closeRiderAuthModal() {
+      document.getElementById('riderAuthModal').classList.add('hidden');
+      document.getElementById('riderAuthModal').classList.remove('flex');
+    }
 
-      const filtered = listings.filter(item => {
-        const matchesSearch = item.venue.toLowerCase().includes(search) || 
-                              item.city.toLowerCase().includes(search) || 
-                              item.dishes.toLowerCase().includes(search);
-        const matchesType = (typeFilter === 'ALL') || (item.category === typeFilter);
-        const matchesDiet = (dietFilter === 'ALL') || (item.diet === dietFilter);
-        return matchesSearch && matchesType && matchesDiet;
-      });
+    function setRiderRoleType(role) {
+      selectedRiderAuthType = role;
+      const btnRider = document.getElementById('roleBtnRider');
+      const btnVol = document.getElementById('roleBtnVolunteer');
+      const vehicleSec = document.getElementById('vehicleSection');
+      const volSec = document.getElementById('volunteerRoleSection');
 
-      const container = document.getElementById('allMealsFeedGrid');
-      if (container) {
-        if (filtered.length === 0) {
-          container.innerHTML = `
-            <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
-              <i class="fa-solid fa-bowl-rice text-3xl mb-2 text-slate-300"></i>
-              <p class="font-bold text-sm">Koi meal match nahi hua.</p>
-              <p class="text-xs mt-1">Filters clear karein ya naya surplus food post karein.</p>
+      if (role === 'Rider') {
+        if (btnRider) btnRider.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
+        if (btnVol) btnVol.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
+        if (vehicleSec) vehicleSec.classList.remove('hidden');
+        if (volSec) volSec.classList.add('hidden');
+      } else {
+        if (btnVol) btnVol.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
+        if (btnRider) btnRider.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
+        if (vehicleSec) vehicleSec.classList.add('hidden');
+        if (volSec) volSec.classList.remove('hidden');
+      }
+    }
+
+    function requestRiderOtp() {
+      const phoneInput = document.getElementById('riderAuthPhone');
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+
+      if (!isStrictIndianPhone(phone)) {
+        showInlineError('riderAuthPhoneError', 'Valid 10 anko ka Indian number dalein (starts with 6,7,8,9).', phoneInput);
+        return;
+      }
+
+      const errEl = document.getElementById('riderAuthPhoneError');
+      if (errEl) errEl.classList.add('hidden');
+      phoneInput.classList.remove('border-rose-500');
+
+      generatedRiderOtp = Math.floor(1000 + Math.random() * 9000).toString();
+      
+      const otpSection = document.getElementById('riderOtpSection');
+      const otpTag = document.getElementById('riderOtpDemoTag');
+      if (otpSection) otpSection.classList.remove('hidden');
+      if (otpTag) otpTag.innerText = `Demo OTP: ${generatedRiderOtp}`;
+
+      showToast('Rider OTP Bheja Gaya! 🛵', `Demo OTP: ${generatedRiderOtp}`);
+
+      let timeLeft = 60;
+      const timerEl = document.getElementById('riderOtpTimer');
+      const sendBtn = document.getElementById('riderSendOtpBtn');
+      if (sendBtn) {
+        sendBtn.disabled = true;
+        sendBtn.classList.add('opacity-50');
+      }
+
+      clearInterval(riderOtpInterval);
+      riderOtpInterval = setInterval(() => {
+        timeLeft--;
+        if (timerEl) timerEl.innerText = `${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(riderOtpInterval);
+          if (sendBtn) {
+            sendBtn.disabled = false;
+            sendBtn.classList.remove('opacity-50');
+          }
+          if (timerEl) timerEl.innerText = 'Resend';
+        }
+      }, 1000);
+    }
+
+    function handleRiderAuthSubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('riderAuthName');
+      const phoneInput = document.getElementById('riderAuthPhone');
+      const otpInput = document.getElementById('riderOtpInput');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const vehicle = document.getElementById('riderVehicleSelect')?.value || 'Bike / Motorcycle';
+      const pref = document.getElementById('volunteerPrefSelect')?.value || 'Food Packaging & Inspection';
+
+      document.querySelectorAll('#riderLoginForm p[id$="Error"]').forEach(p => p.classList.add('hidden'));
+
+      if (name.length < 3) {
+        showInlineError('riderAuthNameError', 'Kripya apna pura naam likhein (kam se kam 3 akshar).', nameInput);
+        return;
+      }
+
+      if (!isStrictIndianPhone(phone)) {
+        showInlineError('riderAuthPhoneError', 'Valid 10 anko ka mobile number likhein.', phoneInput);
+        return;
+      }
+
+      if (!generatedRiderOtp) {
+        showToast('OTP Required ⚠️', 'Pehle "Get OTP" button par click karein.');
+        requestRiderOtp();
+        return;
+      }
+
+      if (!otpInput || otpInput.value.trim() !== generatedRiderOtp) {
+        showInlineError('riderOtpError', 'Galat OTP! Kripya sahi 4-digit OTP dalein.', otpInput);
+        return;
+      }
+
+      currentRider = {
+        name,
+        phone,
+        type: selectedRiderAuthType,
+        vehicle: selectedRiderAuthType === 'Rider' ? vehicle : 'On-Foot / Volunteer',
+        pref: selectedRiderAuthType === 'Volunteer' ? pref : 'Delivery Logistics'
+      };
+
+      saveState();
+      renderRiderAuthHeader();
+      closeRiderAuthModal();
+      showToast('Portal Login Successful! 🛵', `${selectedRiderAuthType} ${name} verified ho chuke hain.`);
+      renderRiderTasks();
+    }
+
+    function renderRiderAuthHeader() {
+      const slot = document.getElementById('riderHeaderAuthSlot');
+      const portalName = document.getElementById('riderPortalName');
+      if (currentRider) {
+        const shortName = currentRider.name.split(' ')[0];
+        if (slot) {
+          slot.innerHTML = `
+            <div class="flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 px-2.5 py-1.5 rounded-xl">
+              <span class="text-xs font-black text-indigo-900 flex items-center gap-1">
+                <i class="fa-solid fa-motorcycle text-indigo-600"></i> ${shortName}
+              </span>
+              <button onclick="handleRiderLogout()" title="Logout" class="text-slate-400 hover:text-rose-600 text-xs px-1 transition">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </button>
             </div>
           `;
-        } else {
-          container.innerHTML = filtered.map(renderListingsMarkup).join('');
         }
-      }
-      updateCounters();
-    }
-
-    function updateCounters() {
-      const count = listings.length;
-      const navCount = document.getElementById('navMealCount');
-      if (navCount) navCount.innerText = count;
-      const mobCount = document.getElementById('mobMealCount');
-      if (mobCount) mobCount.innerText = count;
-    }
-    // ==================== DONATION FORM CONTROLS ====================
-    function selectEventType(cardEl) {
-      document.querySelectorAll('.event-type-card').forEach(c => {
-        c.classList.remove('border-emerald-500', 'bg-emerald-50/50');
-        c.classList.add('border-slate-200', 'bg-slate-50');
-      });
-      cardEl.classList.remove('border-slate-200', 'bg-slate-50');
-      cardEl.classList.add('border-emerald-500', 'bg-emerald-50/50');
-    }
-
-    function addDishChip(dishName) {
-      const textarea = document.getElementById('donateDishesInput');
-      if (!textarea) return;
-      if (textarea.value.trim().length > 0) {
-        textarea.value += ', ' + dishName;
+        if (portalName) portalName.innerText = `${currentRider.name} (${currentRider.type})`;
       } else {
-        textarea.value = dishName;
+        if (slot) {
+          slot.innerHTML = `
+            <button onclick="openRiderAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center gap-1.5 border border-indigo-200 transition">
+              <i class="fa-solid fa-motorcycle"></i>
+              <span class="hidden sm:inline">Rider / Volunteer</span>
+              <span class="sm:hidden">Rider</span>
+            </button>
+          `;
+        }
+        if (portalName) portalName.innerText = 'Not Logged In';
       }
     }
 
-    function setQuickPlates(num) {
-      const input = document.getElementById('donatePlatesInput');
-      if (input) input.value = num;
+    function handleRiderLogout() {
+      currentRider = null;
+      saveState();
+      renderRiderAuthHeader();
+      showToast('Rider Logged Out', 'Aapka rider session logout ho gaya.');
+      renderRiderTasks();
     }
 
+    // ==================== FOOD DONATION SUBMISSION ====================
     function handleFoodDonationSubmit(e) {
       e.preventDefault();
       const eventTypeEl = document.querySelector('input[name="eventType"]:checked');
@@ -1136,6 +1473,22 @@
       const venue = document.getElementById('donateVenueInput').value.trim();
       const city = document.getElementById('donateCityInput').value.trim();
       const phone = document.getElementById('donatePhoneInput').value.trim();
+
+      if (dishes.length < 3) {
+        showToast('Validation Error ⚠️', 'Kripya kam se kam ek ya do dishes zaroor likhein.', true);
+        return;
+      }
+
+      if (isNaN(plates) || plates < 1) {
+        showToast('Validation Error ⚠️', 'Plates ki sankhya kam se kam 1 honi chahiye.', true);
+        return;
+      }
+
+      if (!isStrictIndianPhone(phone)) {
+        showToast('Validation Error ⚠️', 'Kripya 10 anko ka valid contact number dalein (starts with 6,7,8,9).', true);
+        document.getElementById('donatePhoneInput').focus();
+        return;
+      }
 
       const newListing = {
         id: 'L-' + (100 + listings.length + 1),
@@ -1152,26 +1505,221 @@
         urgency: expiry.includes('2-3') ? 'Urgent' : 'Safe'
       };
 
-      // Add to beginning of array
       listings.unshift(newListing);
+      saveState();
 
       showToast('Khana Successfully Post Ho Gaya! 🎉', `${plates} plates for pickup from ${venue} live ho chuki hain.`);
       document.getElementById('foodDonationForm').reset();
+      renderHomePreviews();
+      renderAllListings();
+      updateCounters();
       navigateTo('explore');
     }
 
-    // ==================== CLAIM MEALS WORKFLOW ====================
-    function openClaimModal(listingId) {
-      const item = listings.find(l => l.id === listingId);
-      if (!item) return;
+    // ==================== SHELTER DEMAND SUBMISSION ====================
+    function openShelterModal() {
+      document.getElementById('shelterRequestModal').classList.remove('hidden');
+      document.getElementById('shelterRequestModal').classList.add('flex');
+    }
 
-      document.getElementById('claimListingId').value = item.id;
-      document.getElementById('claimModalListingTitle').innerText = `${item.venue} (${item.plates} plates available)`;
-      document.getElementById('claimPlatesInput').max = item.plates;
-      document.getElementById('claimPlatesInput').value = item.plates;
-      document.getElementById('claimMaxAvailableNotice').innerText = `Total available: ${item.plates} plates`;
+    function closeShelterModal() {
+      document.getElementById('shelterRequestModal').classList.add('hidden');
+      document.getElementById('shelterRequestModal').classList.remove('flex');
+    }
 
-      // Pre-fill user data if logged in
+    function handleShelterDemandSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('shelterNameInput').value.trim();
+      const plates = parseInt(document.getElementById('shelterPlatesInput').value, 10);
+      const location = document.getElementById('shelterLocationInput').value.trim();
+      const phone = document.getElementById('shelterPhoneInput').value.trim();
+      const pref = document.getElementById('shelterPrefInput').value.trim() || 'Pure Veg Meals';
+
+      if (!isStrictIndianPhone(phone)) {
+        showToast('Invalid Phone ⚠️', 'Kripya 10 anko ka valid Indian phone number enter karein.', true);
+        return;
+      }
+
+      shelterDemands.unshift({
+        id: 'S-' + Math.floor(200 + Math.random() * 800),
+        name,
+        location,
+        platesNeeded: plates,
+        contact: phone,
+        dietPref: pref
+      });
+
+      saveState();
+      closeShelterModal();
+      document.getElementById('shelterDemandForm').reset();
+      renderShelterDemands();
+      showToast('Demand Broadcasted! 🏠', `${name} ki requirement demand board par live ho gayi.`);
+    }
+
+    // ==================== PAGE NAVIGATION CONTROLLER ====================
+    function navigateTo(pageId) {
+      activePage = pageId;
+      document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+      const targetPage = document.getElementById(`page-${pageId}`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      // Update Desktop Nav
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-50', 'text-emerald-700');
+        btn.classList.add('hover:bg-slate-100', 'text-slate-600');
+      });
+      const activeNavBtn = document.getElementById(`nav-${pageId}`);
+      if (activeNavBtn) {
+        activeNavBtn.classList.remove('hover:bg-slate-100', 'text-slate-600');
+        activeNavBtn.classList.add('bg-emerald-50', 'text-emerald-700');
+      }
+
+      // Update Mobile Nav
+      document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+      const activeMobBtn = document.getElementById(`mob-${pageId}`);
+      if (activeMobBtn) {
+        activeMobBtn.classList.remove('bg-white', 'text-slate-700');
+        activeMobBtn.classList.add('bg-emerald-600', 'text-white');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateCounters() {
+      const activeListingCount = listings.filter(l => l.status === 'Available').length;
+      const activeOrdersCount = myOrders.filter(o => o.status !== 'Delivered' && o.status !== 'Cancelled').length;
+
+      const navMeal = document.getElementById('navMealCount');
+      const mobMeal = document.getElementById('mobMealCount');
+      const navOrd = document.getElementById('navOrdersCount');
+      const mobOrd = document.getElementById('mobOrdersCount');
+
+      if (navMeal) navMeal.innerText = activeListingCount;
+      if (mobMeal) mobMeal.innerText = activeListingCount;
+      if (navOrd) navOrd.innerText = activeOrdersCount;
+      if (mobOrd) mobOrd.innerText = activeOrdersCount;
+    }
+
+    // ==================== MEAL LISTING RENDERERS ====================
+    function renderHomePreviews() {
+      const container = document.getElementById('homeMealsPreviewGrid');
+      if (!container) return;
+      const available = listings.filter(l => l.status === 'Available').slice(0, 3);
+
+      if (available.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+            <i class="fa-solid fa-bowl-rice text-3xl mb-2 text-slate-300"></i>
+            <p class="font-bold text-xs text-slate-600">Filhal koi surplus meal active nahi hai.</p>
+            <p class="text-[11px] text-slate-400 mt-1">Aap apna bacha hua khana "Donate Food" section se post kar sakte hain.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = available.map(meal => createMealCardMarkup(meal)).join('');
+    }
+
+    function renderAllListings() {
+      const container = document.getElementById('allMealsFeedGrid');
+      if (!container) return;
+
+      const searchTerm = (document.getElementById('feedSearchInput')?.value || '').toLowerCase().trim();
+      const typeFilter = document.getElementById('feedTypeFilter')?.value || 'ALL';
+      const dietFilter = document.getElementById('feedDietFilter')?.value || 'ALL';
+
+      const filtered = listings.filter(meal => {
+        if (meal.status !== 'Available') return false;
+        const matchesSearch = !searchTerm || 
+          meal.venue.toLowerCase().includes(searchTerm) || 
+          meal.city.toLowerCase().includes(searchTerm) || 
+          meal.dishes.toLowerCase().includes(searchTerm);
+        const matchesType = (typeFilter === 'ALL') || meal.category === typeFilter;
+        const matchesDiet = (dietFilter === 'ALL') || meal.diet === dietFilter;
+        return matchesSearch && matchesType && matchesDiet;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-10 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-3xl mb-2 text-slate-300"></i>
+            <h4 class="font-bold text-sm text-slate-700">Koi Meal Listing Nahi Mili</h4>
+            <p class="text-xs text-slate-400 mt-1">Apna search keyword ya filter badal kar dobara koshish karein.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(meal => createMealCardMarkup(meal)).join('');
+    }
+
+    function filterMealListings() {
+      renderAllListings();
+    }
+
+    function createMealCardMarkup(meal) {
+      const isUrgent = meal.urgency === 'Urgent';
+      const dietBadgeClass = meal.diet === 'Pure Veg' 
+        ? 'bg-emerald-50 text-emerald-800 border-emerald-200' 
+        : (meal.diet === 'Jain / Satvik' ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-rose-50 text-rose-800 border-rose-200');
+
+      return `
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-3.5">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black border ${dietBadgeClass}">
+                <i class="fa-solid fa-seedling mr-1"></i>${meal.diet}
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${isUrgent ? 'bg-rose-50 text-rose-700 border border-rose-200 animate-pulse' : 'bg-slate-100 text-slate-600'}">
+                <i class="fa-solid fa-clock mr-1"></i>Fresh: ${meal.expiry}
+              </span>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">${meal.category}</span>
+              <h4 class="font-black text-slate-900 text-base leading-snug">${meal.venue}</h4>
+              <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                <i class="fa-solid fa-location-dot text-rose-500"></i> ${meal.city}
+              </p>
+            </div>
+
+            <div class="p-3 rounded-2xl bg-slate-50 text-xs text-slate-700 border border-slate-100">
+              <span class="font-bold text-slate-900 block mb-0.5">Dishes:</span>
+              <p class="line-clamp-2">${meal.dishes}</p>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-bold">Quantity</span>
+              <span class="text-base font-black text-emerald-600">${meal.plates} Plates</span>
+            </div>
+            <button onclick="openClaimMealModal('${meal.id}')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-sm flex items-center gap-1.5 active:scale-95">
+              <i class="fa-solid fa-hand-holding-heart"></i> Claim Meal
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // ==================== CLAIM MEALS MODAL & WORKFLOW ====================
+    function openClaimMealModal(listingId) {
+      const listing = listings.find(l => l.id === listingId);
+      if (!listing) return;
+
+      document.getElementById('claimListingId').value = listing.id;
+      document.getElementById('claimModalListingTitle').innerText = `${listing.venue} (${listing.plates} Plates Available)`;
+      document.getElementById('claimMaxAvailableNotice').innerText = `Total available: ${listing.plates} plates`;
+      
+      const platesInput = document.getElementById('claimPlatesInput');
+      platesInput.max = listing.plates;
+      platesInput.value = Math.min(30, listing.plates);
+
       if (currentUser) {
         document.getElementById('claimReceiverName').value = currentUser.name;
         document.getElementById('claimReceiverPhone').value = currentUser.phone;
@@ -1189,449 +1737,435 @@
     function handleClaimSubmit(e) {
       e.preventDefault();
       const listingId = document.getElementById('claimListingId').value;
-      const requestedPlates = parseInt(document.getElementById('claimPlatesInput').value, 10);
+      const listing = listings.find(l => l.id === listingId);
+      if (!listing) return;
+
+      const platesRequested = parseInt(document.getElementById('claimPlatesInput').value, 10);
       const receiverName = document.getElementById('claimReceiverName').value.trim();
       const receiverPhone = document.getElementById('claimReceiverPhone').value.trim();
       const destination = document.getElementById('claimReceiverDest').value.trim();
 
-      const item = listings.find(l => l.id === listingId);
-      if (item) {
-        if (requestedPlates >= item.plates) {
-          // Adjust plates to 0 or remove listing
-          listings = listings.filter(l => l.id !== listingId);
-        } else {
-          // Reduce plates
-          item.plates -= requestedPlates;
-        }
-
-        // Create new active order
-        const newOrderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
-        const randomOtp = Math.floor(1000 + Math.random() * 9000);
-
-        const newOrder = {
-          orderId: newOrderId,
-          listingId: item.id,
-          venue: item.venue,
-          city: item.city,
-          dishes: item.dishes,
-          plates: requestedPlates,
-          receiverName: receiverName,
-          receiverPhone: receiverPhone,
-          destination: destination,
-          status: 'Rider Assigned',
-          riderName: currentRider ? `${currentRider.name} (${currentRider.vehicle})` : 'Assigned Nearby Volunteer',
-          riderPhone: currentRider ? currentRider.phone : '98711 00223',
-          otp: randomOtp.toString(),
-          orderTime: 'Just now'
-        };
-
-        myOrders.unshift(newOrder);
+      if (!isStrictIndianPhone(receiverPhone)) {
+        showToast('Invalid Phone ⚠️', 'Kripya 10 anko ka valid Indian number dalein.', true);
+        return;
       }
 
+      if (platesRequested > listing.plates) {
+        showToast('Quantity Exceeded', `Sirf ${listing.plates} plates available hain.`, true);
+        return;
+      }
+
+      const generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+      const newOrderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
+
+      const assignedRider = currentRider ? currentRider.name : 'Vikram Singh';
+      const assignedVehicle = currentRider ? currentRider.vehicle : 'Hero Splendor (Bike)';
+
+      const newOrder = {
+        orderId: newOrderId,
+        listingId: listing.id,
+        venue: listing.venue,
+        city: listing.city,
+        dishes: listing.dishes,
+        plates: platesRequested,
+        receiverName,
+        receiverPhone,
+        destination,
+        status: 'Rider Assigned',
+        riderName: assignedRider,
+        riderVehicle: assignedVehicle,
+        riderPhone: '9811099887',
+        otp: generatedOtp,
+        orderTime: 'Just now'
+      };
+
+      myOrders.unshift(newOrder);
+
+      // Reduce or mark claimed
+      listing.plates -= platesRequested;
+      if (listing.plates <= 0) {
+        listing.status = 'Claimed';
+      }
+
+      // Add to pickup navigator log
+      pickupLog.unshift({
+        id: 'LOG-' + Math.floor(100 + Math.random() * 900),
+        orderId: newOrderId,
+        riderName: assignedRider,
+        riderRole: 'Delivery Rider',
+        vehicle: assignedVehicle,
+        plates: platesRequested,
+        venue: listing.venue,
+        destination,
+        status: 'In Transit',
+        time: 'Just now'
+      });
+
+      saveState();
       closeClaimMealModal();
-      showToast('Khana Successfully Order Ho Gaya! 🎉', `Order ID: ${myOrders[0]?.orderId}. Rider assign ho gaya hai.`);
-      renderAllListings();
+      showToast('Khana Book Ho Gaya! 🛵', `Order ${newOrderId} place ho gaya hai. Rider assign kar diya gaya hai.`);
+      
       renderHomePreviews();
+      renderAllListings();
+      renderRiderTasks();
+      renderPickupNavigator();
+      renderMyOrders();
       updateCounters();
       navigateTo('orders');
     }
 
-    function renderMyOrders() {
-      const container = document.getElementById('ordersListContainer');
-      const filter = document.getElementById('orderStatusFilter')?.value || 'ALL';
+    // ==================== SHELTER DEMANDS RENDERER ====================
+    function renderShelterDemands() {
+      const container = document.getElementById('shelterDemandsGrid');
       if (!container) return;
 
-      const filtered = myOrders.filter(ord => {
-        if (filter === 'ALL') return true;
-        if (filter === 'Active') return ord.status === 'Rider Assigned' || ord.status === 'Out for Delivery';
-        if (filter === 'Delivered') return ord.status === 'Delivered';
-        if (filter === 'Cancelled') return ord.status === 'Cancelled';
-        return true;
+      if (shelterDemands.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+            <p class="font-bold text-xs text-slate-600">Abhi koi shelter demand post nahi hui hai.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = shelterDemands.map(s => `
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between gap-3">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-200">
+                REQUIREMENT
+              </span>
+              <span class="text-xs font-black text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
+                ${s.platesNeeded} Plates Needed
+              </span>
+            </div>
+            <h4 class="font-black text-slate-900 text-base">${s.name}</h4>
+            <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> ${s.location}
+            </p>
+            <div class="mt-2.5 p-2.5 rounded-xl bg-slate-50 text-xs text-slate-600">
+              <span class="font-bold text-slate-800">Diet Preference:</span> ${s.dietPref || 'Veg Meals'}
+            </div>
+          </div>
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+            <span class="text-xs text-slate-500 font-bold"><i class="fa-solid fa-phone text-blue-500 mr-1"></i>${s.contact}</span>
+            <button onclick="navigateTo('donate')" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs transition">
+              Supply Food
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== ORDER STATUS & CANCELLATION ====================
+    function renderMyOrders() {
+      const container = document.getElementById('ordersListContainer');
+      if (!container) return;
+
+      const filterVal = document.getElementById('orderStatusFilter')?.value || 'ALL';
+      const filtered = myOrders.filter(order => {
+        if (filterVal === 'ALL') return true;
+        if (filterVal === 'Active') return order.status === 'Rider Assigned' || order.status === 'Out for Delivery';
+        return order.status === filterVal;
       });
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div class="p-10 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+          <div class="p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
             <i class="fa-solid fa-receipt text-3xl mb-2 text-slate-300"></i>
-            <h4 class="font-extrabold text-sm text-slate-800">Koi Order Nahi Mila</h4>
-            <p class="text-xs mt-1">Aapne abhi tak koi khana order nahi kiya hai ya selected filter me orders nahi hain.</p>
-            <button onclick="navigateTo('explore')" class="mt-4 px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition">
-              Available Meals Dekhein
-            </button>
+            <h4 class="font-bold text-sm text-slate-700">Koi Order Nahi Mila</h4>
+            <p class="text-xs text-slate-400 mt-1">Available Meals feed se zaroorat ke anusaar khana book ya claim karein.</p>
           </div>
         `;
-        updateCounters();
         return;
       }
 
       container.innerHTML = filtered.map(order => {
         const isCancelled = order.status === 'Cancelled';
         const isDelivered = order.status === 'Delivered';
-        const isActive = !isCancelled && !isDelivered;
-
-        let statusBadge = '';
-        if (order.status === 'Rider Assigned') {
-          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center gap-1.5"><i class="fa-solid fa-motorcycle animate-bounce"></i> Rider Assigned</span>`;
-        } else if (order.status === 'Out for Delivery') {
-          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1.5"><i class="fa-solid fa-truck-fast"></i> Out for Delivery</span>`;
-        } else if (order.status === 'Delivered') {
-          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> Delivered</span>`;
-        } else if (order.status === 'Cancelled') {
-          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> Cancelled</span>`;
-        }
 
         return `
-          <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md transition">
-            <!-- Header Row -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
+          <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
               <div>
                 <div class="flex items-center gap-2">
-                  <span class="font-black text-slate-900 text-sm sm:text-base">${order.orderId}</span>
-                  <span class="text-slate-400 text-xs">• ${order.orderTime}</span>
+                  <span class="font-black text-slate-900 text-sm">${order.orderId}</span>
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${
+                    isDelivered ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
+                    (isCancelled ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-indigo-50 text-indigo-700 border border-indigo-200')
+                  }">
+                    ${order.status}
+                  </span>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">Receiver: <strong class="text-slate-700">${order.receiverName}</strong> (${order.receiverPhone})</p>
+                <p class="text-xs text-slate-400 mt-0.5">Booked ${order.orderTime}</p>
               </div>
-              <div class="flex items-center gap-2">
-                ${statusBadge}
-                ${isActive ? `
-                  <div class="px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-xs font-black" title="Rider Pickup Handover OTP">
-                    OTP: <span class="text-emerald-700">${order.otp}</span>
-                  </div>
-                ` : ''}
+
+              ${!isCancelled && !isDelivered ? `
+                <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-xl">
+                  <span class="text-xs text-amber-800 font-bold">Handover OTP:</span>
+                  <span class="font-black text-amber-950 tracking-widest text-sm bg-white px-2 py-0.5 rounded-lg border border-amber-300">${order.otp}</span>
+                </div>
+              ` : ''}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-600">
+              <div>
+                <span class="font-bold text-slate-800 block">Pickup Venue:</span>
+                <p class="font-medium text-slate-900">${order.venue}</p>
+                <p class="text-slate-400 text-[11px]">${order.city}</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 block">Destination:</span>
+                <p class="font-medium text-slate-900">${order.destination}</p>
+                <p class="text-slate-400 text-[11px]">Recipient: ${order.receiverName}</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 block">Delivery Rider:</span>
+                <p class="font-medium text-slate-900">${order.riderName} (${order.riderVehicle})</p>
+                <p class="text-slate-400 text-[11px]">Phone: ${order.riderPhone}</p>
               </div>
             </div>
 
-            <!-- Route Details -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs">
-              <!-- Pickup From -->
-              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
-                <span class="font-bold text-slate-500 uppercase text-[10px] tracking-wider block">Pickup Venue:</span>
-                <p class="font-extrabold text-slate-900 text-sm">${order.venue}</p>
-                <p class="text-slate-600"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> ${order.city}</p>
-                <p class="text-slate-600 line-clamp-1 mt-1"><strong>Dishes:</strong> ${order.dishes}</p>
-              </div>
-
-              <!-- Delivery To -->
-              <div class="p-3.5 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-1">
-                <span class="font-bold text-emerald-700 uppercase text-[10px] tracking-wider block">Delivery Destination:</span>
-                <p class="font-extrabold text-slate-900 text-sm">${order.destination}</p>
-                <p class="text-slate-700 font-bold"><strong>Quantity:</strong> ${order.plates} Plates Booked</p>
-                <p class="text-slate-600 mt-1"><strong>Assigned Rider:</strong> ${order.riderName} (${order.riderPhone})</p>
-              </div>
-            </div>
-
-            <!-- Action Controls -->
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs">
-              <div class="text-[11px] text-slate-400">
-                ${isActive ? 'Pickup chal raha hai. Rider venue pahunchne wala hai.' : isCancelled ? 'Yeh order cancel kar diya gaya tha.' : 'Khana safalta-poorvak distribute ho chuka hai.'}
-              </div>
-
-              <div class="flex items-center gap-2">
-                ${isActive ? `
-                  <button onclick="cancelFoodOrder('${order.orderId}')" class="px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold transition flex items-center gap-1.5 active:scale-95">
-                    <i class="fa-solid fa-xmark"></i> Cancel Order
-                  </button>
-                  <button onclick="markOrderDelivered('${order.orderId}')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black transition flex items-center gap-1.5 shadow-sm active:scale-95">
-                    <i class="fa-solid fa-check"></i> Mark Delivered
-                  </button>
-                ` : `
-                  <span class="text-slate-400 font-medium">Koi action pending nahi hai</span>
-                `}
-              </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+              <span class="text-xs font-black text-emerald-700">${order.plates} Plates Booked</span>
+              ${!isCancelled && !isDelivered ? `
+                <button onclick="cancelOrder('${order.orderId}')" class="px-3.5 py-1.5 rounded-xl border border-rose-200 hover:bg-rose-50 text-rose-600 text-xs font-bold transition">
+                  <i class="fa-solid fa-xmark mr-1"></i> Cancel Order
+                </button>
+              ` : ''}
             </div>
           </div>
         `;
       }).join('');
-
-      updateCounters();
     }
 
-    function cancelFoodOrder(orderId) {
+    function cancelOrder(orderId) {
       const order = myOrders.find(o => o.orderId === orderId);
       if (!order) return;
 
-      if (order.status === 'Cancelled' || order.status === 'Delivered') {
-        showToast('Notice', 'Yeh order pehle hi complete ya cancel ho chuka hai.');
-        return;
-      }
-
-      // Mark order as Cancelled
       order.status = 'Cancelled';
 
-      // Restore plates to listing if it exists, or re-add
-      const originalListing = listings.find(l => l.id === order.listingId);
-      if (originalListing) {
-        originalListing.plates += order.plates;
-      } else {
-        // Re-insert into listings pool
-        listings.unshift({
-          id: order.listingId,
-          venue: order.venue,
-          category: 'Wedding / Banquet',
-          city: order.city,
-          dishes: order.dishes,
-          plates: order.plates,
-          diet: 'Pure Veg',
-          expiry: '3-4 Hours',
-          phone: order.receiverPhone,
-          postedAt: 'Just now',
-          status: 'Available',
-          urgency: 'Safe'
-        });
+      // Restore plates to listing
+      const listing = listings.find(l => l.id === order.listingId);
+      if (listing) {
+        listing.plates += order.plates;
+        listing.status = 'Available';
       }
 
-      showToast('Order Cancel Kar Diya Gaya ❌', `${order.plates} plates wapas available meals list me add kar di gayi hain.`);
+      saveState();
+      showToast('Order Cancelled', `${orderId} cancel kar diya gaya aur plates wapas live pool me jod di gayi.`);
       renderMyOrders();
       renderAllListings();
       renderHomePreviews();
+      renderRiderTasks();
       updateCounters();
+    }
+
+    function markTaskOutForDelivery(orderId) {
+      const order = myOrders.find(o => o.orderId === orderId);
+      if (!order) return;
+      order.status = 'Out for Delivery';
+      
+      const logEntry = pickupLog.find(l => l.orderId === orderId);
+      if (logEntry) logEntry.status = 'In Transit';
+
+      saveState();
+      showToast('Status Updated! 🛵', `Order ${orderId} ab "Out for Delivery" hai.`);
+      renderRiderTasks();
+      renderMyOrders();
     }
 
     function markOrderDelivered(orderId) {
       const order = myOrders.find(o => o.orderId === orderId);
       if (!order) return;
       order.status = 'Delivered';
-      showToast('Order Delivered! 🎉', `Khana zarooratmand tak pahunch gaya hai.`);
+
+      const logEntry = pickupLog.find(l => l.orderId === orderId);
+      if (logEntry) logEntry.status = 'Delivered';
+
+      saveState();
+      showToast('Delivery Successful! 🎉', `Order ${orderId} successfully deliver aur verify ho chuka hai.`);
+      renderRiderTasks();
+      renderPickupNavigator();
       renderMyOrders();
+      updateCounters();
     }
 
-    function updateCounters() {
-      const count = listings.length;
-      const navCount = document.getElementById('navMealCount');
-      if (navCount) navCount.innerText = count;
-      const mobCount = document.getElementById('mobMealCount');
-      if (mobCount) mobCount.innerText = count;
-
-      // Update active orders count
-      const activeOrdersCount = myOrders.filter(o => o.status !== 'Cancelled' && o.status !== 'Delivered').length;
-      const navOrd = document.getElementById('navOrdersCount');
-      if (navOrd) navOrd.innerText = activeOrdersCount;
-      const mobOrd = document.getElementById('mobOrdersCount');
-      if (mobOrd) mobOrd.innerText = activeOrdersCount;
-    }
-
-    // ==================== USER AUTHENTICATION ====================
-    function openUserAuthModal() {
-      document.getElementById('userAuthModal').classList.remove('hidden');
-      document.getElementById('userAuthModal').classList.add('flex');
-    }
-
-    function closeUserAuthModal() {
-      document.getElementById('userAuthModal').classList.add('hidden');
-      document.getElementById('userAuthModal').classList.remove('flex');
-    }
-
-    function handleUserLoginSubmit(e) {
-      e.preventDefault();
-      const role = document.getElementById('userRoleSelect').value;
-      const name = document.getElementById('userAuthName').value.trim();
-      const phone = document.getElementById('userAuthPhone').value.trim();
-      const city = document.getElementById('userAuthCity').value.trim();
-
-      currentUser = { name, phone, role, city };
-
-      // Update Header Slot
-      const shortName = name.split(' ')[0];
-      const slot = document.getElementById('userHeaderAuthSlot');
-      if (slot) {
-        slot.innerHTML = `
-          <div class="flex items-center gap-1 bg-emerald-50 border border-emerald-200 px-2 py-1.5 rounded-xl">
-            <span class="text-xs font-black text-emerald-800 flex items-center gap-1">
-              <i class="fa-solid fa-circle-user text-emerald-600"></i> ${shortName}
-            </span>
-            <button onclick="handleUserLogout()" title="Logout" class="text-slate-400 hover:text-rose-600 text-xs px-1">
-              <i class="fa-solid fa-right-from-bracket"></i>
-            </button>
-          </div>
-        `;
-      }
-
-      // Pre-fill donation fields
-      if (document.getElementById('donateVenueInput')) document.getElementById('donateVenueInput').value = name;
-      if (document.getElementById('donateCityInput')) document.getElementById('donateCityInput').value = city;
-      if (document.getElementById('donatePhoneInput')) document.getElementById('donatePhoneInput').value = phone;
-
-      closeUserAuthModal();
-      showToast(`Namaste, ${shortName}! 👋`, `Aap ${role} ke roop me login ho chuke hain.`);
-    }
-
-    function handleUserLogout() {
-      currentUser = null;
-      const slot = document.getElementById('userHeaderAuthSlot');
-      if (slot) {
-        slot.innerHTML = `
-          <button onclick="openUserAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-circle-user text-emerald-600"></i>
-            <span id="userBtnLabel">User Login</span>
-          </button>
-        `;
-      }
-      showToast('Logged Out', 'User account se logout ho gaye hain.');
-    }
-
-    // ==================== RIDER & VOLUNTEER AUTHENTICATION ====================
-    function setRiderRoleType(type) {
-      selectedRiderAuthType = type;
-      const riderBtn = document.getElementById('roleBtnRider');
-      const volunteerBtn = document.getElementById('roleBtnVolunteer');
-      const vehicleSec = document.getElementById('vehicleSection');
-      const volSec = document.getElementById('volunteerRoleSection');
-
-      if (type === 'Rider') {
-        riderBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
-        volunteerBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
-        vehicleSec.classList.remove('hidden');
-        volSec.classList.add('hidden');
-      } else {
-        volunteerBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
-        riderBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
-        vehicleSec.classList.add('hidden');
-        volSec.classList.remove('hidden');
-      }
-    }
-
-    function openRiderAuthModal() {
-      document.getElementById('riderAuthModal').classList.remove('hidden');
-      document.getElementById('riderAuthModal').classList.add('flex');
-    }
-
-    function closeRiderAuthModal() {
-      document.getElementById('riderAuthModal').classList.add('hidden');
-      document.getElementById('riderAuthModal').classList.remove('flex');
-    }
-
-    function handleRiderLoginSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('riderAuthName').value.trim();
-      const phone = document.getElementById('riderAuthPhone').value.trim();
-      const vehicle = document.getElementById('riderVehicleSelect').value;
-      const pref = document.getElementById('volunteerPrefSelect').value;
-
-      currentRider = {
-        name,
-        phone,
-        type: selectedRiderAuthType,
-        vehicle: selectedRiderAuthType === 'Rider' ? vehicle : 'On-Ground',
-        pref
-      };
-
-      // Update Rider Header Slot
-      const riderBtnLabel = document.getElementById('riderBtnLabel');
-      if (riderBtnLabel) riderBtnLabel.innerText = `${name.split(' ')[0]} (${selectedRiderAuthType})`;
-
-      // Update Rider Portal Status Card
-      const portalName = document.getElementById('riderPortalName');
-      if (portalName) portalName.innerText = `${name} • Verified ${selectedRiderAuthType}`;
-
-      closeRiderAuthModal();
-      showToast(`Welcome, ${name}! 🏍️`, `Aap ${selectedRiderAuthType} portal par online hain.`);
-      navigateTo('rider');
-    }
-
-    // ==================== RIDER TASKS RENDERING ====================
+    // ==================== RIDER ACTIVE TASKS RENDERER ====================
     function renderRiderTasks() {
       const container = document.getElementById('riderTasksGrid');
-      const counter = document.getElementById('riderTaskCounter');
+      const counterEl = document.getElementById('riderTaskCounter');
       if (!container) return;
 
-      if (listings.length === 0) {
+      const activeTasks = myOrders.filter(o => o.status === 'Rider Assigned' || o.status === 'Out for Delivery');
+      
+      if (counterEl) {
+        counterEl.innerText = `${activeTasks.length} Tasks Active`;
+      }
+
+      if (activeTasks.length === 0) {
         container.innerHTML = `
           <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
-            <i class="fa-solid fa-circle-check text-3xl mb-2 text-emerald-500"></i>
-            <p class="font-bold text-sm text-slate-800">Sabhi Tasks Complete!</p>
-            <p class="text-xs mt-1">Naye donation orders aane par yahan tasks dikhenge.</p>
+            <i class="fa-solid fa-clipboard-check text-3xl mb-2 text-indigo-400"></i>
+            <h4 class="font-bold text-xs text-slate-700">Abhi Koi Pending Pickup Task Nahi Hai</h4>
+            <p class="text-[11px] text-slate-400 mt-1">Jab koi zarooratmand shelter ya vyakti khana claim karega, yahan real-time task assign ho jayega.</p>
           </div>
         `;
-        if (counter) counter.innerText = '0 Tasks Active';
         return;
       }
 
-      if (counter) counter.innerText = `${listings.length} Tasks Active`;
+      container.innerHTML = activeTasks.map(task => {
+        const isOutForDelivery = task.status === 'Out for Delivery';
 
-      container.innerHTML = listings.map(item => `
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200">
-                TASK ID: ${item.id}
-              </span>
-              <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
-                ${item.plates} Plates
-              </span>
+        return `
+          <div class="bg-white rounded-3xl border border-indigo-100 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-3 border-l-4 border-l-indigo-600">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-slate-900 text-xs">${task.orderId}</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${isOutForDelivery ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-pulse' : 'bg-indigo-50 text-indigo-700 border border-indigo-200'}">
+                  ${task.status}
+                </span>
+              </div>
+
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Pickup Venue</span>
+                <h4 class="font-black text-slate-900 text-sm leading-tight">${task.venue}</h4>
+                <p class="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
+                  <i class="fa-solid fa-location-dot text-rose-500"></i> ${task.city}
+                </p>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-slate-50 text-[11px] text-slate-600 border border-slate-100">
+                <span class="font-bold text-slate-800 block">Deliver To:</span>
+                <p class="font-semibold text-slate-900">${task.destination}</p>
+                <p class="text-[10px] text-slate-400">Recipient: ${task.receiverName} (${task.receiverPhone})</p>
+              </div>
+
+              <div class="flex items-center justify-between text-xs font-bold pt-1">
+                <span class="text-slate-500">Plates to Pickup:</span>
+                <span class="text-emerald-600 font-black">${task.plates} Plates</span>
+              </div>
             </div>
 
-            <h4 class="font-black text-slate-900 text-base">${item.venue}</h4>
-            <p class="text-xs text-slate-600 flex items-center gap-1 mt-0.5">
-              <i class="fa-solid fa-location-dot text-rose-500"></i> ${item.city}
-            </p>
-
-            <div class="my-3 p-3 rounded-2xl bg-slate-50 text-xs text-slate-700">
-              <span class="font-bold block text-slate-900 mb-0.5">Dishes to pack:</span>
-              ${item.dishes}
+            <div class="pt-2 border-t border-slate-100 space-y-2">
+              ${!isOutForDelivery ? `
+                <button onclick="markTaskOutForDelivery('${task.orderId}')" class="w-full py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs transition shadow-sm flex items-center justify-center gap-1.5 active:scale-95">
+                  <i class="fa-solid fa-motorcycle"></i> Start Pickup & Go
+                </button>
+              ` : `
+                <div class="space-y-1.5">
+                  <label class="block text-[10px] font-bold text-slate-600">Enter Recipient Handover OTP:</label>
+                  <div class="flex gap-1.5">
+                    <input type="text" id="riderOtpVerify_${task.orderId}" maxlength="4" placeholder="4-digit OTP" class="w-28 p-2 rounded-xl border border-slate-300 text-center text-xs font-black tracking-widest focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <button onclick="verifyAndDeliver('${task.orderId}', 'riderOtpVerify_${task.orderId}')" class="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-sm flex items-center justify-center gap-1">
+                      <i class="fa-solid fa-check"></i> Verify & Finish
+                    </button>
+                  </div>
+                </div>
+              `}
             </div>
           </div>
+        `;
+      }).join('');
+    }
 
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
-            <button onclick="acceptRiderTask('${item.id}')" class="py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-motorcycle"></i> Accept Pickup
-            </button>
-            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.venue + ', ' + item.city)}" target="_blank" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-location-arrow text-indigo-600"></i> Map Route
-            </a>
+    function verifyAndDeliver(orderId, otpInputId) {
+      const order = myOrders.find(o => o.orderId === orderId);
+      if (!order) return;
+
+      const enteredOtp = document.getElementById(otpInputId)?.value.trim();
+      if (!enteredOtp) {
+        showToast('OTP Required ⚠️', 'Kripya khana prapt karne wale vyakti se 4-digit OTP maangein.', true);
+        return;
+      }
+
+      if (enteredOtp !== order.otp) {
+        showToast('Galat OTP ❌', 'Entered OTP match nahi hua. Sahi delivery OTP enter karein.', true);
+        return;
+      }
+
+      markOrderDelivered(orderId);
+    }
+
+    // ==================== PICKUP NAVIGATOR LOG ====================
+    function renderPickupNavigator() {
+      const feedContainer = document.getElementById('pickupNavigatorFeed');
+      const badge = document.getElementById('pickupTotalPlatesBadge');
+      const totalRescuesEl = document.getElementById('navTotalRescuesCount');
+      const totalDeliveredPlatesEl = document.getElementById('navTotalDeliveredPlates');
+
+      const totalDeliveredPlates = pickupLog.reduce((acc, curr) => acc + (curr.plates || 0), 0);
+      if (badge) badge.innerText = `${totalDeliveredPlates} Plates`;
+      if (totalRescuesEl) totalRescuesEl.innerText = pickupLog.length;
+      if (totalDeliveredPlatesEl) totalDeliveredPlatesEl.innerText = totalDeliveredPlates;
+
+      if (!feedContainer) return;
+
+      if (pickupLog.length === 0) {
+        feedContainer.innerHTML = `
+          <div class="p-6 text-center text-slate-400 text-xs">
+            Abhi koi rescue log nahi hai.
+          </div>
+        `;
+        return;
+      }
+
+      feedContainer.innerHTML = pickupLog.map(log => `
+        <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100 text-xs space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-slate-900">${log.riderName}</span>
+            <span class="text-[10px] font-black px-2 py-0.5 rounded-full ${log.status === 'Delivered' ? 'bg-emerald-50 text-emerald-700' : 'bg-indigo-50 text-indigo-700'}">
+              ${log.status}
+            </span>
+          </div>
+          <p class="text-slate-500 text-[11px]">${log.venue} &rarr; ${log.destination}</p>
+          <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 pt-0.5">
+            <span>${log.vehicle || 'Bike'}</span>
+            <span class="text-emerald-700 font-extrabold">${log.plates} Plates</span>
           </div>
         </div>
       `).join('');
     }
 
-    function acceptRiderTask(id) {
-      if (!currentRider) {
-        showToast('Login Required', 'Pehle Rider / Volunteer login karein task accept karne ke liye.');
-        openRiderAuthModal();
-        return;
+    // ==================== FORM HELPERS & QUICK CHIPS ====================
+    function selectEventType(cardEl) {
+      document.querySelectorAll('.event-type-card').forEach(c => {
+        c.classList.remove('border-emerald-500', 'bg-emerald-50/50');
+        c.classList.add('border-slate-200', 'bg-slate-50');
+      });
+      cardEl.classList.remove('border-slate-200', 'bg-slate-50');
+      cardEl.classList.add('border-emerald-500', 'bg-emerald-50/50');
+      const radio = cardEl.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+    }
+
+    function addDishChip(dishName) {
+      const input = document.getElementById('donateDishesInput');
+      if (!input) return;
+      if (input.value.trim().length === 0) {
+        input.value = dishName;
+      } else {
+        input.value += `, ${dishName}`;
       }
-      showToast('Task Accepted! 📦', `Aapne Task ${id} accept kar liya hai. Venue par call karke pickup karein.`);
     }
 
-    // ==================== SHELTER DEMANDS RENDERING ====================
-    function renderShelterDemands() {
-      const container = document.getElementById('shelterDemandsGrid');
-      if (!container) return;
-
-      container.innerHTML = shelterDemands.map(s => `
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-200">
-                ACTIVE DEMAND
-              </span>
-              <span class="text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">
-                Zaroorat: ${s.platesNeeded} Plates
-              </span>
-            </div>
-            <h3 class="font-black text-slate-900 text-base">${s.name}</h3>
-            <p class="text-xs text-slate-500 mt-0.5"><i class="fa-solid fa-location-dot text-rose-500"></i> ${s.location}</p>
-            <div class="my-3 p-3 bg-slate-50 rounded-2xl text-xs text-slate-700">
-              <span class="font-bold">Diet:</span> ${s.dietPref}
-            </div>
-          </div>
-          <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500"><i class="fa-solid fa-phone"></i> ${s.contact}</span>
-            <button onclick="navigateTo('donate')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition">
-              Deliver Food Here
-            </button>
-          </div>
-        </div>
-      `).join('');
+    function setQuickPlates(count) {
+      const input = document.getElementById('donatePlatesInput');
+      if (input) input.value = count;
     }
 
-    function filterRadarByCluster(cityName) {
-      document.getElementById('feedSearchInput').value = cityName;
+    function filterRadarByCluster(clusterName) {
+      const searchInput = document.getElementById('feedSearchInput');
+      if (searchInput) searchInput.value = clusterName;
       navigateTo('explore');
-      showToast('Radar Filter Applied', `${cityName} ke surplus meals show ho rahe hain.`);
+      renderAllListings();
+      showToast('Radar Filtered 📍', `${clusterName} ke nearby food listings filter ho gayi.`);
     }
+
     // ==================== SETU AI ASSISTANT ====================
     function toggleAiAssistant() {
       const drawer = document.getElementById('aiAssistantDrawer');
+      if (!drawer) return;
       if (drawer.classList.contains('hidden')) {
         drawer.classList.remove('hidden');
         drawer.classList.add('flex');
@@ -1641,75 +2175,65 @@
       }
     }
 
-    async function sendAiMessage() {
+    function sendAiMessage() {
       const input = document.getElementById('aiUserInput');
-      const message = input.value.trim();
-      if (!message) return;
+      const query = input?.value.trim();
+      if (!query) return;
 
-      const container = document.getElementById('aiChatMessages');
-      // User Message
-      container.innerHTML += `
-        <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl ml-6">
-          <p class="font-semibold text-right">${message}</p>
+      const chatContainer = document.getElementById('aiChatMessages');
+      if (!chatContainer) return;
+
+      chatContainer.innerHTML += `
+        <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl ml-6 border border-slate-200">
+          <p class="font-bold text-[10px] text-slate-500 mb-0.5">Aap:</p>
+          <p>${query}</p>
         </div>
       `;
+
       input.value = '';
-      container.scrollTop = container.scrollHeight;
+      chatContainer.scrollTop = chatContainer.scrollHeight;
 
-      // Loading bubble
-      const loadingId = 'loading-' + Date.now();
-      container.innerHTML += `
-        <div id="${loadingId}" class="bg-purple-50 text-purple-700 p-3 rounded-2xl mr-6 flex items-center gap-2">
-          <i class="fa-solid fa-circle-notch fa-spin"></i>
-          <span>Soch raha hoon...</span>
-        </div>
-      `;
-      container.scrollTop = container.scrollHeight;
+      setTimeout(() => {
+        let reply = "Surplus food ko safe rakhne ke liye dhyan rakhein ki khana garam (above 60°C) ya refrigerate (below 5°C) pack ho. Riders 30-45 minutes me pickup kar lete hain.";
+        const q = query.toLowerCase();
+        if (q.includes('donate') || q.includes('khana kaise')) {
+          reply = "Khana donate karne ke liye upar 'Donate Food' tab par click karein, function type select karein, dishes aur plates daalein. Aapka listing turant nearby riders aur shelters ko broadcast ho jayega.";
+        } else if (q.includes('rider') || q.includes('volunteer')) {
+          reply = "Rider ya Volunteer banne ke liye 'Rider / Volunteer' button par click karein. Aap apne vehicle (Bike, Auto, Van) ke sath delivery rider ya shelter distribution volunteer ban sakte hain.";
+        } else if (q.includes('kharab') || q.includes('safety') || q.includes('fresh')) {
+          reply = "Khana cook hone ke 4 se 5 ghante ke andar safe container me pack ho jana chahiye. Agar khane me koi ajeeb smell ya texture aaye toh use distribute na karein.";
+        } else if (q.includes('cancel') || q.includes('order')) {
+          reply = "Order track ya cancel karne ke liye 'Order Status' tab par jayein. Wahan se aap 1-click me order cancel kar sakte hain.";
+        }
 
-      try {
-        const systemPrompt = "Aap 'Setu AI' hain - AaharSetu platform ke smart food rescue assistant. Aap Hindi aur Hinglish me friendly, helpful aur polite response dete hain. Aap surplus food packaging, hygienic donation rules, wedding leftovers aur riders ke baare me guide karte hain. Crisp aur helpful rahein (2-3 sentences max).";
-        const apiKey = "";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: message }] }],
-            systemInstruction: { parts: [{ text: systemPrompt }] }
-          })
-        });
-
-        const result = await response.json();
-        const reply = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf karein, network issue ki wajah se response nahi mil paya. Aap direct Donate Food form fill kar sakte hain.";
-
-        document.getElementById(loadingId)?.remove();
-        container.innerHTML += `
+        chatContainer.innerHTML += `
           <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl mr-6 border border-purple-100">
-            <p class="font-medium">${reply}</p>
+            <p class="font-bold text-[10px] text-purple-600 mb-0.5">Setu AI:</p>
+            <p>${reply}</p>
           </div>
         `;
-        container.scrollTop = container.scrollHeight;
-      } catch (err) {
-        document.getElementById(loadingId)?.remove();
-        container.innerHTML += `
-          <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl mr-6 border border-purple-100">
-            <p>Khana donate karne ke liye top bar me 'Donate Food' par click karein aur plates count enter karein. Hamare riders pickup ke liye aa jayenge!</p>
-          </div>
-        `;
-        container.scrollTop = container.scrollHeight;
-      }
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 500);
     }
 
-    // ==================== TOAST NOTIFICATION HELPERS ====================
-    let toastTimeout;
-    function showToast(title, message) {
-      clearTimeout(toastTimeout);
+    // ==================== TOAST NOTIFICATIONS ====================
+    let toastTimeout = null;
+    function showToast(title, message, isError = false) {
       const toast = document.getElementById('toastNotification');
-      document.getElementById('toastTitle').innerText = title;
-      document.getElementById('toastMessage').innerText = message;
+      const titleEl = document.getElementById('toastTitle');
+      const msgEl = document.getElementById('toastMessage');
+      const iconSlot = document.getElementById('toastIconSlot');
+      if (!toast) return;
+
+      if (titleEl) titleEl.innerText = title;
+      if (msgEl) msgEl.innerText = message;
+      if (iconSlot) {
+        iconSlot.className = isError ? 'text-rose-400 text-lg mt-0.5' : 'text-emerald-400 text-lg mt-0.5';
+        iconSlot.innerHTML = isError ? '<i class="fa-solid fa-circle-exclamation"></i>' : '<i class="fa-solid fa-circle-check"></i>';
+      }
+
       toast.classList.remove('hidden');
-      toast.classList.add('flex');
+      clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
         hideToast();
       }, 4000);
@@ -1717,15 +2241,17 @@
 
     function hideToast() {
       const toast = document.getElementById('toastNotification');
-      toast.classList.add('hidden');
-      toast.classList.remove('flex');
+      if (toast) toast.classList.add('hidden');
     }
 
-    // Initialize application on load
+    // ==================== INITIALIZATION ====================
     window.onload = function () {
+      renderUserAuthHeader();
+      renderRiderAuthHeader();
       renderHomePreviews();
       renderAllListings();
       renderRiderTasks();
+      renderPickupNavigator();
       renderShelterDemands();
       renderMyOrders();
       updateCounters();
