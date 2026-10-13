@@ -135,6 +135,9 @@
         <button onclick="navigateTo('radar')" id="nav-radar" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-map-location-dot text-rose-500"></i> City Radar
         </button>
+        <button onclick="navigateTo('orders')" id="nav-orders" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-receipt text-teal-600"></i> Order Status (<span id="navOrdersCount">0</span>)
+        </button>
       </nav>
 
       <!-- Action Buttons: User Login + Rider Login + Post CTA -->
@@ -185,6 +188,9 @@
       </button>
       <button onclick="navigateTo('radar')" id="mob-radar" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
         <i class="fa-solid fa-map-location-dot text-rose-500"></i> Radar
+      </button>
+      <button onclick="navigateTo('orders')" id="mob-orders" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-receipt text-teal-600"></i> Orders (<span id="mobOrdersCount">0</span>)
       </button>
     </div>
   </header>
@@ -582,6 +588,34 @@
 
     </div>
 
+    <!-- ==================== PAGE 7: ORDER STATUS & TRACKING ==================== -->
+    <div id="page-orders" class="page-view space-y-6">
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-2 border border-teal-200">
+            <i class="fa-solid fa-receipt"></i> Order & Delivery Tracker
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Food Booking & Order Status</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+            Aapne jo khana claim ya book kiya hai uska live status yahan dekhein, rider details check karein ya zaroorat padne par order cancel karein.
+          </p>
+        </div>
+
+        <div>
+          <select id="orderStatusFilter" onchange="renderMyOrders()" class="px-3.5 py-2.5 rounded-2xl border border-slate-300 text-xs font-bold bg-white focus:outline-none">
+            <option value="ALL">Sabhi Orders</option>
+            <option value="Active">Active / On the Way</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="ordersListContainer" class="space-y-4">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </div>
+
   </main>
   <!-- ==================== 1. GENERAL USER / DONOR AUTH MODAL ==================== -->
   <div id="userAuthModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -820,6 +854,25 @@
     let currentRider = null; // { name, phone, type: 'Rider'|'Volunteer', vehicle, pref }
     let selectedRiderAuthType = 'Rider';
 
+    let myOrders = [
+      {
+        orderId: 'ORD-7391',
+        listingId: 'L-101',
+        venue: 'Grand Heritage Palace Banquet',
+        city: 'Rohini Sector 14, Delhi',
+        dishes: 'Paneer Lababdar, Dal Makhani, Tawa Rotis, Jeera Rice',
+        plates: 30,
+        receiverName: 'Asha Rain Basera Volunteer Team',
+        receiverPhone: '98112 99001',
+        destination: 'Rain Basera Near Metro Gate 2, Rohini',
+        status: 'Rider Assigned', // 'Rider Assigned', 'Out for Delivery', 'Delivered', 'Cancelled'
+        riderName: 'Vikram Singh (Hero Splendor)',
+        riderPhone: '98110 99887',
+        otp: '4821',
+        orderTime: '15 mins ago'
+      }
+    ];
+
     // Realistic community starter listings (user can claim plates or add new ones)
     let listings = [
       {
@@ -938,6 +991,7 @@
       if (pageId === 'explore') renderAllListings();
       if (pageId === 'rider') renderRiderTasks();
       if (pageId === 'shelters') renderShelterDemands();
+      if (pageId === 'orders') renderMyOrders();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1137,24 +1191,225 @@
       const listingId = document.getElementById('claimListingId').value;
       const requestedPlates = parseInt(document.getElementById('claimPlatesInput').value, 10);
       const receiverName = document.getElementById('claimReceiverName').value.trim();
+      const receiverPhone = document.getElementById('claimReceiverPhone').value.trim();
       const destination = document.getElementById('claimReceiverDest').value.trim();
 
       const item = listings.find(l => l.id === listingId);
       if (item) {
         if (requestedPlates >= item.plates) {
-          // Remove listing if all plates claimed
+          // Adjust plates to 0 or remove listing
           listings = listings.filter(l => l.id !== listingId);
         } else {
           // Reduce plates
           item.plates -= requestedPlates;
         }
+
+        // Create new active order
+        const newOrderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
+        const randomOtp = Math.floor(1000 + Math.random() * 9000);
+
+        const newOrder = {
+          orderId: newOrderId,
+          listingId: item.id,
+          venue: item.venue,
+          city: item.city,
+          dishes: item.dishes,
+          plates: requestedPlates,
+          receiverName: receiverName,
+          receiverPhone: receiverPhone,
+          destination: destination,
+          status: 'Rider Assigned',
+          riderName: currentRider ? `${currentRider.name} (${currentRider.vehicle})` : 'Assigned Nearby Volunteer',
+          riderPhone: currentRider ? currentRider.phone : '98711 00223',
+          otp: randomOtp.toString(),
+          orderTime: 'Just now'
+        };
+
+        myOrders.unshift(newOrder);
       }
 
       closeClaimMealModal();
-      showToast('Claim Confirmed & Rider Dispatched! 🏍️', `${requestedPlates} plates assign kar di gayi hain destination: ${destination}`);
+      showToast('Khana Successfully Order Ho Gaya! 🎉', `Order ID: ${myOrders[0]?.orderId}. Rider assign ho gaya hai.`);
       renderAllListings();
       renderHomePreviews();
+      updateCounters();
+      navigateTo('orders');
     }
+
+    function renderMyOrders() {
+      const container = document.getElementById('ordersListContainer');
+      const filter = document.getElementById('orderStatusFilter')?.value || 'ALL';
+      if (!container) return;
+
+      const filtered = myOrders.filter(ord => {
+        if (filter === 'ALL') return true;
+        if (filter === 'Active') return ord.status === 'Rider Assigned' || ord.status === 'Out for Delivery';
+        if (filter === 'Delivered') return ord.status === 'Delivered';
+        if (filter === 'Cancelled') return ord.status === 'Cancelled';
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-10 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+            <i class="fa-solid fa-receipt text-3xl mb-2 text-slate-300"></i>
+            <h4 class="font-extrabold text-sm text-slate-800">Koi Order Nahi Mila</h4>
+            <p class="text-xs mt-1">Aapne abhi tak koi khana order nahi kiya hai ya selected filter me orders nahi hain.</p>
+            <button onclick="navigateTo('explore')" class="mt-4 px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition">
+              Available Meals Dekhein
+            </button>
+          </div>
+        `;
+        updateCounters();
+        return;
+      }
+
+      container.innerHTML = filtered.map(order => {
+        const isCancelled = order.status === 'Cancelled';
+        const isDelivered = order.status === 'Delivered';
+        const isActive = !isCancelled && !isDelivered;
+
+        let statusBadge = '';
+        if (order.status === 'Rider Assigned') {
+          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center gap-1.5"><i class="fa-solid fa-motorcycle animate-bounce"></i> Rider Assigned</span>`;
+        } else if (order.status === 'Out for Delivery') {
+          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1.5"><i class="fa-solid fa-truck-fast"></i> Out for Delivery</span>`;
+        } else if (order.status === 'Delivered') {
+          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> Delivered</span>`;
+        } else if (order.status === 'Cancelled') {
+          statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> Cancelled</span>`;
+        }
+
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md transition">
+            <!-- Header Row -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-black text-slate-900 text-sm sm:text-base">${order.orderId}</span>
+                  <span class="text-slate-400 text-xs">• ${order.orderTime}</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-0.5">Receiver: <strong class="text-slate-700">${order.receiverName}</strong> (${order.receiverPhone})</p>
+              </div>
+              <div class="flex items-center gap-2">
+                ${statusBadge}
+                ${isActive ? `
+                  <div class="px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-xs font-black" title="Rider Pickup Handover OTP">
+                    OTP: <span class="text-emerald-700">${order.otp}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Route Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs">
+              <!-- Pickup From -->
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+                <span class="font-bold text-slate-500 uppercase text-[10px] tracking-wider block">Pickup Venue:</span>
+                <p class="font-extrabold text-slate-900 text-sm">${order.venue}</p>
+                <p class="text-slate-600"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> ${order.city}</p>
+                <p class="text-slate-600 line-clamp-1 mt-1"><strong>Dishes:</strong> ${order.dishes}</p>
+              </div>
+
+              <!-- Delivery To -->
+              <div class="p-3.5 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-1">
+                <span class="font-bold text-emerald-700 uppercase text-[10px] tracking-wider block">Delivery Destination:</span>
+                <p class="font-extrabold text-slate-900 text-sm">${order.destination}</p>
+                <p class="text-slate-700 font-bold"><strong>Quantity:</strong> ${order.plates} Plates Booked</p>
+                <p class="text-slate-600 mt-1"><strong>Assigned Rider:</strong> ${order.riderName} (${order.riderPhone})</p>
+              </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs">
+              <div class="text-[11px] text-slate-400">
+                ${isActive ? 'Pickup chal raha hai. Rider venue pahunchne wala hai.' : isCancelled ? 'Yeh order cancel kar diya gaya tha.' : 'Khana safalta-poorvak distribute ho chuka hai.'}
+              </div>
+
+              <div class="flex items-center gap-2">
+                ${isActive ? `
+                  <button onclick="cancelFoodOrder('${order.orderId}')" class="px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold transition flex items-center gap-1.5 active:scale-95">
+                    <i class="fa-solid fa-xmark"></i> Cancel Order
+                  </button>
+                  <button onclick="markOrderDelivered('${order.orderId}')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                    <i class="fa-solid fa-check"></i> Mark Delivered
+                  </button>
+                ` : `
+                  <span class="text-slate-400 font-medium">Koi action pending nahi hai</span>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateCounters();
+    }
+
+    function cancelFoodOrder(orderId) {
+      const order = myOrders.find(o => o.orderId === orderId);
+      if (!order) return;
+
+      if (order.status === 'Cancelled' || order.status === 'Delivered') {
+        showToast('Notice', 'Yeh order pehle hi complete ya cancel ho chuka hai.');
+        return;
+      }
+
+      // Mark order as Cancelled
+      order.status = 'Cancelled';
+
+      // Restore plates to listing if it exists, or re-add
+      const originalListing = listings.find(l => l.id === order.listingId);
+      if (originalListing) {
+        originalListing.plates += order.plates;
+      } else {
+        // Re-insert into listings pool
+        listings.unshift({
+          id: order.listingId,
+          venue: order.venue,
+          category: 'Wedding / Banquet',
+          city: order.city,
+          dishes: order.dishes,
+          plates: order.plates,
+          diet: 'Pure Veg',
+          expiry: '3-4 Hours',
+          phone: order.receiverPhone,
+          postedAt: 'Just now',
+          status: 'Available',
+          urgency: 'Safe'
+        });
+      }
+
+      showToast('Order Cancel Kar Diya Gaya ❌', `${order.plates} plates wapas available meals list me add kar di gayi hain.`);
+      renderMyOrders();
+      renderAllListings();
+      renderHomePreviews();
+      updateCounters();
+    }
+
+    function markOrderDelivered(orderId) {
+      const order = myOrders.find(o => o.orderId === orderId);
+      if (!order) return;
+      order.status = 'Delivered';
+      showToast('Order Delivered! 🎉', `Khana zarooratmand tak pahunch gaya hai.`);
+      renderMyOrders();
+    }
+
+    function updateCounters() {
+      const count = listings.length;
+      const navCount = document.getElementById('navMealCount');
+      if (navCount) navCount.innerText = count;
+      const mobCount = document.getElementById('mobMealCount');
+      if (mobCount) mobCount.innerText = count;
+
+      // Update active orders count
+      const activeOrdersCount = myOrders.filter(o => o.status !== 'Cancelled' && o.status !== 'Delivered').length;
+      const navOrd = document.getElementById('navOrdersCount');
+      if (navOrd) navOrd.innerText = activeOrdersCount;
+      const mobOrd = document.getElementById('mobOrdersCount');
+      if (mobOrd) mobOrd.innerText = activeOrdersCount;
+    }
+
     // ==================== USER AUTHENTICATION ====================
     function openUserAuthModal() {
       document.getElementById('userAuthModal').classList.remove('hidden');
@@ -1472,6 +1727,7 @@
       renderAllListings();
       renderRiderTasks();
       renderShelterDemands();
+      renderMyOrders();
       updateCounters();
     };
   </script>
