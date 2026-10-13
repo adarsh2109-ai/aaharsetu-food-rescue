@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="hi" class="h-full">
+<html lang="hi" class="h-full scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AaharSetu (आहार सेतु) — Multi-Page Food Rescue Platform</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Yatra+One&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AaharSetu (आहार सेतु) — Surplus Food Rescue & Delivery Network</title>
+  <meta name="description" content="Community surplus food donation network connecting weddings, hotels, and households with night shelters, orphanages, and delivery riders.">
+  <meta name="author" content="AaharSetu Community">
 
+  <!-- Crisp Vector Favicon for URL & Browser Tab -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C35 15 44 19 44 27C44 35 38 39 32 39C26 39 20 35 20 27C20 19 29 15 32 6Z' fill='%23f59e0b'/%3E%3Cpath d='M12 36C18 31 27 33 32 36C37 39 46 39 52 34C53 33 55 35 54 37C50 44 40 48 31 46C24 44 18 46 14 48C12 49 10 47 10 45C10 41 11 38 12 36Z' fill='%2310b981'/%3E%3Cpath d='M14 44C20 40 29 41 35 44C41 47 48 44 53 40C54 41 54 43 52 45C46 51 37 52 28 50C22 48 17 50 14 52C13 52 12 51 12 50C13 47 13 45 14 44Z' fill='%23059669'/%3E%3C/svg%3E">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            hindi: ['"Yatra One"', 'cursive']
-          },
           colors: {
             brand: {
               50: '#ecfdf5',
@@ -28,114 +24,140 @@
               600: '#059669',
               700: '#047857',
               800: '#065f46',
-              900: '#064e3b',
-            },
-            amberAccent: {
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706'
+              900: '#064e3b'
             }
-          },
-          boxShadow: {
-            'glow-emerald': '0 0 30px -5px rgba(16, 185, 129, 0.3)',
-            'card-soft': '0 10px 30px -8px rgba(0, 0, 0, 0.05)'
           }
         }
       }
     }
   </script>
 
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
     .page-view {
       display: none;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+      animation: fadeIn 0.25s ease-in-out;
     }
     .page-view.active {
       display: block;
-      opacity: 1;
-      transform: translateY(0);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .custom-scrollbar::-webkit-scrollbar {
-      width: 5px;
+      height: 4px;
+      width: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background: #cbd5e1;
-      border-radius: 9999px;
+      border-radius: 4px;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-full flex flex-col selection:bg-emerald-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Announcement Bar (Helpline removed, fresh new launch announcement) -->
-  <div class="bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+  <!-- Top Announcement Notification Banner -->
+  <div class="bg-slate-900 text-white text-xs py-2 px-3 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
       <div class="flex items-center gap-2">
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-900 uppercase">
-          <i class="fa-solid fa-sparkles mr-1"></i> New Initiative
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 uppercase tracking-wider">
+          <i class="fa-solid fa-leaf mr-1"></i> New Initiative
         </span>
-        <span class="text-slate-300">Shadi, hotels aur ghar ka surplus khana zaya mat hone dein — sidha zarooratmand tak pahunchayein.</span>
+        <span class="text-slate-300 text-[11px] sm:text-xs">
+          Shaadi, hotel ya ghar ka bacha khana zaya mat hone dein — seedha zarooratmand tak pahunchayein!
+        </span>
       </div>
-      <div class="flex items-center gap-3 text-[11px] text-slate-400">
-        <!-- Rider quick login status indicator -->
-        <div id="riderNavStatus" class="flex items-center gap-2">
-          <button onclick="openRiderAuthModal()" class="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center gap-1.5 text-xs">
-            <i class="fa-solid fa-motorcycle"></i>
-            <span id="navRiderBtnText">Rider / Volunteer Login</span>
-          </button>
-        </div>
+      <div class="flex items-center gap-2 text-[11px]">
+        <button onclick="toggleAiAssistant()" class="text-purple-300 hover:text-purple-200 font-bold flex items-center gap-1 transition">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Setu AI Assistant
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Main Multi-Page Header Navigation -->
+  <!-- Primary Sticky Header -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
-      <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/30 group-hover:scale-105 transition">
-          <i class="fa-solid fa-hands-holding-child text-xl"></i>
+      <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/30 group-hover:scale-105 transition p-1.5">
+          <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6C35 15 44 19 44 27C44 35 38 39 32 39C26 39 20 35 20 27C20 19 29 15 32 6Z" fill="#fbbf24"/>
+            <path d="M12 36C18 31 27 33 32 36C37 39 46 39 52 34C53 33 55 35 54 37C50 44 40 48 31 46C24 44 18 46 14 48C12 49 10 47 10 45C10 41 11 38 12 36Z" fill="#34d399"/>
+            <path d="M14 44C20 40 29 41 35 44C41 47 48 44 53 40C54 41 54 43 52 45C46 51 37 52 28 50C22 48 17 50 14 52C13 52 12 51 12 50C13 47 13 45 14 44Z" fill="#059669"/>
+          </svg>
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="text-2xl font-black tracking-tight text-slate-900">Aahar<span class="text-emerald-600">Setu</span></span>
-            <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-black rounded uppercase border border-emerald-200">आहार सेतु</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Aahar<span class="text-emerald-600">Setu</span></span>
+            <span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-black rounded uppercase border border-emerald-200">आहार सेतु</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">Surplus Food Rescue & Delivery Network</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium hidden sm:block">Food Rescue & Volunteer Delivery</p>
         </div>
       </a>
 
-      <!-- Navigation Pages Links -->
-      <nav class="hidden md:flex items-center gap-1.5 text-xs lg:text-sm font-bold">
-        <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-xl text-emerald-700 bg-emerald-50 transition flex items-center gap-2">
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 text-xs font-bold text-slate-600">
+        <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-xl text-emerald-700 bg-emerald-50 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-house"></i> Home
         </button>
-        <button onclick="navigateTo('donate')" id="nav-donate" class="nav-btn px-3 py-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-slate-100 transition flex items-center gap-2">
+        <button onclick="navigateTo('donate')" id="nav-donate" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-plus-circle text-emerald-600"></i> Donate Food
         </button>
-        <button onclick="navigateTo('explore')" id="nav-explore" class="nav-btn px-3 py-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-slate-100 transition flex items-center gap-2">
-          <i class="fa-solid fa-bowl-rice text-amber-500"></i> Available Meals (<span id="navAvailableCount">0</span>)
+        <button onclick="navigateTo('explore')" id="nav-explore" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-bowl-rice text-amber-500"></i> Available Meals (<span id="navMealCount">0</span>)
         </button>
-        <button onclick="navigateTo('rider')" id="nav-rider" class="nav-btn px-3 py-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-slate-100 transition flex items-center gap-2">
-          <i class="fa-solid fa-motorcycle text-indigo-600"></i> Rider Portal
+        <button onclick="navigateTo('rider')" id="nav-rider" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-motorcycle text-indigo-600"></i> Rider & Volunteer Hub
         </button>
-        <button onclick="navigateTo('shelters')" id="nav-shelters" class="nav-btn px-3 py-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-slate-100 transition flex items-center gap-2">
-          <i class="fa-solid fa-bed text-blue-500"></i> Shelter Needs
+        <button onclick="navigateTo('shelters')" id="nav-shelters" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-bed text-blue-500"></i> Shelters Needs
         </button>
-        <button onclick="navigateTo('radar')" id="nav-radar" class="nav-btn px-3 py-2 rounded-xl text-slate-600 hover:text-emerald-700 hover:bg-slate-100 transition flex items-center gap-2">
+        <button onclick="navigateTo('radar')" id="nav-radar" class="nav-btn px-3 py-2 rounded-xl hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1.5 transition">
           <i class="fa-solid fa-map-location-dot text-rose-500"></i> City Radar
         </button>
       </nav>
 
-      <!-- Primary Action CTAs -->
-      <div class="flex items-center gap-2">
-        <button onclick="toggleAiAssistant()" class="px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold text-xs flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-wand-magic-sparkles text-purple-600"></i>
-          <span>Ask AI</span>
-        </button>
-        <button onclick="navigateTo('donate')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition active:scale-95 flex items-center gap-2">
+      <!-- Action Buttons: User Login + Rider Login + Post CTA -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- 1. General User / Donor Login Button -->
+        <div id="userHeaderAuthSlot">
+          <button onclick="openUserAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-circle-user text-emerald-600"></i>
+            <span id="userBtnLabel">User Login</span>
+          </button>
+        </div>
+
+        <!-- 2. Rider / Volunteer Login Button -->
+        <div id="riderHeaderAuthSlot">
+          <button onclick="openRiderAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center gap-1.5 border border-indigo-200 transition">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span id="riderBtnLabel" class="hidden sm:inline">Rider / Volunteer</span>
+            <span class="sm:hidden">Rider</span>
+          </button>
+        </div>
+
+        <!-- 3. Primary Post Food CTA -->
+        <button onclick="navigateTo('donate')" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition active:scale-95 flex items-center gap-1.5">
           <i class="fa-solid fa-plus"></i>
           <span class="hidden sm:inline">Post Food</span>
           <span class="sm:hidden">Donate</span>
@@ -143,1670 +165,1315 @@
       </div>
 
     </div>
-  </header>
 
-  <!-- Mobile Bottom Tab Bar -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 px-3 py-2 flex items-center justify-around text-[10px] font-bold shadow-lg">
-    <button onclick="navigateTo('home')" id="mob-home" class="mob-btn flex flex-col items-center gap-1 text-emerald-600">
-      <i class="fa-solid fa-house text-base"></i>
-      <span>Home</span>
-    </button>
-    <button onclick="navigateTo('donate')" id="mob-donate" class="mob-btn flex flex-col items-center gap-1 text-slate-500">
-      <i class="fa-solid fa-plus-circle text-base"></i>
-      <span>Donate</span>
-    </button>
-    <button onclick="navigateTo('explore')" id="mob-explore" class="mob-btn flex flex-col items-center gap-1 text-slate-500">
-      <i class="fa-solid fa-bowl-rice text-base"></i>
-      <span>Meals</span>
-    </button>
-    <button onclick="navigateTo('rider')" id="mob-rider" class="mob-btn flex flex-col items-center gap-1 text-slate-500">
-      <i class="fa-solid fa-motorcycle text-base"></i>
-      <span>Rider</span>
-    </button>
-    <button onclick="toggleAiAssistant()" class="mob-btn flex flex-col items-center gap-1 text-purple-600">
-      <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
-      <span>Ask AI</span>
-    </button>
-  </nav>
-
-  <main class="flex-1 pb-16 md:pb-0">
-
-    <!-- ==================== PAGE 1: HOME PAGE ==================== -->
-    <div id="page-home" class="page-view active">
-      <!-- Hero Banner -->
-      <section class="bg-gradient-to-b from-emerald-50/70 via-white to-slate-50 py-12 lg:py-16 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/70 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-extrabold shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                <span>Connect Karo: Khana Bachane Ka Seedha Madhyam</span>
-              </div>
-
-              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12]">
-                Shaadi ya Hotel ka <br class="hidden sm:inline">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Bacha Hua Khana</span>
-                Zaya Mat Hone Dein!
-              </h1>
-
-              <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Aapke ghar, function ya restaurant me kitna bhi khana bacha ho — yahan details post karein. Nearby volunteers aur riders aakar usey pick karenge aur zarooratmand tak deliver karenge.
-              </p>
-
-              <!-- Quick Action Navigation Tiles -->
-              <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                <button onclick="navigateTo('donate')" class="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-lg shadow-emerald-600/30 transition flex items-center gap-2.5">
-                  <i class="fa-solid fa-plus-circle text-amber-300"></i>
-                  <span>Post Surplus Food</span>
-                </button>
-                <button onclick="navigateTo('explore')" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-bold text-sm shadow-sm transition flex items-center gap-2">
-                  <i class="fa-solid fa-magnifying-glass text-emerald-600"></i>
-                  <span>Browse Available Meals (<span class="heroTotalPill">0</span>)</span>
-                </button>
-                <button onclick="navigateTo('rider')" class="px-5 py-3.5 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold text-sm transition flex items-center gap-2">
-                  <i class="fa-solid fa-motorcycle text-indigo-600"></i>
-                  <span>Rider / Delivery Portal</span>
-                </button>
-              </div>
-
-              <!-- Launch Information Note -->
-              <div class="p-4 rounded-2xl bg-slate-100 border border-slate-200 text-slate-600 text-xs flex items-center gap-3">
-                <i class="fa-solid fa-info-circle text-emerald-600 text-base"></i>
-                <span>Nayi shuruaat hai. Aap khud plates ki sahi sankhya daal sakte hain aur riders ya zarooratmand directly connect ho sakte hain.</span>
-              </div>
-
-            </div>
-
-            <!-- Hero Right: Page Directory Hub Cards -->
-            <div class="lg:col-span-5 space-y-4">
-              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                  <span class="text-xs font-black uppercase text-emerald-700 tracking-wider">Quick Navigation</span>
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">Select Section</span>
-                </div>
-
-                <div class="space-y-3">
-                  <!-- Portal Item 1: Donate -->
-                  <div onclick="navigateTo('donate')" class="cursor-pointer group p-3.5 rounded-2xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-slate-900 text-sm group-hover:text-emerald-700">Donate Surplus Food</h4>
-                        <p class="text-xs text-slate-500">Post khana — shaadi, hotel ya ghar se</p>
-                      </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-emerald-600"></i>
-                  </div>
-
-                  <!-- Portal Item 2: Rider -->
-                  <div onclick="navigateTo('rider')" class="cursor-pointer group p-3.5 rounded-2xl border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 transition flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-motorcycle"></i>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-slate-900 text-sm group-hover:text-indigo-700">Rider & Delivery Partner</h4>
-                        <p class="text-xs text-slate-500">Login karein aur khana pick karke drop karein</p>
-                      </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-indigo-600"></i>
-                  </div>
-
-                  <!-- Portal Item 3: Available meals -->
-                  <div onclick="navigateTo('explore')" class="cursor-pointer group p-3.5 rounded-2xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50/50 transition flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-bowl-rice"></i>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-slate-900 text-sm group-hover:text-amber-700">Available Meals Feed</h4>
-                        <p class="text-xs text-slate-500">Dekhein aur claim karein bacha hua khana</p>
-                      </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-amber-600"></i>
-                  </div>
-
-                  <!-- Portal Item 4: AI Assistant -->
-                  <div onclick="toggleAiAssistant()" class="cursor-pointer group p-3.5 rounded-2xl border border-purple-200 bg-purple-50/40 hover:border-purple-500 hover:bg-purple-50 transition flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-slate-900 text-sm group-hover:text-purple-700">Setu AI Assistant</h4>
-                        <p class="text-xs text-slate-500">Khana safety, packaging aur pickup ke sawal puchein</p>
-                      </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-purple-600"></i>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- 3 Steps Explanation -->
-      <section class="py-12 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="text-xs font-black text-emerald-700 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Kaise Kaam Karta Hai</span>
-            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Sirf 3 Aasaan Steps</h2>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-3">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mx-auto text-xl font-black shadow-md">
-                1
-              </div>
-              <h3 class="font-black text-slate-900 text-base">Khana Post Karein</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Aap khud chunein ki kitne logo ka khana hai, kya menu hai aur kahan se pick karna hai.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-3">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto text-xl font-black shadow-md">
-                2
-              </div>
-              <h3 class="font-black text-slate-900 text-base">Rider / Volunteer Accepts</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Registered rider portal me jakar task claim karta hai aur venue tak navigate karta hai.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-3">
-              <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center mx-auto text-xl font-black shadow-md">
-                3
-              </div>
-              <h3 class="font-black text-slate-900 text-base">Zarooratmand Tak Handover</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Fresh khana zarooratmand logon, night shelters ya rain basera me safely deliver ho jata hai.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- STICKY MOBILE TOP NAVIGATION BAR (Always visible at top of phone screen) -->
+    <div class="lg:hidden bg-slate-100/95 border-t border-slate-200 px-2 py-1.5 overflow-x-auto hide-scrollbar flex items-center gap-1.5 whitespace-nowrap shadow-inner">
+      <button onclick="navigateTo('home')" id="mob-home" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-sm flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-house"></i> Home
+      </button>
+      <button onclick="navigateTo('donate')" id="mob-donate" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-plus-circle text-emerald-600"></i> Donate Food
+      </button>
+      <button onclick="navigateTo('explore')" id="mob-explore" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-bowl-rice text-amber-500"></i> Meals (<span id="mobMealCount">0</span>)
+      </button>
+      <button onclick="navigateTo('rider')" id="mob-rider" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-motorcycle text-indigo-600"></i> Rider Hub
+      </button>
+      <button onclick="navigateTo('shelters')" id="mob-shelters" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-bed text-blue-500"></i> Shelters
+      </button>
+      <button onclick="navigateTo('radar')" id="mob-radar" class="mob-nav-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 flex items-center gap-1 shrink-0 transition">
+        <i class="fa-solid fa-map-location-dot text-rose-500"></i> Radar
+      </button>
     </div>
+  </header>
+  <!-- MAIN MULTI-PAGE APPLICATION CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
 
-    <!-- ==================== PAGE 2: DONATE SURPLUS FOOD PAGE ==================== -->
-    <div id="page-donate" class="page-view">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <div class="mb-8">
-          <button onclick="navigateTo('home')" class="text-xs font-bold text-slate-500 hover:text-emerald-700 flex items-center gap-1.5 mb-2">
-            <i class="fa-solid fa-arrow-left"></i> Back to Home
-          </button>
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-            <span class="text-xs font-black text-emerald-700 uppercase tracking-wider">Donation Form</span>
+    <!-- ==================== PAGE 1: HOME DASHBOARD ==================== -->
+    <div id="page-home" class="page-view active space-y-8">
+      
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white p-6 sm:p-10 lg:p-12 shadow-2xl border border-emerald-900/50">
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            Surplus Food Rescue & Delivery Network
           </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Donate Surplus Food (बचा हुआ खाना पोस्ट करें)</h2>
-          <p class="text-xs sm:text-sm text-slate-600 mt-1">Aap khud decide karein kitne logo ka khana hai aur kya dishes hain.</p>
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+            Shadi, Hotels aur Ghar Ka Khana <span class="text-emerald-400">Zaya Mat Hone Dein.</span>
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            AaharSetu banquets, hotels, caterers aur aam parivaron ko aas-paas ke rain basera, anathashram aur needy logon se jodta hai. Khana post karein, riders aur volunteers turant pickup karke deliver karenge.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button onclick="navigateTo('donate')" class="px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/30 transition flex items-center gap-2">
+              <i class="fa-solid fa-plus-circle text-base"></i> Bacha Hua Khana Post Karein
+            </button>
+            <button onclick="navigateTo('explore')" class="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm backdrop-blur border border-white/20 transition flex items-center gap-2">
+              <i class="fa-solid fa-bowl-rice text-amber-400"></i> Available Meals Dekhein
+            </button>
+            <button onclick="openRiderAuthModal()" class="px-5 py-3 rounded-2xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-sm backdrop-blur border border-indigo-400/30 transition flex items-center gap-2">
+              <i class="fa-solid fa-motorcycle"></i> Rider / Volunteer Join Karein
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick 3-Step Flow Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-black mb-4">
+            1
+          </div>
+          <h3 class="font-black text-slate-900 text-base mb-1">Post Surplus Food</h3>
+          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+            Shadi ya function ke baad bacha hua khana, dishes aur approx plates system par post karein.
+          </p>
         </div>
 
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-card-soft">
-          <form id="dedicatedDonateForm" onsubmit="handleDedicatedDonate(event)" class="space-y-6">
-            
-            <!-- Type & Category Selection (User Chooses) -->
-            <div>
-              <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-2">1. Khana kahan se hai? (Select Source) *</label>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <label class="cursor-pointer border border-slate-200 rounded-2xl p-3 flex flex-col items-center text-center hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50/70 transition">
-                  <input type="radio" name="pageSourceType" value="wedding" class="hidden">
-                  <i class="fa-solid fa-champagne-glasses text-lg text-amber-500 mb-1"></i>
-                  <span class="text-xs font-bold text-slate-800">Wedding / Function</span>
-                  <span class="text-[10px] text-slate-400">Shaadi Mandap</span>
-                </label>
-                <label class="cursor-pointer border border-slate-200 rounded-2xl p-3 flex flex-col items-center text-center hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50/70 transition">
-                  <input type="radio" name="pageSourceType" value="hotel" class="hidden">
-                  <i class="fa-solid fa-hotel text-lg text-blue-500 mb-1"></i>
-                  <span class="text-xs font-bold text-slate-800">Hotel / Restaurant</span>
-                  <span class="text-[10px] text-slate-400">Buffet / Cafe</span>
-                </label>
-                <label class="cursor-pointer border border-slate-200 rounded-2xl p-3 flex flex-col items-center text-center hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50/70 transition">
-                  <input type="radio" name="pageSourceType" value="home" class="hidden">
-                  <i class="fa-solid fa-house-chimney text-lg text-emerald-500 mb-1"></i>
-                  <span class="text-xs font-bold text-slate-800">Ghar Ka Khana</span>
-                  <span class="text-[10px] text-slate-400">Home Surplus</span>
-                </label>
-                <label class="cursor-pointer border border-slate-200 rounded-2xl p-3 flex flex-col items-center text-center hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50/70 transition">
-                  <input type="radio" name="pageSourceType" value="temple" class="hidden">
-                  <i class="fa-solid fa-om text-lg text-orange-500 mb-1"></i>
-                  <span class="text-xs font-bold text-slate-800">Langar / Bhandara</span>
-                  <span class="text-[10px] text-slate-400">Temple / Gurudwara</span>
-                </label>
-              </div>
-            </div>
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-black mb-4">
+            2
+          </div>
+          <h3 class="font-black text-slate-900 text-base mb-1">Rider / Volunteer Accepts</h3>
+          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+            Hamare verified delivery riders aur volunteers venue par aakar khana pack aur pickup karte hain.
+          </p>
+        </div>
 
-            <!-- Dietary and User Defined Servings/Plates (Blank, user enters) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Dietary Type *</label>
-                <select id="pDonateDietary" required class="w-full p-3 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                  <option value="" disabled selected>-- Khane ka type chunein --</option>
-                  <option value="veg">Pure Vegetarian (शुद्ध शाकाहारी)</option>
-                  <option value="jain">Satvik / Jain (Bina Lehsun Pyaaz)</option>
-                  <option value="nonveg">Non-Veg Included</option>
-                </select>
-              </div>
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-black mb-4">
+            3
+          </div>
+          <h3 class="font-black text-slate-900 text-base mb-1">Delivered to Needy</h3>
+          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+            Khana direct nearby rain basera, shelter homes ya slum clusters me izzat ke saath distribute hota hai.
+          </p>
+        </div>
+      </div>
 
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Kitne Logon Ka Khana Hai (Plates / Servings) *</label>
-                <div class="relative">
-                  <input type="number" id="pDonateServings" required min="1" placeholder="Kitne plates hain? (e.g. 25, 60, 150)" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                  <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xs">Plates</span>
-                </div>
-                <!-- Quick Plates Select Chips -->
-                <div class="flex items-center gap-1.5 mt-2 flex-wrap">
-                  <span class="text-[11px] text-slate-400 font-bold mr-1">Quick Select:</span>
-                  <button type="button" onclick="setQuickPlates(15)" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 rounded-lg text-xs font-bold text-slate-600 transition">15</button>
-                  <button type="button" onclick="setQuickPlates(30)" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 rounded-lg text-xs font-bold text-slate-600 transition">30</button>
-                  <button type="button" onclick="setQuickPlates(50)" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 rounded-lg text-xs font-bold text-slate-600 transition">50</button>
-                  <button type="button" onclick="setQuickPlates(100)" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 rounded-lg text-xs font-bold text-slate-600 transition">100</button>
-                  <button type="button" onclick="setQuickPlates(200)" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 rounded-lg text-xs font-bold text-slate-600 transition">200</button>
-                </div>
-              </div>
-            </div>
+      <!-- Quick Section: Active Fresh Meals Preview -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900">Abhi Available Meals</h2>
+            <p class="text-xs text-slate-500">Live listings ready for pickup & distribution</p>
+          </div>
+          <button onclick="navigateTo('explore')" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs sm:text-sm flex items-center gap-1">
+            Sabhi Dekhein <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div id="homeMealsPreviewGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
 
-            <!-- Venue & Menu Details (User Enters or Chooses Quick Items) -->
-            <div class="space-y-4">
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Aapka Naam / Venue / Ghar ka pata *</label>
-                <input type="text" id="pDonateVenue" required placeholder="Aapka ya aapki jagah ka naam (e.g. Royal Banquet, Rajat Sharma)" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              </div>
+    </div>
+    <!-- ==================== PAGE 2: DONATE FOOD ==================== -->
+    <div id="page-donate" class="page-view space-y-6">
+      
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="border-b border-slate-100 pb-5 mb-6">
+          <div class="flex items-center gap-2 text-emerald-700 text-xs font-black uppercase tracking-wider mb-1">
+            <i class="fa-solid fa-hand-holding-heart"></i> Food Rescue Form
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Bacha Hua Khana Post Karein</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            Aapki information seedha nearby verified riders aur shelters tak pahunchegi taaki khana kharab hone se pehle pick ho sake.
+          </p>
+        </div>
 
-              <div>
-                <div class="flex items-center justify-between mb-1.5">
-                  <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide">Khane Me Kya-Kya Dishes Hain? (Menu) *</label>
-                  <span class="text-[11px] text-emerald-600 font-bold">Chips click karke add karein ya khud type karein</span>
-                </div>
-                
-                <!-- Quick Dish Selection Chips -->
-                <div class="flex flex-wrap gap-1.5 mb-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                  <button type="button" onclick="addDishTag('Dal Makhani')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Dal Makhani</button>
-                  <button type="button" onclick="addDishTag('Paneer Butter Masala')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Shahi/Butter Paneer</button>
-                  <button type="button" onclick="addDishTag('Poori Sabzi')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Poori Sabzi</button>
-                  <button type="button" onclick="addDishTag('Jeera Rice / Chawal')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Jeera Rice</button>
-                  <button type="button" onclick="addDishTag('Tawa / Tandoori Roti')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Tawa Roti</button>
-                  <button type="button" onclick="addDishTag('Veg Biryani / Pulao')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Veg Biryani</button>
-                  <button type="button" onclick="addDishTag('Mix Veg Sabzi')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Mix Veg</button>
-                  <button type="button" onclick="addDishTag('Gulab Jamun / Sweet')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Gulab Jamun</button>
-                  <button type="button" onclick="addDishTag('Chicken Curry / Biryani')" class="px-2.5 py-1 bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 rounded-lg text-xs font-medium transition shadow-sm">+ Non-Veg Dish</button>
-                </div>
+        <form id="foodDonationForm" onsubmit="handleFoodDonationSubmit(event)" class="space-y-6">
+          
+          <!-- Event / Venue Source Type -->
+          <div>
+            <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-2">1. Khana Kahan Se Hai? (Event Source) *</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <label class="flex flex-col items-center justify-center p-3.5 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 cursor-pointer text-center transition event-type-card" onclick="selectEventType(this)">
+                <input type="radio" name="eventType" value="Wedding / Banquet" checked class="hidden">
+                <i class="fa-solid fa-champagne-glasses text-emerald-600 text-xl mb-1.5"></i>
+                <span class="text-xs font-extrabold text-slate-800">Wedding / Banquet</span>
+              </label>
 
-                <textarea id="pDonateItems" required rows="2" placeholder="Jaise: Dal Makhani, Roti, Chawal, Sabzi... (Upar ke buttons click karke bhi add kar sakte hain)" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
-              </div>
-            </div>
+              <label class="flex flex-col items-center justify-center p-3.5 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-center transition event-type-card" onclick="selectEventType(this)">
+                <input type="radio" name="eventType" value="Hotel / Restaurant" class="hidden">
+                <i class="fa-solid fa-utensils text-slate-600 text-xl mb-1.5"></i>
+                <span class="text-xs font-bold text-slate-700">Hotel / Buffet</span>
+              </label>
 
-            <!-- Freshness Window and Packaging -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Kitne ghante tak khana theek rahega? *</label>
-                <select id="pDonateHours" required class="w-full p-3 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                  <option value="" disabled selected>-- Ghante chunein --</option>
-                  <option value="2">Agale 2 ghante me pick karna zaroori hai</option>
-                  <option value="4">3 se 4 ghante tak bilkul theek hai</option>
-                  <option value="6">5 se 6 ghante tak chalega</option>
-                  <option value="12">12+ ghante (Sukhi rotis / Packed food)</option>
-                </select>
-              </div>
+              <label class="flex flex-col items-center justify-center p-3.5 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-center transition event-type-card" onclick="selectEventType(this)">
+                <input type="radio" name="eventType" value="House / Family Party" class="hidden">
+                <i class="fa-solid fa-house-chimney text-slate-600 text-xl mb-1.5"></i>
+                <span class="text-xs font-bold text-slate-700">Ghar / Household</span>
+              </label>
 
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Packaging kaisi hai? *</label>
-                <input type="text" id="pDonatePackaging" required placeholder="Boxes me pack hai ya bartan laane honge?" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              </div>
-            </div>
-
-            <!-- Address and Phone -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">City / Area *</label>
-                <input type="text" id="pDonateCity" required placeholder="Aapka sheher ya area" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              </div>
-
-              <div>
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Contact Phone Number (Rider ke liye) *</label>
-                <input type="tel" id="pDonatePhone" required placeholder="Phone number jisse rider contact kare" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide mb-1.5">Pura Pickup Address & Landmark *</label>
-              <input type="text" id="pDonateAddress" required placeholder="Ghar/hall number, gali, ya landmark" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-            </div>
-
-            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 flex items-start gap-3">
-              <input type="checkbox" id="pDonateHygiene" required class="mt-1 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
-              <label for="pDonateHygiene" class="text-xs text-amber-900 font-semibold leading-relaxed">
-                Main confirm karta/karti hoon ki khana fresh aur saaf-suthra hai, kisi ke khane yogya hai.
+              <label class="flex flex-col items-center justify-center p-3.5 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-center transition event-type-card" onclick="selectEventType(this)">
+                <input type="radio" name="eventType" value="Temple / Langar" class="hidden">
+                <i class="fa-solid fa-place-of-worship text-slate-600 text-xl mb-1.5"></i>
+                <span class="text-xs font-bold text-slate-700">Langar / Prasad</span>
               </label>
             </div>
+          </div>
 
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-end gap-3">
-              <button type="button" onclick="navigateTo('home')" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-300 text-slate-600 font-bold text-xs hover:bg-slate-100 transition">
-                Cancel
-              </button>
-              <button type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm transition shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Post Khana for Pickup</span>
-              </button>
-            </div>
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ==================== PAGE 3: SURPLUS FOOD FEED PAGE ==================== -->
-    <div id="page-explore" class="page-view">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
+          <!-- Dishes & Food Items with Quick Chips -->
           <div>
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <span class="text-xs font-black text-emerald-700 uppercase tracking-wider">Live Food Feed</span>
+            <div class="flex items-center justify-between mb-2">
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm">2. Khane Me Kya-Kya Hai? (Dishes) *</label>
+              <span class="text-[11px] text-slate-400">Niche diye buttons se click karke ya type karke likhein</span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Available Meals (Bacha Hua Khana)</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">Yahan log khana post karte hain. Rider ya zarooratmand aakar claim kar sakte hain.</p>
-          </div>
 
-          <div class="flex items-center gap-2">
-            <button onclick="navigateTo('donate')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center gap-2">
-              <i class="fa-solid fa-plus"></i> Post Khana
-            </button>
-          </div>
-        </div>
-
-        <!-- Filter Bar -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm my-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
-          <div class="lg:col-span-5 relative">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input type="text" id="feedSearch" oninput="applyFilters()" placeholder="Area ya dish ka naam search karein..." class="w-full pl-9 pr-3 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500">
-          </div>
-
-          <div class="lg:col-span-3">
-            <select id="feedCategory" onchange="applyFilters()" class="w-full py-2.5 px-3 text-xs sm:text-sm rounded-xl border border-slate-200 bg-white">
-              <option value="all">All Sources</option>
-              <option value="wedding">Weddings / Functions</option>
-              <option value="hotel">Hotels & Restaurants</option>
-              <option value="home">Household / Ghar ka khana</option>
-              <option value="temple">Langar / Prasad</option>
-            </select>
-          </div>
-
-          <div class="lg:col-span-2">
-            <select id="feedDietary" onchange="applyFilters()" class="w-full py-2.5 px-3 text-xs sm:text-sm rounded-xl border border-slate-200 bg-white">
-              <option value="all">All Diet Types</option>
-              <option value="veg">Pure Veg</option>
-              <option value="jain">Satvik / Jain</option>
-              <option value="nonveg">Non-Veg</option>
-            </select>
-          </div>
-
-          <div class="lg:col-span-2 flex justify-end">
-            <button onclick="resetFeedFilters()" class="w-full py-2.5 px-3 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-arrow-rotate-left"></i> Reset
-            </button>
-          </div>
-        </div>
-
-        <!-- Food Listings Grid -->
-        <div id="listingsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Populated dynamically by User Posts -->
-        </div>
-
-        <!-- Empty State -->
-        <div id="feedEmptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 p-8 my-6">
-          <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3 text-xl">
-            <i class="fa-solid fa-utensils"></i>
-          </div>
-          <h3 class="text-base font-bold text-slate-800">Abhi koi surplus food listing available nahi hai</h3>
-          <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1">Agar aapke paas bacha hua khana hai toh "Post Khana" button dabakar donate karein.</p>
-          <button onclick="navigateTo('donate')" class="mt-3 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold hover:bg-emerald-700 transition">
-            Post Khana Now
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ==================== PAGE 4: RIDER / DELIVERY PARTNER PORTAL ==================== -->
-    <div id="page-rider" class="page-view">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <!-- Rider Header Banner -->
-        <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl border border-slate-800">
-          <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold border border-indigo-400/30">
-              <i class="fa-solid fa-motorcycle text-indigo-400"></i> Delivery & Volunteer Rider Desk
+            <!-- Quick Dish Chips -->
+            <div class="flex flex-wrap gap-1.5 mb-2.5">
+              <button type="button" onclick="addDishChip('Dal Makhani')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Dal Makhani
+              </button>
+              <button type="button" onclick="addDishChip('Paneer Sabzi')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Paneer Sabzi
+              </button>
+              <button type="button" onclick="addDishChip('Poori Sabzi')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Poori Sabzi
+              </button>
+              <button type="button" onclick="addDishChip('Tawa/Tandoori Roti')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Roti / Naan
+              </button>
+              <button type="button" onclick="addDishChip('Jeera Rice / Pulao')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Pulao / Rice
+              </button>
+              <button type="button" onclick="addDishChip('Veg Biryani')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Veg Biryani
+              </button>
+              <button type="button" onclick="addDishChip('Gulab Jamun / Sweet')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 text-xs font-medium transition border border-slate-200">
+                + Mithai / Sweets
+              </button>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black">Khana Pickup & Delivery Portal</h2>
-            <p class="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Jo khana book hua hai, riders usey pick karke zarooratmand ya rain basera tak deliver karte hain.
-            </p>
+
+            <textarea id="donateDishesInput" required rows="3" placeholder="Dishes likhein, jaise: Shahi Paneer, Dal Fry, 50 Rotis, Jeera Rice aur Sweets..." class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
           </div>
 
-          <!-- Rider Auth Card -->
-          <div id="riderStatusBox" class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-xs space-y-2 min-w-[260px]">
-            <div class="flex items-center justify-between">
-              <span class="text-slate-300 font-bold">Rider Status:</span>
-              <span id="riderOnlineBadge" class="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold text-[10px]">Not Logged In</span>
+          <!-- Quantity / Plates with Quick Increments -->
+          <div>
+            <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-2">3. Kitne Logon Ka Khana Hai? (Plates / Servings) *</label>
+            <div class="flex items-center gap-3">
+              <input type="number" id="donatePlatesInput" required min="1" max="5000" placeholder="Plates sankhya daalein" class="w-44 p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm font-black text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <button type="button" onclick="setQuickPlates(15)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">15</button>
+                <button type="button" onclick="setQuickPlates(30)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">30</button>
+                <button type="button" onclick="setQuickPlates(50)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">50</button>
+                <button type="button" onclick="setQuickPlates(100)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">100</button>
+                <button type="button" onclick="setQuickPlates(200)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">200+</button>
+              </div>
             </div>
-            <div id="riderProfileInfo" class="text-slate-200">
-              <p>Login karein taaki aap pickup tasks accept kar sakein.</p>
-            </div>
-            <button id="riderAuthActionBtn" onclick="openRiderAuthModal()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow">
-              <i class="fa-solid fa-right-to-bracket"></i>
-              <span>Rider Login / Sign Up</span>
-            </button>
           </div>
-        </div>
 
-        <!-- Rider Active Tasks Section -->
-        <div class="mt-8 space-y-6">
-          <div class="flex items-center justify-between">
+          <!-- Dietary & Freshness Hours -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <h3 class="text-lg font-black text-slate-900">Active Pickup & Delivery Tasks</h3>
-              <p class="text-xs text-slate-500">Available food donations jinhe pickup ki zaroorat hai</p>
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Dietary Type *</label>
+              <select id="donateDietInput" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white font-medium">
+                <option value="Pure Veg">Pure Veg (शुद्ध शाकाहारी)</option>
+                <option value="Jain / Satvik">Jain / Satvik (No Onion/Garlic)</option>
+                <option value="Non-Veg">Non-Veg Included</option>
+              </select>
             </div>
-            <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full" id="riderTaskCountPill">0 Tasks Pending</span>
+
+            <div>
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Kitne Ghante Tak Fresh Rahega? *</label>
+              <select id="donateExpiryInput" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white font-medium">
+                <option value="2-3 Hours">2-3 Ghante (Bohat Urgent Pickup)</option>
+                <option value="4-5 Hours" selected>4-5 Ghante (Normal Safe Window)</option>
+                <option value="6-8 Hours">6-8 Ghante (Refrigerated / Freshly Cooked)</option>
+              </select>
+            </div>
           </div>
 
-          <div id="riderTasksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Populated by JS -->
+          <!-- Venue / Location & Contact -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Venue / Ghar Ka Naam *</label>
+              <input type="text" id="donateVenueInput" required placeholder="e.g. Royal Palace Banquet ya Sharma House" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Area / Sheher *</label>
+              <input type="text" id="donateCityInput" required placeholder="e.g. Rohini Sector 14, Delhi" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-800 text-xs sm:text-sm mb-1.5">Mobile / WhatsApp Number *</label>
+              <input type="tel" id="donatePhoneInput" required placeholder="e.g. 98765 43210" class="w-full p-3.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
           </div>
+
+          <!-- Packaging & Food Safety Check -->
+          <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
+            <i class="fa-solid fa-shield-heart text-amber-600 text-base mt-0.5"></i>
+            <div>
+              <p class="font-bold">Khane Ki Quality & Hygiene Niyam:</p>
+              <p class="mt-0.5 text-amber-800">
+                Khana saaf bartano ya foil trays me pack hona chahiye aur kharab nahi hona chahiye. Rider aane par OTP check karke handover karein.
+              </p>
+            </div>
+          </div>
+
+          <!-- Form Submit Action -->
+          <div class="flex items-center justify-end gap-3 pt-2">
+            <button type="button" onclick="navigateTo('explore')" class="px-5 py-3 rounded-2xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
+              Cancel
+            </button>
+            <button type="submit" class="px-8 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-600/30 transition flex items-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i> Surplus Food Post Karein
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    <!-- ==================== PAGE 3: AVAILABLE MEALS FEED ==================== -->
+    <div id="page-explore" class="page-view space-y-6">
+      
+      <!-- Filter Bar -->
+      <div class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        <div class="flex-1 relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="feedSearchInput" oninput="filterMealListings()" placeholder="Area ya dish se search karein (e.g. Rohini, Paneer, Banquet)..." class="w-full pl-11 pr-4 py-2.5 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
         </div>
 
+        <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar">
+          <select id="feedTypeFilter" onchange="filterMealListings()" class="px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:outline-none">
+            <option value="ALL">Sabhi Categories</option>
+            <option value="Wedding / Banquet">Weddings & Banquets</option>
+            <option value="Hotel / Restaurant">Hotels & Restaurants</option>
+            <option value="House / Family Party">Ghar / Households</option>
+            <option value="Temple / Langar">Langar / Prasad</option>
+          </select>
+
+          <select id="feedDietFilter" onchange="filterMealListings()" class="px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:outline-none">
+            <option value="ALL">Sabhi Diets</option>
+            <option value="Pure Veg">Pure Veg</option>
+            <option value="Jain / Satvik">Jain / Satvik</option>
+            <option value="Non-Veg">Non-Veg</option>
+          </select>
+        </div>
       </div>
+
+      <!-- Feed Listings Grid -->
+      <div id="allMealsFeedGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+    </div>
+    <!-- ==================== PAGE 4: RIDER & VOLUNTEER HUB ==================== -->
+    <div id="page-rider" class="page-view space-y-6">
+      
+      <!-- Top Rider Hub Status Header -->
+      <div class="bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-800/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 text-xs font-bold mb-2">
+            <i class="fa-solid fa-motorcycle"></i> Logistics & On-Ground Delivery
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black">Rider & Volunteer Hub</h2>
+          <p class="text-xs sm:text-sm text-indigo-200 mt-1 max-w-xl">
+            Surplus food pickup tasks accept karein, venues par jakar food collect karein aur night shelters tak safe delivery ensure karein.
+          </p>
+        </div>
+
+        <div id="riderPortalProfileCard" class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-2xl flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500 flex items-center justify-center text-xl text-white font-black">
+            <i class="fa-solid fa-motorcycle"></i>
+          </div>
+          <div>
+            <p class="text-xs text-indigo-200">Current Status</p>
+            <p id="riderPortalName" class="font-extrabold text-sm text-white">Not Logged In</p>
+            <button onclick="openRiderAuthModal()" class="text-xs font-bold text-amber-300 hover:text-amber-200 underline mt-0.5">
+              Click Here to Login / Register
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Pickup Tasks for Riders -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-black text-slate-900">Active Pickup & Delivery Tasks</h3>
+            <p class="text-xs text-slate-500">Pickups that need immediate volunteer action</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200" id="riderTaskCounter">
+            0 Tasks Active
+          </span>
+        </div>
+
+        <div id="riderTasksGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Dynamically populated tasks -->
+        </div>
+      </div>
+
+    </div>
+    <!-- ==================== PAGE 5: SHELTER DEMAND BOARD ==================== -->
+    <div id="page-shelters" class="page-view space-y-6">
+      
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2 border border-blue-200">
+            <i class="fa-solid fa-bed"></i> Rain Basera & Orphanage Requirements
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Shelter Food Demand Board</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+            Yahan par night shelters (rain basera) aur anathashram apni khane ki zaroorat post karte hain taaki hotels aur caterers sidha unhe khana de sakein.
+          </p>
+        </div>
+
+        <button onclick="openShelterRequestModal()" class="px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-2 shrink-0">
+          <i class="fa-solid fa-plus-circle"></i> Post Shelter Requirement
+        </button>
+      </div>
+
+      <div id="shelterDemandsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Rendered via JavaScript -->
+      </div>
+
     </div>
 
-    <!-- ==================== PAGE 5: SHELTER DEMAND BOARD PAGE ==================== -->
-    <div id="page-shelters" class="page-view">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">
-              <i class="fa-solid fa-bullhorn text-amber-600"></i> Shelter & Rain Basera Board
+    <!-- ==================== PAGE 6: CITY RADAR ==================== -->
+    <div id="page-radar" class="page-view space-y-6">
+      
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center gap-2 text-rose-600 text-xs font-black uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-location-crosshairs"></i> Geospatial Rescue Clusters
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Delhi-NCR City Radar</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Aapke area ke major banquet corridors aur shelter zones jahan khane ka rescue sabse zyada required hota hai.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+          <div onclick="filterRadarByCluster('Rohini')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 cursor-pointer transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-black text-slate-900 text-base">North Delhi Corridor</span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Food Requirement Board</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">Shelters aur ashram yahan apni khane ki requirement post kar sakte hain.</p>
+            <p class="text-xs text-slate-600 mb-2">Rohini, GT Karnal Road Banquet Belt</p>
+            <span class="text-[11px] font-bold text-emerald-700">Click to filter nearby food &rarr;</span>
           </div>
 
-          <button onclick="openShelterModal()" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition shadow-md flex items-center gap-2 self-start md:self-auto">
-            <i class="fa-solid fa-plus-circle"></i>
-            <span>Post Requirement</span>
-          </button>
-        </div>
+          <div onclick="filterRadarByCluster('Gurugram')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 cursor-pointer transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-black text-slate-900 text-base">Gurugram Hub</span>
+              <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
+            </div>
+            <p class="text-xs text-slate-600 mb-2">CyberHub & Golf Course Road Buffets</p>
+            <span class="text-[11px] font-bold text-emerald-700">Click to filter nearby food &rarr;</span>
+          </div>
 
-        <div id="shelterGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <!-- Populated by JS -->
+          <div onclick="filterRadarByCluster('Noida')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 cursor-pointer transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-black text-slate-900 text-base">Noida-Ghaziabad Belt</span>
+              <span class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
+            </div>
+            <p class="text-xs text-slate-600 mb-2">Sector 62, Indirapuram Shelters</p>
+            <span class="text-[11px] font-bold text-emerald-700">Click to filter nearby food &rarr;</span>
+          </div>
         </div>
-
       </div>
-    </div>
 
-    <!-- ==================== PAGE 6: LIVE RADAR PAGE ==================== -->
-    <div id="page-radar" class="page-view">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-          <div>
-            <span class="text-xs font-black uppercase tracking-wider text-purple-600 flex items-center gap-1.5">
-              <i class="fa-solid fa-satellite-dish"></i> Geospatial City Radar
-            </span>
-            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Area Food Radar</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">Aapke area ke mutabik food listings filter karein.</p>
-          </div>
-        </div>
-
-        <!-- Radar Hubs Grid -->
-        <div class="my-8 bg-slate-950 rounded-3xl p-6 sm:p-8 border border-slate-800 relative overflow-hidden text-white">
-          <div class="relative z-10 flex items-center justify-between border-b border-slate-800 pb-4">
-            <span class="font-extrabold text-sm">Select Your Locality</span>
-            <span class="text-xs text-slate-400">Click to filter feed</span>
-          </div>
-
-          <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 py-6">
-            <div onclick="filterFromRadar('Rohini')" class="cursor-pointer bg-slate-900 hover:bg-slate-800 border border-slate-700 p-5 rounded-2xl transition">
-              <span class="text-xs font-black text-emerald-400"><i class="fa-solid fa-location-dot mr-1"></i> North Area</span>
-              <p class="text-sm font-bold text-white mt-1">Rohini & Pitampura</p>
-              <p class="text-xs text-slate-400 mt-1">Banquets & Halls Corridor</p>
-            </div>
-
-            <div onclick="filterFromRadar('Gurugram')" class="cursor-pointer bg-slate-900 hover:bg-slate-800 border border-slate-700 p-5 rounded-2xl transition">
-              <span class="text-xs font-black text-emerald-400"><i class="fa-solid fa-location-dot mr-1"></i> Gurugram</span>
-              <p class="text-sm font-bold text-white mt-1">CyberHub & MG Road</p>
-              <p class="text-xs text-slate-400 mt-1">Hotels & Caterers</p>
-            </div>
-
-            <div onclick="filterFromRadar('Noida')" class="cursor-pointer bg-slate-900 hover:bg-slate-800 border border-slate-700 p-5 rounded-2xl transition">
-              <span class="text-xs font-black text-amber-400"><i class="fa-solid fa-location-dot mr-1"></i> Noida</span>
-              <p class="text-sm font-bold text-white mt-1">Sector 62 & 18</p>
-              <p class="text-xs text-slate-400 mt-1">Community Centres</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
 
   </main>
+  <!-- ==================== 1. GENERAL USER / DONOR AUTH MODAL ==================== -->
+  <div id="userAuthModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
+      
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-700 p-6 text-white relative">
+        <button onclick="closeUserAuthModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl shadow">
+            <i class="fa-solid fa-circle-user"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-black">User / Donor Login</h3>
+            <p class="text-xs text-emerald-100">Ghar, Hotel, Banquet ya Citizen Login</p>
+          </div>
+        </div>
+      </div>
 
-  <!-- ==================== RIDER AUTH MODAL ==================== -->
+      <form id="userLoginForm" onsubmit="handleUserLoginSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Aapka Role Kya Hai? *</label>
+          <select id="userRoleSelect" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white font-medium">
+            <option value="Ghar / Family Donor">Ghar / Family Donor (Household)</option>
+            <option value="Wedding / Banquet Host">Shaadi / Banquet Hall Host</option>
+            <option value="Hotel / Restaurant Manager">Hotel / Restaurant Manager</option>
+            <option value="Needy / Individual Receiver">Individual / Needy Receiver</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Aapka Pura Naam *</label>
+          <input type="text" id="userAuthName" required placeholder="e.g. Rahul Sharma" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
+          <input type="tel" id="userAuthPhone" required placeholder="e.g. 98112 34567" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Aapka Sheher / Area *</label>
+          <input type="text" id="userAuthCity" required placeholder="e.g. Rohini, Delhi" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeUserAuthModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-md">
+            Login Karein
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== 2. RIDER & VOLUNTEER DUAL AUTH MODAL ==================== -->
   <div id="riderAuthModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-gradient-to-r from-indigo-700 to-slate-900 p-6 text-white relative">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
+      
+      <div class="bg-gradient-to-r from-indigo-800 to-indigo-950 p-6 text-white relative">
         <button onclick="closeRiderAuthModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
           <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-            <i class="fa-solid fa-motorcycle"></i>
+          <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl shadow">
+            <i class="fa-solid fa-people-carry-box"></i>
           </div>
           <div>
-            <h3 class="text-lg font-black">Rider / Volunteer Login</h3>
-            <p class="text-xs text-indigo-200">Khana pick karne ke liye register/login karein</p>
+            <h3 class="text-lg font-black">Rider & Volunteer Portal</h3>
+            <p class="text-xs text-indigo-200">Delivery Rider ya Community Volunteer Banein</p>
           </div>
         </div>
       </div>
 
       <form id="riderLoginForm" onsubmit="handleRiderLoginSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+        
+        <!-- Toggle: Delivery Rider vs Volunteer -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Aap Kis Role Me Join Karna Chahte Hain? *</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="roleBtnRider" onclick="setRiderRoleType('Rider')" class="py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-motorcycle"></i> Delivery Rider
+            </button>
+            <button type="button" id="roleBtnVolunteer" onclick="setRiderRoleType('Volunteer')" class="py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-hand-holding-heart"></i> Volunteer
+            </button>
+          </div>
+        </div>
+
         <div>
           <label class="block font-bold text-slate-700 mb-1">Aapka Pura Naam *</label>
-          <input type="text" id="riderNameInput" required placeholder="e.g. Rahul Sharma" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <input type="text" id="riderAuthName" required placeholder="e.g. Vikram Singh" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Mobile Number *</label>
-          <input type="tel" id="riderPhoneInput" required placeholder="e.g. 98112 34567" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
+          <input type="tel" id="riderAuthPhone" required placeholder="e.g. 98110 99887" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Vehicle Type *</label>
-            <select id="riderVehicleInput" required class="w-full p-3 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-              <option value="Bike / Scooter">Bike / Scooter</option>
-              <option value="Auto / E-Rickshaw">Auto / E-Rickshaw</option>
-              <option value="Car / Van">Car / Mini Van</option>
-              <option value="On Foot / Bicycle">On Foot / Cycle</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Preferred Area *</label>
-            <input type="text" id="riderAreaInput" required placeholder="e.g. Rohini, Noida" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-          </div>
+        <!-- Vehicle Details (Switches dynamically) -->
+        <div id="vehicleSection">
+          <label class="block font-bold text-slate-700 mb-1">Aapka Vehicle Type *</label>
+          <select id="riderVehicleSelect" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white font-medium">
+            <option value="Bike / Motorcycle">Bike / Motorcycle (Small pickups)</option>
+            <option value="Scooter">Scooter / Scooty</option>
+            <option value="Auto / E-Rickshaw">Auto / E-Rickshaw (Medium quantities)</option>
+            <option value="Van / Car">Van / Small Carrier (Large wedding buffets)</option>
+          </select>
         </div>
 
-        <div class="pt-2 flex items-center justify-end gap-3">
-          <button type="button" onclick="closeRiderAuthModal()" class="px-4 py-2 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 transition text-xs">
+        <div id="volunteerRoleSection" class="hidden">
+          <label class="block font-bold text-slate-700 mb-1">Volunteer Responsibility Preference *</label>
+          <select id="volunteerPrefSelect" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white font-medium">
+            <option value="Food Packaging & Inspection">Food Packing & Quality Check</option>
+            <option value="Shelter Distribution">Shelter / Rain Basera Distribution</option>
+            <option value="Area Coordinator">Local Area Coordination</option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeRiderAuthModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
             Cancel
           </button>
-          <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition shadow-md flex items-center gap-2 text-xs">
-            <i class="fa-solid fa-check"></i>
-            <span>Login as Rider</span>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition shadow-md">
+            Login & Start Tasks
           </button>
         </div>
       </form>
+
     </div>
   </div>
-
-  <!-- ==================== CLAIM LISTING MODAL ==================== -->
-  <div id="claimModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-gradient-to-r from-emerald-700 to-teal-800 p-6 text-white relative">
-        <button onclick="closeClaimModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
+  <!-- ==================== 3. CLAIM / REQUEST MEAL MODAL ==================== -->
+  <div id="claimMealModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fadeIn">
+      
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-800 p-6 text-white relative">
+        <button onclick="closeClaimMealModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-            <i class="fa-solid fa-truck-ramp-box"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-black">Khana Book / Claim Karein</h3>
-            <p class="text-xs text-emerald-100">Aap khud decide karein kitni plates claim karni hain</p>
-          </div>
-        </div>
+        <h3 class="text-lg font-black">Khana Claim / Request Karein</h3>
+        <p class="text-xs text-emerald-100" id="claimModalListingTitle">Surplus Food Rescue</p>
       </div>
 
-      <div class="p-6 space-y-4 text-xs sm:text-sm">
-        <div id="claimItemSummary" class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-          <!-- Populated by JS -->
-        </div>
+      <form id="claimMealForm" onsubmit="handleClaimSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
+        <input type="hidden" id="claimListingId">
 
-        <form id="claimForm" onsubmit="handleClaimSubmit(event)" class="space-y-4">
-          <!-- User decides how many plates to claim -->
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Aapko Kitni Plates Chahiyein? (Select Quantity) *</label>
-            <div class="relative">
-              <input type="number" id="claimPlatesCount" required min="1" placeholder="Kitni plates pick karni hain?" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xs">Plates</span>
-            </div>
-            <p class="text-[11px] text-slate-400 mt-1">Aap poora ya partial khana claim kar sakte hain.</p>
-          </div>
-
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Aapka Naam ya Volunteer/NGO ka Naam *</label>
-            <input type="text" id="claimNgoName" required placeholder="Aapka naam ya trust ka naam" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Contact Number *</label>
-            <input type="tel" id="claimNgoPhone" required placeholder="Aapka phone number" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Yeh khana kahan deliver hoga? *</label>
-            <input type="text" id="claimDestination" required placeholder="Rain basera / Basti / Zarooratmand location" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-          </div>
-
-          <div class="pt-2 flex items-center justify-end gap-3">
-            <button type="button" onclick="closeClaimModal()" class="px-4 py-2 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 transition text-xs">
-              Cancel
-            </button>
-            <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md flex items-center gap-2 text-xs">
-              <i class="fa-solid fa-check"></i>
-              <span>Confirm Booking</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SHELTER REQUEST MODAL ==================== -->
-  <div id="shelterModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-6 text-white relative">
-        <button onclick="closeShelterModal()" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-            <i class="fa-solid fa-bullhorn"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-black">Food Requirement Post Karein</h3>
-            <p class="text-xs text-amber-100">Bataiye kitne logo ke khane ki zaroorat hai</p>
-          </div>
-        </div>
-      </div>
-
-      <form id="shelterForm" onsubmit="handleShelterSubmit(event)" class="p-6 space-y-4 text-xs sm:text-sm">
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Aapka / Ashram / Shelter ka Naam *</label>
-          <input type="text" id="shelterFormName" required placeholder="Shelter ya sanstha ka naam" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Kitne Meals Chahiyein? *</label>
-            <input type="number" id="shelterFormCount" required min="1" placeholder="Plates sankhya" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Kab Tak Chahiye? *</label>
-            <select id="shelterFormTime" required class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-50">
-              <option value="Aaj Raat (Dinner)">Aaj Raat (Dinner)</option>
-              <option value="Kal Dopahar (Lunch)">Kal Dopahar (Lunch)</option>
-              <option value="Emergency (Abhi)">Emergency (Abhi)</option>
-            </select>
-          </div>
+          <label class="block font-bold text-slate-700 mb-1">Aapko Kitni Plates Chahiye? *</label>
+          <input type="number" id="claimPlatesInput" required min="1" placeholder="Plates sankhya daalein" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none font-bold">
+          <p class="text-[11px] text-slate-400 mt-1" id="claimMaxAvailableNotice">Total available: 50 plates</p>
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Area / Locality *</label>
-          <input type="text" id="shelterFormLoc" required placeholder="Sheher aur area" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Aapka Naam / NGO Ka Naam *</label>
+          <input type="text" id="claimReceiverName" required placeholder="e.g. Vikas / Hope Foundation" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Contact Phone Number *</label>
-          <input type="tel" id="shelterFormPhone" required placeholder="Phone number" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Contact / WhatsApp Number *</label>
+          <input type="tel" id="claimReceiverPhone" required placeholder="e.g. 98112 23344" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
         </div>
 
-        <div class="pt-2 flex items-center justify-end gap-3">
-          <button type="button" onclick="closeShelterModal()" class="px-4 py-2 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 transition text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Khana Kahan Lekar Jayenge? (Destination) *</label>
+          <input type="text" id="claimReceiverDest" required placeholder="e.g. Rain Basera Yamuna Ghat ya Nearby Slum" class="w-full p-3 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeClaimMealModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-slate-100 text-xs transition">
             Cancel
           </button>
-          <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black transition shadow-md flex items-center gap-2 text-xs">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span>Post Requirement</span>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-md">
+            Confirm & Assign Rider
           </button>
         </div>
       </form>
+
     </div>
   </div>
 
-  <!-- ==================== FLOATING GEMINI AI ASSISTANT ==================== -->
-  <div id="aiChatDrawer" class="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 w-full max-w-[360px] sm:max-w-[400px] bg-white rounded-3xl shadow-2xl border border-purple-200 overflow-hidden hidden flex-col transition-all duration-300">
-    <!-- Header -->
+  <!-- ==================== 4. SETU AI ASSISTANT DRAWER ==================== -->
+  <div id="aiAssistantDrawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white shadow-2xl border-l border-slate-200 hidden flex-col transition-all">
     <div class="bg-gradient-to-r from-purple-700 to-indigo-800 p-4 text-white flex items-center justify-between">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-sm shadow">
+        <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-lg">
           <i class="fa-solid fa-wand-magic-sparkles"></i>
         </div>
         <div>
-          <h4 class="font-extrabold text-sm">Setu AI Assistant</h4>
-          <p class="text-[10px] text-purple-200">Surplus Food & Safety Guide</p>
+          <h3 class="font-black text-sm">Setu AI Assistant</h3>
+          <p class="text-[11px] text-purple-200">Food Safety & Platform Guide</p>
         </div>
       </div>
-      <button onclick="toggleAiAssistant()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center text-white transition text-xs">
+      <button onclick="toggleAiAssistant()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
 
-    <!-- Messages Container -->
-    <div id="aiChatMessages" class="p-4 space-y-3 h-80 overflow-y-auto text-xs bg-slate-50 custom-scrollbar">
-      <div class="flex gap-2">
-        <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs shrink-0">
-          <i class="fa-solid fa-robot"></i>
-        </div>
-        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-700 leading-relaxed shadow-sm">
-          Namaste! 🙏 Main AaharSetu AI hoon. Aap mujhse khana donate karne ke niyam, rider pickup process ya bache hue khane ki safety ke baare me kuch bhi pooch sakte hain.
-        </div>
+    <div id="aiChatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 custom-scrollbar text-xs">
+      <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl border border-purple-100">
+        <p class="font-bold">Namaste! Main Setu AI hoon.</p>
+        <p class="mt-1">Aap mujhse pooch sakte hain: khana kaise donate karein, food safety guidelines kya hain, ya rider banne ka process kya hai.</p>
       </div>
     </div>
 
-    <!-- Quick Prompt Pills -->
-    <div class="px-3 py-2 bg-purple-50/60 border-t border-purple-100 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap text-[10px]">
-      <button onclick="sendQuickPrompt('Khana safe kaise pack karein?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 rounded-full border border-purple-200">
-        Khana pack kaise karein?
-      </button>
-      <button onclick="sendQuickPrompt('Rider khana kaise pick karta hai?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 rounded-full border border-purple-200">
-        Rider process kya hai?
-      </button>
-      <button onclick="sendQuickPrompt('Shadi ka khana kitne der tak safe rehta hai?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 rounded-full border border-purple-200">
-        Khane ki freshness window?
-      </button>
-    </div>
-
-    <!-- Input Form -->
-    <form id="aiChatForm" onsubmit="handleAiChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
-      <input type="text" id="aiChatInput" placeholder="Apna sawal yahan likhein..." required class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500">
-      <button type="submit" id="aiSendBtn" class="p-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition text-xs shadow flex items-center justify-center">
-        <i class="fa-solid fa-paper-plane"></i>
-      </button>
-    </form>
-  </div>
-
-  <!-- Floating Toggle Button for AI -->
-  <button onclick="toggleAiAssistant()" id="aiFloatingBtn" class="fixed bottom-20 md:bottom-6 right-6 z-40 bg-purple-600 hover:bg-purple-700 text-white p-3.5 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-bold transition hover:scale-105">
-    <i class="fa-solid fa-wand-magic-sparkles text-sm animate-pulse"></i>
-    <span class="hidden sm:inline">Ask AI Assistant</span>
-  </button>
-
-  <!-- Toast Notification Alert Box (No alert() used) -->
-  <div id="toast" class="fixed bottom-16 md:bottom-6 left-6 z-50 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-3.5 border border-slate-700 transform translate-y-36 opacity-0 transition-all duration-300 pointer-events-none">
-    <div id="toastIcon" class="w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-sm shadow">
-      <i class="fa-solid fa-check"></i>
-    </div>
-    <div>
-      <h5 id="toastTitle" class="text-xs font-black text-white">Done</h5>
-      <p id="toastMessage" class="text-xs text-slate-300">Action performed successfully.</p>
+    <div class="p-3 border-t border-slate-200 bg-slate-50">
+      <div class="flex gap-1.5">
+        <input type="text" id="aiUserInput" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Poochhein (e.g. Khana kitne ghante me kharab hota hai?)..." class="flex-1 px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-purple-500 focus:outline-none">
+        <button onclick="sendAiMessage()" class="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs transition">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="space-y-2">
-        <div class="flex items-center gap-2 text-white font-bold text-sm">
-          <i class="fa-solid fa-hands-holding-child text-emerald-400 text-base"></i>
-          <span>AaharSetu Mission</span>
-        </div>
-        <p class="text-slate-400 text-xs leading-relaxed">
-          Surplus khane ko zaya hone se bachakar un logon tak pahunchana jinhe iski zaroorat hai.
-        </p>
-      </div>
-
-      <div>
-        <h5 class="text-white font-bold text-xs uppercase mb-2">Platform Pages</h5>
-        <div class="space-y-1.5 flex flex-col">
-          <button onclick="navigateTo('home')" class="text-left hover:text-emerald-400 transition">1. Home Page</button>
-          <button onclick="navigateTo('donate')" class="text-left hover:text-emerald-400 transition">2. Post Khana</button>
-          <button onclick="navigateTo('explore')" class="text-left hover:text-emerald-400 transition">3. Available Meals</button>
-          <button onclick="navigateTo('rider')" class="text-left hover:text-emerald-400 transition">4. Rider / Delivery Portal</button>
-          <button onclick="navigateTo('shelters')" class="text-left hover:text-emerald-400 transition">5. Shelter Requirements</button>
-        </div>
-      </div>
-
-      <div>
-        <h5 class="text-white font-bold text-xs uppercase mb-2">Rider & Volunteers</h5>
-        <p class="text-slate-400 leading-relaxed">
-          Agar aapke paas bike, scooter ya van hai, toh aap Rider Portal me login karke bacha hua khana pick karke drop karne me madad kar sakte hain.
-        </p>
-      </div>
-
-      <div>
-        <h5 class="text-white font-bold text-xs uppercase mb-2">Setu AI Guide</h5>
-        <p class="text-slate-400 leading-relaxed">
-          Khana packaging, freshness aur delivery related sawalon ke liye hamare built-in AI Assistant se pooch sakte hain.
-        </p>
-      </div>
+  <!-- Custom Floating Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 max-w-sm bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-700 hidden flex items-start gap-3 animate-fadeIn">
+    <div id="toastIconSlot" class="text-emerald-400 text-lg mt-0.5">
+      <i class="fa-solid fa-circle-check"></i>
     </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-500">
-      <span>© AaharSetu. Community-driven surplus food rescue platform.</span>
-      <div class="flex items-center gap-3">
-        <span>Zero Food Waste</span>
-        <span>•</span>
-        <span>Direct Connect</span>
-      </div>
+    <div class="flex-1">
+      <h4 id="toastTitle" class="font-extrabold text-xs text-white">Notification</h4>
+      <p id="toastMessage" class="text-[11px] text-slate-300 mt-0.5"></p>
     </div>
-  </footer>
-
+    <button onclick="hideToast()" class="text-slate-400 hover:text-white text-xs">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
   <script>
-    // Starter listings added with realistic surplus meals for immediate display, while keeping options open for user additions
+    // ==================== APPLICATION STATE ====================
+    let activePage = 'home';
+    let currentUser = null; // { name, phone, role, city }
+    let currentRider = null; // { name, phone, type: 'Rider'|'Volunteer', vehicle, pref }
+    let selectedRiderAuthType = 'Rider';
+
+    // Realistic community starter listings (user can claim plates or add new ones)
     let listings = [
       {
         id: 'L-101',
-        title: 'Wedding Reception Surplus Feast (85 Plates)',
-        sourceType: 'wedding',
         venue: 'Grand Heritage Palace Banquet',
-        city: 'Rohini, Sector 14, Delhi',
-        address: 'Gate 2, Grand Heritage Hall, Outer Ring Road',
-        servings: 85,
-        dietary: 'veg',
-        dietaryLabel: 'Pure Veg',
-        items: 'Paneer Lababdar, Dal Makhani, Mix Veg, 150+ Tawa Roti, Jeera Pulao, Gulab Jamun',
-        packaging: 'Packed in clean catering thermal containers. Disposable plates available.',
-        hoursLeft: 4,
-        postedAgo: '35 mins ago',
-        phone: '9810245671',
-        status: 'available',
-        claimedBy: null,
-        claimedServings: null,
-        riderName: null
+        category: 'Wedding / Banquet',
+        city: 'Rohini Sector 14, Delhi',
+        dishes: 'Paneer Lababdar, Dal Makhani, 120 Tawa Rotis, Jeera Rice, Gulab Jamun',
+        plates: 85,
+        diet: 'Pure Veg',
+        expiry: '3-4 Hours',
+        phone: '98112 45678',
+        postedAt: 'Just now',
+        status: 'Available',
+        urgency: 'Urgent'
       },
       {
         id: 'L-102',
-        title: 'Hotel Buffet Surplus Lunch & Dinner (35 Plates)',
-        sourceType: 'hotel',
-        venue: 'The Amber Leaf Restaurant & Hotel',
-        city: 'Cyber City, Gurugram',
-        address: 'DLF Phase 2, Main Market Road',
-        servings: 35,
-        dietary: 'veg',
-        dietaryLabel: 'Pure Veg',
-        items: 'Chole, Paneer Butter Masala, Steamed Basmati Rice, 50 Butter Roti, Bundi Raita',
-        packaging: 'Packed in sealed aluminium food grade boxes. Ready to load.',
-        hoursLeft: 3,
-        postedAgo: '1 hour ago',
-        phone: '9871132456',
-        status: 'available',
-        claimedBy: null,
-        claimedServings: null,
-        riderName: null
+        venue: 'The Amber Leaf Restaurant & Buffet',
+        category: 'Hotel / Restaurant',
+        city: 'CyberHub, DLF Phase 2, Gurugram',
+        dishes: 'Chole Masala, Subz Biryani, Roomali Roti, Boondi Raita',
+        plates: 35,
+        diet: 'Pure Veg',
+        expiry: '4-5 Hours',
+        phone: '99104 22133',
+        postedAt: '25 mins ago',
+        status: 'Available',
+        urgency: 'Safe'
       },
       {
         id: 'L-103',
-        title: 'Gurudwara Langar & Prasad Prasadam (120 Plates)',
-        sourceType: 'temple',
-        venue: 'Gurudwara Sahib Committee',
-        city: 'Noida, Sector 27',
-        address: 'Opposite Community Center, Near Metro Station',
-        servings: 120,
-        dietary: 'veg',
-        dietaryLabel: 'Pure Veg',
-        items: 'Urad Chana Dal, Aloo Gobi, Fresh Tandoori Rotis, Kada Prasad',
-        packaging: 'Clean stainless steel sealed buckets and drums. Bartan sath me le ja sakte hain.',
-        hoursLeft: 6,
-        postedAgo: '15 mins ago',
-        phone: '9899123489',
-        status: 'available',
-        claimedBy: null,
-        claimedServings: null,
-        riderName: null
+        venue: 'Gurudwara Committee Sahib',
+        category: 'Temple / Langar',
+        city: 'GT Road, Shahdara, Delhi',
+        dishes: 'Langar Dal, Aloo Gobi, Tandoori Roti, Kada Prasad',
+        plates: 120,
+        diet: 'Pure Veg',
+        expiry: '5-6 Hours',
+        phone: '98731 90812',
+        postedAt: '40 mins ago',
+        status: 'Available',
+        urgency: 'Safe'
       },
       {
         id: 'L-104',
-        title: 'Birthday Party Surplus Home Food (18 Plates)',
-        sourceType: 'home',
-        venue: 'Sharma Niwas',
-        city: 'Janakpuri, Delhi',
-        address: 'B-Block, Street No 4, House 12',
-        servings: 18,
-        dietary: 'veg',
-        dietaryLabel: 'Pure Veg',
-        items: 'Pav Bhaji (Fresh Bhaji with 40 Pav), Veg Pulao, Rasgulla (20 pcs)',
-        packaging: 'Clean airtight casseroles & lunch packs',
-        hoursLeft: 5,
-        postedAgo: '50 mins ago',
-        phone: '9818876543',
-        status: 'available',
-        claimedBy: null,
-        claimedServings: null,
-        riderName: null
+        venue: 'Sharma Niwas Family Function',
+        category: 'House / Family Party',
+        city: 'Indirapuram, Ghaziabad',
+        dishes: 'Pav Bhaji (Fresh), Veg Pulao, Rasgulla (15 pcs)',
+        plates: 18,
+        diet: 'Pure Veg',
+        expiry: '2 Hours',
+        phone: '98109 87654',
+        postedAt: '50 mins ago',
+        status: 'Available',
+        urgency: 'Urgent'
       }
     ];
 
-    let shelters = [
+    // Starter Shelter Demands
+    let shelterDemands = [
       {
-        id: 'SR-1',
-        name: 'Delhi Night Shelter (Rain Basera #42)',
-        location: 'Kashmere Gate ISBT, Delhi',
-        needCount: 65,
-        time: 'Aaj Raat (Dinner)',
-        phone: '9811002233',
-        desc: '65 homeless and daily-wage individuals need dinner packets before 10 PM.'
+        id: 'S-201',
+        name: 'Kashmere Gate Rain Basera #4',
+        location: 'ISBT Bridge ke paas, Delhi',
+        platesNeeded: 90,
+        contact: '98101 23456',
+        dietPref: 'Veg Meal Preferred'
       },
       {
-        id: 'SR-2',
-        name: 'Bal Ashray Children Care Home',
+        id: 'S-202',
+        name: 'Bal Ashray Orphanage',
         location: 'Sector 62, Noida',
-        needCount: 40,
-        time: 'Kal Dopahar (Lunch)',
-        phone: '9877665544',
-        desc: 'Nutritious lunch needed for 40 children. Dal, roti, chawal or sabzi welcomed.'
+        platesNeeded: 45,
+        contact: '99203 44556',
+        dietPref: 'Dal, Roti & Sweets'
       }
     ];
 
-    let currentRider = null;
-    let activeClaimId = null;
-
-    // Helper function to quickly set plate count from quick-chips
-    function setQuickPlates(count) {
-      const input = document.getElementById('pDonateServings');
-      if (input) {
-        input.value = count;
-      }
-    }
-
-    // Helper function to quickly append dishes into menu textarea
-    function addDishTag(dishName) {
-      const textarea = document.getElementById('pDonateItems');
-      if (!textarea) return;
-      const current = textarea.value.trim();
-      if (!current) {
-        textarea.value = dishName;
-      } else if (!current.toLowerCase().includes(dishName.toLowerCase())) {
-        textarea.value = current + ', ' + dishName;
-      }
-      textarea.focus();
-    }
-
-    // SPA Router
+    // ==================== PAGE ROUTING ====================
     function navigateTo(pageId) {
-      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-      const targetPage = document.getElementById(`page-${pageId}`);
-      if (targetPage) {
-        targetPage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      activePage = pageId;
 
+      // Toggle views
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active');
+      });
+      const targetView = document.getElementById(`page-${pageId}`);
+      if (targetView) targetView.classList.add('active');
+
+      // Update Desktop Nav styles
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'bg-emerald-50');
-        btn.classList.add('text-slate-600');
+        btn.classList.add('hover:text-emerald-700', 'hover:bg-slate-100');
       });
-      const activeNav = document.getElementById(`nav-${pageId}`);
-      if (activeNav) {
-        activeNav.classList.remove('text-slate-600');
-        activeNav.classList.add('text-emerald-700', 'bg-emerald-50');
+      const activeNavBtn = document.getElementById(`nav-${pageId}`);
+      if (activeNavBtn) {
+        activeNavBtn.classList.remove('hover:text-emerald-700', 'hover:bg-slate-100');
+        activeNavBtn.classList.add('text-emerald-700', 'bg-emerald-50');
       }
 
-      document.querySelectorAll('.mob-btn').forEach(btn => {
-        btn.classList.remove('text-emerald-600');
-        btn.classList.add('text-slate-500');
+      // Update Sticky Mobile Nav styles
+      document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
       });
-      const activeMob = document.getElementById(`mob-${pageId}`);
-      if (activeMob) {
-        activeMob.classList.remove('text-slate-500');
-        activeMob.classList.add('text-emerald-600');
+      const activeMobBtn = document.getElementById(`mob-${pageId}`);
+      if (activeMobBtn) {
+        activeMobBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        activeMobBtn.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
       }
 
-      if (pageId === 'rider') {
-        renderRiderTasks();
-      }
+      // Re-render components
+      if (pageId === 'home') renderHomePreviews();
+      if (pageId === 'explore') renderAllListings();
+      if (pageId === 'rider') renderRiderTasks();
+      if (pageId === 'shelters') renderShelterDemands();
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // Render Listings
-    function renderListings(items) {
-      const grid = document.getElementById('listingsGrid');
-      const emptyState = document.getElementById('feedEmptyState');
-      if (!grid) return;
-
-      if (!items || items.length === 0) {
-        grid.innerHTML = '';
-        emptyState.classList.remove('hidden');
-        return;
-      }
-
-      emptyState.classList.add('hidden');
-
-      grid.innerHTML = items.map(item => {
-        const isUrgent = item.hoursLeft <= 3 && item.status === 'available';
-        const isClaimed = item.status === 'claimed';
-        const isPicked = item.status === 'in_transit';
-        const isDelivered = item.status === 'delivered';
-
-        const sourceConfig = {
-          'wedding': { icon: 'fa-champagne-glasses', color: 'text-amber-500 bg-amber-50', label: 'Wedding' },
-          'hotel': { icon: 'fa-hotel', color: 'text-blue-500 bg-blue-50', label: 'Hotel Buffet' },
-          'home': { icon: 'fa-house-chimney', color: 'text-emerald-500 bg-emerald-50', label: 'Household' },
-          'temple': { icon: 'fa-om', color: 'text-orange-500 bg-orange-50', label: 'Langar/Prasad' }
-        }[item.sourceType] || { icon: 'fa-bowl-rice', color: 'text-emerald-500 bg-emerald-50', label: 'Surplus' };
-
-        const dietBadge = item.dietary === 'veg'
-          ? '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Veg</span>'
-          : (item.dietary === 'jain'
-            ? '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Satvik</span>'
-            : '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-800 bg-rose-100 px-2 py-0.5 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span> Non-Veg</span>');
-
-        let statusOverlay = '';
-        if (isDelivered) {
-          statusOverlay = `
-            <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm z-10 flex flex-col items-center justify-center text-white p-5 text-center">
-              <div class="w-12 h-12 rounded-xl bg-teal-500 flex items-center justify-center text-xl mb-2">
-                <i class="fa-solid fa-circle-check"></i>
-              </div>
-              <h4 class="text-base font-black">DELIVERED TO NEEDY</h4>
-              <p class="text-xs text-slate-300 mt-1">Delivered by: <strong class="text-emerald-400">${item.riderName || 'Rider'}</strong></p>
-            </div>
-          `;
-        } else if (isPicked) {
-          statusOverlay = `
-            <div class="absolute inset-0 bg-indigo-950/90 backdrop-blur-sm z-10 flex flex-col items-center justify-center text-white p-5 text-center">
-              <div class="w-12 h-12 rounded-xl bg-indigo-500 flex items-center justify-center text-xl mb-2 animate-bounce">
-                <i class="fa-solid fa-motorcycle"></i>
-              </div>
-              <h4 class="text-base font-black">ON THE WAY</h4>
-              <p class="text-xs text-slate-300 mt-1">Rider <strong>${item.riderName || 'Partner'}</strong> is delivering this food</p>
-            </div>
-          `;
-        } else if (isClaimed) {
-          statusOverlay = `
-            <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm z-10 flex flex-col items-center justify-center text-white p-5 text-center">
-              <div class="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center text-xl mb-2">
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <h4 class="text-base font-black">CLAIMED & BOOKED</h4>
-              <p class="text-xs text-slate-300 mt-1">Claimed: <strong class="text-emerald-400">${item.claimedServings || item.servings} Plates</strong></p>
-              <p class="text-xs text-slate-400 mt-0.5">By: ${item.claimedBy}</p>
-            </div>
-          `;
-        }
-
-        return `
-          <div class="bg-white rounded-3xl border ${isUrgent ? 'border-amber-300 ring-2 ring-amber-400/20' : 'border-slate-200'} p-5 flex flex-col justify-between shadow-card-soft hover:shadow-lg transition relative overflow-hidden group">
-            
-            ${isUrgent ? `
-              <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider flex items-center gap-1">
-                <i class="fa-solid fa-bolt"></i> Urgent Pickup
-              </div>
-            ` : ''}
-
-            ${statusOverlay}
-
-            <div>
-              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                  <span class="w-7 h-7 rounded-lg ${sourceConfig.color} flex items-center justify-center text-xs">
-                    <i class="fa-solid ${sourceConfig.icon}"></i>
-                  </span>
-                  <span class="text-xs font-black text-slate-700 uppercase tracking-wide">${sourceConfig.label}</span>
-                </div>
-                <div>${dietBadge}</div>
-              </div>
-
-              <div class="mt-3">
-                <h3 class="font-extrabold text-slate-900 text-base group-hover:text-emerald-600 transition">
-                  ${item.title}
-                </h3>
-                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1">
-                  <i class="fa-solid fa-location-dot text-rose-500"></i>
-                  <span class="font-bold text-slate-700">${item.venue}</span> • ${item.city}
-                </p>
-              </div>
-
-              <div class="my-3.5 p-3.5 bg-emerald-50/70 rounded-2xl border border-emerald-100 flex items-center justify-between">
-                <div>
-                  <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block">Quantity</span>
-                  <span class="text-xl font-black text-emerald-950">${item.servings} Plates</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Fresh Window</span>
-                  <span class="text-xs font-black ${item.hoursLeft <= 3 ? 'text-amber-700' : 'text-slate-800'}">
-                    <i class="fa-regular fa-clock mr-0.5"></i> ${item.hoursLeft} Hrs left
-                  </span>
-                </div>
-              </div>
-
-              <p class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 leading-relaxed">
-                <strong>Menu:</strong> ${item.items}
-              </p>
-
-              <p class="text-[11px] text-slate-400 mt-2 flex items-center gap-1">
-                <i class="fa-solid fa-box text-slate-400"></i> Packaging: ${item.packaging}
-              </p>
+    // ==================== RENDERING LISTINGS ====================
+    function renderListingsMarkup(item) {
+      const isUrgent = item.urgency === 'Urgent';
+      return `
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
+                item.category.includes('Wedding') ? 'bg-amber-100 text-amber-800' :
+                item.category.includes('Hotel') ? 'bg-blue-100 text-blue-800' :
+                item.category.includes('Temple') ? 'bg-orange-100 text-orange-800' :
+                'bg-emerald-100 text-emerald-800'
+              }">
+                ${item.category}
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isUrgent ? 'bg-rose-100 text-rose-700 animate-pulse' : 'bg-slate-100 text-slate-600'}">
+                <i class="fa-solid fa-clock mr-1"></i>${item.expiry}
+              </span>
             </div>
 
-            <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-              <span class="text-[11px] text-slate-400 font-medium">${item.postedAgo}</span>
-              <div class="flex items-center gap-1.5">
-                <a href="tel:${item.phone}" class="p-2 rounded-xl border border-slate-200 text-slate-600 hover:text-emerald-600 transition" title="Call Donor">
-                  <i class="fa-solid fa-phone text-xs"></i>
-                </a>
-                <button onclick="openClaimModal('${item.id}')" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-1.5">
-                  <i class="fa-solid fa-hand-holding-heart"></i> Claim Food
-                </button>
-              </div>
+            <h3 class="font-black text-slate-900 text-base leading-snug">${item.venue}</h3>
+            <p class="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> ${item.city}
+            </p>
+
+            <div class="my-3 p-3 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-700">
+              <span class="font-bold text-slate-900 block mb-0.5">Dishes:</span>
+              <p class="line-clamp-2">${item.dishes}</p>
             </div>
 
+            <div class="flex items-center justify-between text-xs mb-4">
+              <div class="flex items-center gap-1 font-bold text-slate-700">
+                <span class="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-black">${item.plates} Plates</span>
+                <span class="text-slate-400">Available</span>
+              </div>
+              <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                ${item.diet}
+              </span>
+            </div>
           </div>
-        `;
-      }).join('');
+
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+            <button onclick="openClaimModal('${item.id}')" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-hand-holding-heart"></i> Claim Food
+            </button>
+            <a href="https://wa.me/?text=${encodeURIComponent('AaharSetu Surplus Food Alert: ' + item.plates + ' plates available at ' + item.venue + ', ' + item.city + '. Dishes: ' + item.dishes)}" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 font-bold text-xs transition flex items-center justify-center gap-1.5 border border-slate-200">
+              <i class="fa-brands fa-whatsapp text-emerald-600"></i> Share
+            </a>
+          </div>
+        </div>
+      `;
     }
 
-    // Render Rider Tasks in Rider View
-    function renderRiderTasks() {
-      const container = document.getElementById('riderTasksGrid');
-      const countPill = document.getElementById('riderTaskCountPill');
+    function renderHomePreviews() {
+      const container = document.getElementById('homeMealsPreviewGrid');
       if (!container) return;
-
-      const activeTasks = listings.filter(l => l.status !== 'delivered');
-      countPill.innerText = `${activeTasks.length} Tasks Pending`;
-
-      if (activeTasks.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-full py-12 bg-white rounded-3xl border border-dashed border-slate-200 text-center p-6">
-            <i class="fa-solid fa-motorcycle text-3xl text-slate-300 mb-2"></i>
-            <h4 class="text-sm font-bold text-slate-700">Koi active delivery task nahi hai</h4>
-            <p class="text-xs text-slate-400 mt-1">Jab koi food donate karega, yahan pickup task automatically aa jayega.</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = activeTasks.map(task => {
-        const isInTransit = task.status === 'in_transit';
-        return `
-          <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-card-soft flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full">
-                  <i class="fa-solid fa-box mr-1"></i> ${task.servings} Plates
-                </span>
-                <span class="text-xs font-bold ${isInTransit ? 'text-amber-600' : 'text-slate-500'}">
-                  ${isInTransit ? 'Out For Delivery' : 'Ready for Pickup'}
-                </span>
-              </div>
-
-              <h4 class="font-extrabold text-slate-900 text-base">${task.title}</h4>
-              <p class="text-xs text-slate-600"><strong>Pickup:</strong> ${task.venue}, ${task.address}, ${task.city}</p>
-              <p class="text-xs text-slate-500"><strong>Contact:</strong> ${task.phone}</p>
-              <p class="text-xs text-slate-500"><strong>Menu:</strong> ${task.items}</p>
-            </div>
-
-            <div class="pt-4 mt-4 border-t border-slate-100 space-y-2">
-              ${!isInTransit ? `
-                <button onclick="handleRiderAcceptPickup('${task.id}')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow">
-                  <i class="fa-solid fa-motorcycle"></i> Accept & Start Pickup
-                </button>
-              ` : `
-                <button onclick="handleRiderCompleteDelivery('${task.id}')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow">
-                  <i class="fa-solid fa-circle-check"></i> Mark Delivered to Needy
-                </button>
-              `}
-            </div>
-          </div>
-        `;
-      }).join('');
+      const previewList = listings.slice(0, 3);
+      container.innerHTML = previewList.map(renderListingsMarkup).join('');
+      updateCounters();
     }
 
-    // Dedicated Donate Form Submission (User enters exact plates and items)
-    function handleDedicatedDonate(e) {
+    function renderAllListings() {
+      const container = document.getElementById('allMealsFeedGrid');
+      if (!container) return;
+      filterMealListings();
+    }
+
+    function filterMealListings() {
+      const search = (document.getElementById('feedSearchInput')?.value || '').toLowerCase();
+      const typeFilter = document.getElementById('feedTypeFilter')?.value || 'ALL';
+      const dietFilter = document.getElementById('feedDietFilter')?.value || 'ALL';
+
+      const filtered = listings.filter(item => {
+        const matchesSearch = item.venue.toLowerCase().includes(search) || 
+                              item.city.toLowerCase().includes(search) || 
+                              item.dishes.toLowerCase().includes(search);
+        const matchesType = (typeFilter === 'ALL') || (item.category === typeFilter);
+        const matchesDiet = (dietFilter === 'ALL') || (item.diet === dietFilter);
+        return matchesSearch && matchesType && matchesDiet;
+      });
+
+      const container = document.getElementById('allMealsFeedGrid');
+      if (container) {
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+              <i class="fa-solid fa-bowl-rice text-3xl mb-2 text-slate-300"></i>
+              <p class="font-bold text-sm">Koi meal match nahi hua.</p>
+              <p class="text-xs mt-1">Filters clear karein ya naya surplus food post karein.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = filtered.map(renderListingsMarkup).join('');
+        }
+      }
+      updateCounters();
+    }
+
+    function updateCounters() {
+      const count = listings.length;
+      const navCount = document.getElementById('navMealCount');
+      if (navCount) navCount.innerText = count;
+      const mobCount = document.getElementById('mobMealCount');
+      if (mobCount) mobCount.innerText = count;
+    }
+    // ==================== DONATION FORM CONTROLS ====================
+    function selectEventType(cardEl) {
+      document.querySelectorAll('.event-type-card').forEach(c => {
+        c.classList.remove('border-emerald-500', 'bg-emerald-50/50');
+        c.classList.add('border-slate-200', 'bg-slate-50');
+      });
+      cardEl.classList.remove('border-slate-200', 'bg-slate-50');
+      cardEl.classList.add('border-emerald-500', 'bg-emerald-50/50');
+    }
+
+    function addDishChip(dishName) {
+      const textarea = document.getElementById('donateDishesInput');
+      if (!textarea) return;
+      if (textarea.value.trim().length > 0) {
+        textarea.value += ', ' + dishName;
+      } else {
+        textarea.value = dishName;
+      }
+    }
+
+    function setQuickPlates(num) {
+      const input = document.getElementById('donatePlatesInput');
+      if (input) input.value = num;
+    }
+
+    function handleFoodDonationSubmit(e) {
       e.preventDefault();
-
-      const sourceRadio = document.querySelector('input[name="pageSourceType"]:checked');
-      if (!sourceRadio) {
-        showToast('Please Select', 'Kripya khane ka source chunein (Wedding, Hotel, Home, ya Langar).');
-        return;
-      }
-
-      const sourceType = sourceRadio.value;
-      const dietary = document.getElementById('pDonateDietary').value;
-      const servings = parseInt(document.getElementById('pDonateServings').value);
-      const venue = document.getElementById('pDonateVenue').value.trim();
-      const items = document.getElementById('pDonateItems').value.trim();
-      const hoursLeft = parseInt(document.getElementById('pDonateHours').value);
-      const packaging = document.getElementById('pDonatePackaging').value.trim();
-      const city = document.getElementById('pDonateCity').value.trim();
-      const phone = document.getElementById('pDonatePhone').value.trim();
-      const address = document.getElementById('pDonateAddress').value.trim();
-
-      if (!servings || servings <= 0) {
-        showToast('Invalid Count', 'Kripya plates ki sahi sankhya daalein.');
-        return;
-      }
-
-      const labels = { veg: 'Pure Veg', jain: 'Satvik / Jain', nonveg: 'Non-Veg' };
-      const titles = {
-        wedding: 'Wedding Function Surplus Food',
-        hotel: 'Restaurant / Hotel Surplus Food',
-        home: 'Ghar Ka Surplus Khana',
-        temple: 'Prasad / Langar Surplus'
-      };
+      const eventTypeEl = document.querySelector('input[name="eventType"]:checked');
+      const category = eventTypeEl ? eventTypeEl.value : 'Wedding / Banquet';
+      const dishes = document.getElementById('donateDishesInput').value.trim();
+      const plates = parseInt(document.getElementById('donatePlatesInput').value, 10);
+      const diet = document.getElementById('donateDietInput').value;
+      const expiry = document.getElementById('donateExpiryInput').value;
+      const venue = document.getElementById('donateVenueInput').value.trim();
+      const city = document.getElementById('donateCityInput').value.trim();
+      const phone = document.getElementById('donatePhoneInput').value.trim();
 
       const newListing = {
-        id: 'L-' + Date.now().toString().slice(-4),
-        title: `${titles[sourceType] || 'Surplus Food'} (${servings} Plates)`,
-        sourceType,
+        id: 'L-' + (100 + listings.length + 1),
         venue,
+        category,
         city,
-        address,
-        servings,
-        dietary,
-        dietaryLabel: labels[dietary] || 'Veg',
-        items,
-        packaging,
-        hoursLeft,
-        postedAgo: 'Just now',
+        dishes,
+        plates,
+        diet,
+        expiry,
         phone,
-        status: 'available',
-        claimedBy: null,
-        claimedServings: null,
-        riderName: null
+        postedAt: 'Just now',
+        status: 'Available',
+        urgency: expiry.includes('2-3') ? 'Urgent' : 'Safe'
       };
 
+      // Add to beginning of array
       listings.unshift(newListing);
-      document.getElementById('dedicatedDonateForm').reset();
-      updateBadges();
 
-      showToast('Khana Post Ho Gaya! 🙏', `${servings} plates ki listing publish ho chuki hai.`);
-      
-      setTimeout(() => {
-        navigateTo('explore');
-        renderListings(listings);
-      }, 700);
+      showToast('Khana Successfully Post Ho Gaya! 🎉', `${plates} plates for pickup from ${venue} live ho chuki hain.`);
+      document.getElementById('foodDonationForm').reset();
+      navigateTo('explore');
     }
 
-    // Claim Modal Logic (User enters how many plates they need)
-    function openClaimModal(id) {
-      const item = listings.find(l => l.id === id);
+    // ==================== CLAIM MEALS WORKFLOW ====================
+    function openClaimModal(listingId) {
+      const item = listings.find(l => l.id === listingId);
       if (!item) return;
 
-      activeClaimId = id;
-      const box = document.getElementById('claimItemSummary');
-      box.innerHTML = `
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-black text-slate-900">${item.venue}</span>
-          <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">${item.servings} Plates Available</span>
-        </div>
-        <p class="text-xs text-slate-600"><strong>Dishes:</strong> ${item.items}</p>
-        <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i>${item.address}, ${item.city}</p>
-      `;
+      document.getElementById('claimListingId').value = item.id;
+      document.getElementById('claimModalListingTitle').innerText = `${item.venue} (${item.plates} plates available)`;
+      document.getElementById('claimPlatesInput').max = item.plates;
+      document.getElementById('claimPlatesInput').value = item.plates;
+      document.getElementById('claimMaxAvailableNotice').innerText = `Total available: ${item.plates} plates`;
 
-      // Set default max plates in input
-      const platesInput = document.getElementById('claimPlatesCount');
-      platesInput.max = item.servings;
-      platesInput.placeholder = `Max ${item.servings} plates`;
-      platesInput.value = item.servings;
+      // Pre-fill user data if logged in
+      if (currentUser) {
+        document.getElementById('claimReceiverName').value = currentUser.name;
+        document.getElementById('claimReceiverPhone').value = currentUser.phone;
+      }
 
-      const modal = document.getElementById('claimModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      document.getElementById('claimMealModal').classList.remove('hidden');
+      document.getElementById('claimMealModal').classList.add('flex');
     }
 
-    function closeClaimModal() {
-      const modal = document.getElementById('claimModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      activeClaimId = null;
+    function closeClaimMealModal() {
+      document.getElementById('claimMealModal').classList.add('hidden');
+      document.getElementById('claimMealModal').classList.remove('flex');
     }
 
     function handleClaimSubmit(e) {
       e.preventDefault();
-      if (!activeClaimId) return;
+      const listingId = document.getElementById('claimListingId').value;
+      const requestedPlates = parseInt(document.getElementById('claimPlatesInput').value, 10);
+      const receiverName = document.getElementById('claimReceiverName').value.trim();
+      const destination = document.getElementById('claimReceiverDest').value.trim();
 
-      const claimedPlates = parseInt(document.getElementById('claimPlatesCount').value) || 1;
-      const ngoName = document.getElementById('claimNgoName').value.trim();
-      const item = listings.find(l => l.id === activeClaimId);
-      
+      const item = listings.find(l => l.id === listingId);
       if (item) {
-        item.status = 'claimed';
-        item.claimedBy = ngoName;
-        item.claimedServings = claimedPlates;
+        if (requestedPlates >= item.plates) {
+          // Remove listing if all plates claimed
+          listings = listings.filter(l => l.id !== listingId);
+        } else {
+          // Reduce plates
+          item.plates -= requestedPlates;
+        }
       }
 
-      closeClaimModal();
-      document.getElementById('claimForm').reset();
-      applyFilters();
-
-      showToast('Food Booked! 🚚', `${claimedPlates} plates reserve ho chuki hain.`);
+      closeClaimMealModal();
+      showToast('Claim Confirmed & Rider Dispatched! 🏍️', `${requestedPlates} plates assign kar di gayi hain destination: ${destination}`);
+      renderAllListings();
+      renderHomePreviews();
+    }
+    // ==================== USER AUTHENTICATION ====================
+    function openUserAuthModal() {
+      document.getElementById('userAuthModal').classList.remove('hidden');
+      document.getElementById('userAuthModal').classList.add('flex');
     }
 
-    // Rider Authentication & Pickup System
+    function closeUserAuthModal() {
+      document.getElementById('userAuthModal').classList.add('hidden');
+      document.getElementById('userAuthModal').classList.remove('flex');
+    }
+
+    function handleUserLoginSubmit(e) {
+      e.preventDefault();
+      const role = document.getElementById('userRoleSelect').value;
+      const name = document.getElementById('userAuthName').value.trim();
+      const phone = document.getElementById('userAuthPhone').value.trim();
+      const city = document.getElementById('userAuthCity').value.trim();
+
+      currentUser = { name, phone, role, city };
+
+      // Update Header Slot
+      const shortName = name.split(' ')[0];
+      const slot = document.getElementById('userHeaderAuthSlot');
+      if (slot) {
+        slot.innerHTML = `
+          <div class="flex items-center gap-1 bg-emerald-50 border border-emerald-200 px-2 py-1.5 rounded-xl">
+            <span class="text-xs font-black text-emerald-800 flex items-center gap-1">
+              <i class="fa-solid fa-circle-user text-emerald-600"></i> ${shortName}
+            </span>
+            <button onclick="handleUserLogout()" title="Logout" class="text-slate-400 hover:text-rose-600 text-xs px-1">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </div>
+        `;
+      }
+
+      // Pre-fill donation fields
+      if (document.getElementById('donateVenueInput')) document.getElementById('donateVenueInput').value = name;
+      if (document.getElementById('donateCityInput')) document.getElementById('donateCityInput').value = city;
+      if (document.getElementById('donatePhoneInput')) document.getElementById('donatePhoneInput').value = phone;
+
+      closeUserAuthModal();
+      showToast(`Namaste, ${shortName}! 👋`, `Aap ${role} ke roop me login ho chuke hain.`);
+    }
+
+    function handleUserLogout() {
+      currentUser = null;
+      const slot = document.getElementById('userHeaderAuthSlot');
+      if (slot) {
+        slot.innerHTML = `
+          <button onclick="openUserAuthModal()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-circle-user text-emerald-600"></i>
+            <span id="userBtnLabel">User Login</span>
+          </button>
+        `;
+      }
+      showToast('Logged Out', 'User account se logout ho gaye hain.');
+    }
+
+    // ==================== RIDER & VOLUNTEER AUTHENTICATION ====================
+    function setRiderRoleType(type) {
+      selectedRiderAuthType = type;
+      const riderBtn = document.getElementById('roleBtnRider');
+      const volunteerBtn = document.getElementById('roleBtnVolunteer');
+      const vehicleSec = document.getElementById('vehicleSection');
+      const volSec = document.getElementById('volunteerRoleSection');
+
+      if (type === 'Rider') {
+        riderBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
+        volunteerBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
+        vehicleSec.classList.remove('hidden');
+        volSec.classList.add('hidden');
+      } else {
+        volunteerBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-center gap-1.5 transition';
+        riderBtn.className = 'py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-600 font-bold flex items-center justify-center gap-1.5 transition';
+        vehicleSec.classList.add('hidden');
+        volSec.classList.remove('hidden');
+      }
+    }
+
     function openRiderAuthModal() {
-      const m = document.getElementById('riderAuthModal');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
+      document.getElementById('riderAuthModal').classList.remove('hidden');
+      document.getElementById('riderAuthModal').classList.add('flex');
     }
 
     function closeRiderAuthModal() {
-      const m = document.getElementById('riderAuthModal');
-      m.classList.add('hidden');
-      m.classList.remove('flex');
+      document.getElementById('riderAuthModal').classList.add('hidden');
+      document.getElementById('riderAuthModal').classList.remove('flex');
     }
 
     function handleRiderLoginSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById('riderNameInput').value.trim();
-      const phone = document.getElementById('riderPhoneInput').value.trim();
-      const vehicle = document.getElementById('riderVehicleInput').value;
-      const area = document.getElementById('riderAreaInput').value.trim();
+      const name = document.getElementById('riderAuthName').value.trim();
+      const phone = document.getElementById('riderAuthPhone').value.trim();
+      const vehicle = document.getElementById('riderVehicleSelect').value;
+      const pref = document.getElementById('volunteerPrefSelect').value;
 
-      currentRider = { name, phone, vehicle, area };
+      currentRider = {
+        name,
+        phone,
+        type: selectedRiderAuthType,
+        vehicle: selectedRiderAuthType === 'Rider' ? vehicle : 'On-Ground',
+        pref
+      };
 
-      // Update UI
-      document.getElementById('navRiderBtnText').innerText = name.split(' ')[0] + ' (Rider)';
-      document.getElementById('riderOnlineBadge').innerText = 'Active Online';
-      document.getElementById('riderOnlineBadge').className = 'px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold text-[10px]';
-      document.getElementById('riderProfileInfo').innerHTML = `
-        <p class="font-bold text-white">${name} • ${vehicle}</p>
-        <p class="text-slate-400">Area: ${area} | Mob: ${phone}</p>
-      `;
-      document.getElementById('riderAuthActionBtn').innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> Logout`;
-      document.getElementById('riderAuthActionBtn').setAttribute('onclick', 'handleRiderLogout()');
+      // Update Rider Header Slot
+      const riderBtnLabel = document.getElementById('riderBtnLabel');
+      if (riderBtnLabel) riderBtnLabel.innerText = `${name.split(' ')[0]} (${selectedRiderAuthType})`;
+
+      // Update Rider Portal Status Card
+      const portalName = document.getElementById('riderPortalName');
+      if (portalName) portalName.innerText = `${name} • Verified ${selectedRiderAuthType}`;
 
       closeRiderAuthModal();
-      showToast('Welcome, Rider! 🏍️', `${name}, aap login ho chuke hain.`);
+      showToast(`Welcome, ${name}! 🏍️`, `Aap ${selectedRiderAuthType} portal par online hain.`);
       navigateTo('rider');
     }
 
-    function handleRiderLogout() {
-      currentRider = null;
-      document.getElementById('navRiderBtnText').innerText = 'Rider / Volunteer Login';
-      document.getElementById('riderOnlineBadge').innerText = 'Not Logged In';
-      document.getElementById('riderOnlineBadge').className = 'px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold text-[10px]';
-      document.getElementById('riderProfileInfo').innerHTML = `<p>Login karein taaki aap pickup tasks accept kar sakein.</p>`;
-      document.getElementById('riderAuthActionBtn').innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> Rider Login / Sign Up`;
-      document.getElementById('riderAuthActionBtn').setAttribute('onclick', 'openRiderAuthModal()');
-      showToast('Logged Out', 'Aap rider account se logout ho chuke hain.');
-      renderRiderTasks();
+    // ==================== RIDER TASKS RENDERING ====================
+    function renderRiderTasks() {
+      const container = document.getElementById('riderTasksGrid');
+      const counter = document.getElementById('riderTaskCounter');
+      if (!container) return;
+
+      if (listings.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-400">
+            <i class="fa-solid fa-circle-check text-3xl mb-2 text-emerald-500"></i>
+            <p class="font-bold text-sm text-slate-800">Sabhi Tasks Complete!</p>
+            <p class="text-xs mt-1">Naye donation orders aane par yahan tasks dikhenge.</p>
+          </div>
+        `;
+        if (counter) counter.innerText = '0 Tasks Active';
+        return;
+      }
+
+      if (counter) counter.innerText = `${listings.length} Tasks Active`;
+
+      container.innerHTML = listings.map(item => `
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200">
+                TASK ID: ${item.id}
+              </span>
+              <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                ${item.plates} Plates
+              </span>
+            </div>
+
+            <h4 class="font-black text-slate-900 text-base">${item.venue}</h4>
+            <p class="text-xs text-slate-600 flex items-center gap-1 mt-0.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> ${item.city}
+            </p>
+
+            <div class="my-3 p-3 rounded-2xl bg-slate-50 text-xs text-slate-700">
+              <span class="font-bold block text-slate-900 mb-0.5">Dishes to pack:</span>
+              ${item.dishes}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+            <button onclick="acceptRiderTask('${item.id}')" class="py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-motorcycle"></i> Accept Pickup
+            </button>
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.venue + ', ' + item.city)}" target="_blank" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-location-arrow text-indigo-600"></i> Map Route
+            </a>
+          </div>
+        </div>
+      `).join('');
     }
 
-    function handleRiderAcceptPickup(taskId) {
+    function acceptRiderTask(id) {
       if (!currentRider) {
-        showToast('Login Required', 'Pehle Rider Login karein task pick karne ke liye.');
+        showToast('Login Required', 'Pehle Rider / Volunteer login karein task accept karne ke liye.');
         openRiderAuthModal();
         return;
       }
-      const item = listings.find(l => l.id === taskId);
-      if (item) {
-        item.status = 'in_transit';
-        item.riderName = currentRider.name;
-        showToast('Pickup Started! 🛵', `Task accept kiya: ${item.venue} se pickup shuru.`);
-        renderRiderTasks();
-        renderListings(listings);
-      }
+      showToast('Task Accepted! 📦', `Aapne Task ${id} accept kar liya hai. Venue par call karke pickup karein.`);
     }
 
-    function handleRiderCompleteDelivery(taskId) {
-      const item = listings.find(l => l.id === taskId);
-      if (item) {
-        item.status = 'delivered';
-        showToast('Khana Deliver Ho Gaya! 🍲', 'Zarooratmand tak safal delivery poori hui. Shukriya!');
-        renderRiderTasks();
-        renderListings(listings);
-      }
-    }
-
-    // Shelter Board Handlers
-    function openShelterModal() {
-      const m = document.getElementById('shelterModal');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-    }
-
-    function closeShelterModal() {
-      const m = document.getElementById('shelterModal');
-      m.classList.add('hidden');
-      m.classList.remove('flex');
-    }
-
-    function handleShelterSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('shelterFormName').value.trim();
-      const count = parseInt(document.getElementById('shelterFormCount').value) || 20;
-      const time = document.getElementById('shelterFormTime').value;
-      const loc = document.getElementById('shelterFormLoc').value.trim();
-      const phone = document.getElementById('shelterFormPhone').value.trim();
-
-      shelters.unshift({
-        id: 'SR-' + Date.now(),
-        name,
-        location: loc,
-        needCount: count,
-        time,
-        phone,
-        desc: `${count} logo ke khane ki requirement.`
-      });
-
-      closeShelterModal();
-      document.getElementById('shelterForm').reset();
-      renderShelters();
-
-      showToast('Need Posted! 📢', `${count} plates ki requirement publish ho gayi.`);
-    }
-
-    function renderShelters() {
-      const container = document.getElementById('shelterGrid');
+    // ==================== SHELTER DEMANDS RENDERING ====================
+    function renderShelterDemands() {
+      const container = document.getElementById('shelterDemandsGrid');
       if (!container) return;
 
-      if (shelters.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-full py-12 bg-white rounded-3xl border border-dashed border-slate-200 text-center p-6">
-            <i class="fa-solid fa-bed text-3xl text-slate-300 mb-2"></i>
-            <h4 class="text-sm font-bold text-slate-700">Koi requirement post nahi hui hai abhi</h4>
-            <p class="text-xs text-slate-400 mt-1">Nayi requirement post karne ke liye "Post Requirement" button dabayein.</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = shelters.map(s => {
-        return `
-          <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-card-soft flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                <span class="text-xs font-black text-amber-600"><i class="fa-solid fa-clock"></i> ${s.time}</span>
-                <span class="px-2 py-0.5 rounded-lg bg-amber-100 text-amber-900 text-xs font-black">Need: ${s.needCount} Plates</span>
-              </div>
-              <h4 class="text-base font-black text-slate-900 mt-3">${s.name}</h4>
-              <p class="text-xs text-slate-500 mt-1 flex items-center gap-1">
-                <i class="fa-solid fa-location-dot text-rose-500"></i> ${s.location}
-              </p>
-              <p class="mt-3 p-3 bg-slate-50 rounded-xl text-xs text-slate-600">${s.desc}</p>
+      container.innerHTML = shelterDemands.map(s => `
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-200">
+                ACTIVE DEMAND
+              </span>
+              <span class="text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">
+                Zaroorat: ${s.platesNeeded} Plates
+              </span>
             </div>
-            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-xs font-mono text-slate-500">${s.phone}</span>
-              <a href="tel:${s.phone}" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
-                <i class="fa-solid fa-phone"></i> Call
-              </a>
+            <h3 class="font-black text-slate-900 text-base">${s.name}</h3>
+            <p class="text-xs text-slate-500 mt-0.5"><i class="fa-solid fa-location-dot text-rose-500"></i> ${s.location}</p>
+            <div class="my-3 p-3 bg-slate-50 rounded-2xl text-xs text-slate-700">
+              <span class="font-bold">Diet:</span> ${s.dietPref}
             </div>
           </div>
-        `;
-      }).join('');
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-500"><i class="fa-solid fa-phone"></i> ${s.contact}</span>
+            <button onclick="navigateTo('donate')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition">
+              Deliver Food Here
+            </button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    // Feed Filters
-    function applyFilters() {
-      const q = (document.getElementById('feedSearch').value || '').toLowerCase().trim();
-      const cat = document.getElementById('feedCategory').value;
-      const diet = document.getElementById('feedDietary').value;
-
-      const filtered = listings.filter(item => {
-        if (cat !== 'all' && item.sourceType !== cat) return false;
-        if (diet !== 'all' && item.dietary !== diet) return false;
-        if (q) {
-          const matchTitle = item.title.toLowerCase().includes(q);
-          const matchVenue = item.venue.toLowerCase().includes(q);
-          const matchCity = item.city.toLowerCase().includes(q);
-          const matchItems = item.items.toLowerCase().includes(q);
-          if (!matchTitle && !matchVenue && !matchCity && !matchItems) return false;
-        }
-        return true;
-      });
-
-      renderListings(filtered);
-    }
-
-    function resetFeedFilters() {
-      document.getElementById('feedSearch').value = '';
-      document.getElementById('feedCategory').value = 'all';
-      document.getElementById('feedDietary').value = 'all';
-      renderListings(listings);
-    }
-
-    function filterFromRadar(loc) {
+    function filterRadarByCluster(cityName) {
+      document.getElementById('feedSearchInput').value = cityName;
       navigateTo('explore');
-      document.getElementById('feedSearch').value = loc;
-      applyFilters();
+      showToast('Radar Filter Applied', `${cityName} ke surplus meals show ho rahe hain.`);
     }
-
-    function updateBadges() {
-      const available = listings.filter(l => l.status === 'available').length;
-      document.getElementById('navAvailableCount').innerText = available;
-      document.querySelectorAll('.heroTotalPill').forEach(el => el.innerText = available);
-    }
-
-    function showToast(title, msg) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toastTitle').innerText = title;
-      document.getElementById('toastMessage').innerText = msg;
-      toast.classList.remove('translate-y-36', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-      setTimeout(() => {
-        toast.classList.add('translate-y-36', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 4000);
-    }
-
-    // ==================== GEMINI AI ASSISTANT LOGIC ====================
+    // ==================== SETU AI ASSISTANT ====================
     function toggleAiAssistant() {
-      const drawer = document.getElementById('aiChatDrawer');
-      drawer.classList.toggle('hidden');
-      drawer.classList.toggle('flex');
+      const drawer = document.getElementById('aiAssistantDrawer');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        drawer.classList.add('flex');
+      } else {
+        drawer.classList.add('hidden');
+        drawer.classList.remove('flex');
+      }
     }
 
-    function sendQuickPrompt(promptText) {
-      document.getElementById('aiChatInput').value = promptText;
-      handleAiChatSubmit(new Event('submit'));
-    }
+    async function sendAiMessage() {
+      const input = document.getElementById('aiUserInput');
+      const message = input.value.trim();
+      if (!message) return;
 
-    async function handleAiChatSubmit(e) {
-      if (e) e.preventDefault();
-      const input = document.getElementById('aiChatInput');
-      const query = input.value.trim();
-      if (!query) return;
-
+      const container = document.getElementById('aiChatMessages');
+      // User Message
+      container.innerHTML += `
+        <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl ml-6">
+          <p class="font-semibold text-right">${message}</p>
+        </div>
+      `;
       input.value = '';
-      appendChatMessage('user', query);
+      container.scrollTop = container.scrollHeight;
 
       // Loading bubble
-      const loadingId = 'ai-loading-' + Date.now();
-      appendChatLoading(loadingId);
-
-      const systemPrompt = `You are Setu AI, a friendly, empathetic Hindi/Hinglish speaking assistant for the surplus food rescue platform 'AaharSetu' (आहार सेतु). 
-Your job is to guide users on:
-1. Donating leftover food from weddings, parties, restaurants, and homes.
-2. Safety and packaging guidelines (keep dry & liquid foods separate, wrap within clean foil, safe within 4 hours).
-3. How delivery partners/riders pick up and deliver food to nearby shelters and needy individuals.
-4. Answering questions concisely, politely, and practically in conversational Hindi/Hinglish. Keep answers short and direct (2-4 sentences max).`;
+      const loadingId = 'loading-' + Date.now();
+      container.innerHTML += `
+        <div id="${loadingId}" class="bg-purple-50 text-purple-700 p-3 rounded-2xl mr-6 flex items-center gap-2">
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+          <span>Soch raha hoon...</span>
+        </div>
+      `;
+      container.scrollTop = container.scrollHeight;
 
       try {
+        const systemPrompt = "Aap 'Setu AI' hain - AaharSetu platform ke smart food rescue assistant. Aap Hindi aur Hinglish me friendly, helpful aur polite response dete hain. Aap surplus food packaging, hygienic donation rules, wedding leftovers aur riders ke baare me guide karte hain. Crisp aur helpful rahein (2-3 sentences max).";
         const apiKey = "";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-        const payload = {
-          contents: [{ parts: [{ text: query }] }],
-          systemInstruction: { parts: [{ text: systemPrompt }] }
-        };
 
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: message }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+          })
         });
 
-        const data = await response.json();
-        removeChatLoading(loadingId);
+        const result = await response.json();
+        const reply = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf karein, network issue ki wajah se response nahi mil paya. Aap direct Donate Food form fill kar sakte hain.";
 
-        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-          const reply = data.candidates[0].content.parts[0].text;
-          appendChatMessage('bot', reply);
-        } else {
-          appendChatMessage('bot', 'Shukriya! Aap donate form ya rider portal use karke seedha khana deliver kar sakte hain.');
-        }
+        document.getElementById(loadingId)?.remove();
+        container.innerHTML += `
+          <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl mr-6 border border-purple-100">
+            <p class="font-medium">${reply}</p>
+          </div>
+        `;
+        container.scrollTop = container.scrollHeight;
       } catch (err) {
-        removeChatLoading(loadingId);
-        appendChatMessage('bot', 'Aapka sawal sun liya! Surplus khana jaldi se safe bartan me pack karein aur "Post Khana" se details share karein taaki rider pick kar sake.');
+        document.getElementById(loadingId)?.remove();
+        container.innerHTML += `
+          <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl mr-6 border border-purple-100">
+            <p>Khana donate karne ke liye top bar me 'Donate Food' par click karein aur plates count enter karein. Hamare riders pickup ke liye aa jayenge!</p>
+          </div>
+        `;
+        container.scrollTop = container.scrollHeight;
       }
     }
 
-    function appendChatMessage(sender, text) {
-      const container = document.getElementById('aiChatMessages');
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `flex gap-2 ${sender === 'user' ? 'justify-end' : ''}`;
-
-      if (sender === 'user') {
-        msgDiv.innerHTML = `
-          <div class="bg-purple-600 text-white p-3 rounded-2xl rounded-tr-none text-xs leading-relaxed max-w-[80%] shadow-sm">
-            ${text}
-          </div>
-        `;
-      } else {
-        msgDiv.innerHTML = `
-          <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs shrink-0">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-700 leading-relaxed max-w-[85%] shadow-sm">
-            ${text}
-          </div>
-        `;
-      }
-      container.appendChild(msgDiv);
-      container.scrollTop = container.scrollHeight;
+    // ==================== TOAST NOTIFICATION HELPERS ====================
+    let toastTimeout;
+    function showToast(title, message) {
+      clearTimeout(toastTimeout);
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastMessage').innerText = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 4000);
     }
 
-    function appendChatLoading(id) {
-      const container = document.getElementById('aiChatMessages');
-      const loadingDiv = document.createElement('div');
-      loadingDiv.id = id;
-      loadingDiv.className = 'flex gap-2';
-      loadingDiv.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs shrink-0">
-          <i class="fa-solid fa-robot"></i>
-        </div>
-        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-500 text-xs flex items-center gap-1.5 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span>Setu AI soch raha hai...</span>
-        </div>
-      `;
-      container.appendChild(loadingDiv);
-      container.scrollTop = container.scrollHeight;
+    function hideToast() {
+      const toast = document.getElementById('toastNotification');
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
     }
 
-    function removeChatLoading(id) {
-      const el = document.getElementById(id);
-      if (el) el.remove();
-    }
-
-    // Window Init
-    window.addEventListener('DOMContentLoaded', () => {
-      renderListings(listings);
-      renderShelters();
-      updateBadges();
-    });
+    // Initialize application on load
+    window.onload = function () {
+      renderHomePreviews();
+      renderAllListings();
+      renderRiderTasks();
+      renderShelterDemands();
+      updateCounters();
+    };
   </script>
 </body>
 </html>
